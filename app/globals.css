@@ -6,6 +6,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Belajar CPNS — design tokens Modulify (putih bersih, tinta #131316,
+   aksen gradient hangat) + navy Dicoding #2D3E50 untuk area kuis.
+   Semua token di file ini (satu @import "tailwindcss") agar ter-generate. */
+@theme {
+  --color-ink: #131316;
+  --color-brand: #f97316;
+  --color-brand-deep: #ea580c;
+  --color-blush: #ec4899;
+  --color-navy: #2d3e50;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
