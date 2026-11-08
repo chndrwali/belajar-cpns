@@ -39,6 +39,17 @@ export interface ChecklistItem {
   category: "Identitas" | "Pendidikan" | "Foto & Dokumen" | "Pernyataan";
 }
 
+/** Satu hasil tryout SKD — bentuk yang dikembalikan tRPC progress.getDashboard. */
+export interface TryoutResult {
+  date: string; // ISO string
+  twk: number;
+  tiu: number;
+  tkp: number;
+  total: number;
+  passed: boolean;
+  durationSeconds: number;
+}
+
 export const PASSING_GRADE = { twk: 65, tiu: 80, tkp: 166 } as const;
 export const TRYOUT_TOTAL = 110;
 export const TRYOUT_MINUTES = 100;

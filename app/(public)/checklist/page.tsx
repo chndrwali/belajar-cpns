@@ -9,7 +9,7 @@ export default function ChecklistPage() {
       <SectionHeading
         eyebrow="Persiapan pendaftaran"
         title="Checklist Administrasi CPNS"
-        desc="Centang dokumen yang sudah kamu siapkan. Progres tersimpan otomatis di perangkat ini — kembali kapan pun tanpa kehilangan centangan."
+        desc="Centang dokumen yang sudah kamu siapkan. Login dulu supaya progresmu tersimpan di akunmu dan bisa dibuka dari perangkat mana pun."
       />
       <div className="mt-10">
         <ChecklistClient />

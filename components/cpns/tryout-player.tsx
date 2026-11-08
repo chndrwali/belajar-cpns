@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Flag, RotateCcw, Timer } from "lucide-react";
 import { PASSING_GRADE, TRYOUT_MINUTES, scoreKnowledge, scoreTkp } from "@/lib/cpns/types";
-import type { Question } from "@/lib/cpns/types";
+import type { Question, TryoutResult } from "@/lib/cpns/types";
 import { TRYOUT_QUESTIONS } from "@/lib/cpns/tryout-questions";
-import { LS_KEYS, getTryoutHistory, writeJson, type TryoutResult } from "@/lib/cpns/progress";
+import { useTRPC } from "@/trpc/client";
+import { friendlyProgressError, useDashboardProgress, useInvalidateDashboard } from "@/components/cpns/progress-hooks";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
 const TOTAL_SECONDS = TRYOUT_MINUTES * 60;
@@ -31,6 +33,20 @@ export function TryoutPlayer() {
   const [secondsLeft, setSecondsLeft] = useState(TOTAL_SECONDS);
   const [history, setHistory] = useState<TryoutResult[]>([]);
   const [lastResult, setLastResult] = useState<TryoutResult | null>(null);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed" | "guest">("idle");
+  const { isLoggedIn, dashboard } = useDashboardProgress();
+  const trpc = useTRPC();
+  const invalidateDashboard = useInvalidateDashboard();
+  const saveAttemptMutation = useMutation(
+    trpc.progress.saveTryoutAttempt.mutationOptions({
+      onSuccess: (saved) => {
+        setSaveState("saved");
+        setLastResult(saved);
+        invalidateDashboard();
+      },
+      onError: () => setSaveState("failed"),
+    }),
+  );
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const submittedRef = useRef(false);
   const answersRef = useRef<Record<number, number>>({});
@@ -43,8 +59,8 @@ export function TryoutPlayer() {
   }, [secondsLeft]);
 
   useEffect(() => {
-    setHistory(getTryoutHistory());
-  }, []);
+    if (dashboard) setHistory(dashboard.tryoutHistory);
+  }, [dashboard]);
 
   function submit() {
     if (submittedRef.current) return;
@@ -68,11 +84,41 @@ export function TryoutPlayer() {
       passed: twk >= PASSING_GRADE.twk && tiu >= PASSING_GRADE.tiu && tkp >= PASSING_GRADE.tkp,
       durationSeconds: TOTAL_SECONDS - secondsLeftRef.current,
     };
-    const next = [...getTryoutHistory(), result];
-    writeJson(LS_KEYS.tryoutHistory, next);
-    setHistory(next);
     setLastResult(result);
     setPhase("result");
+    if (!isLoggedIn) {
+      // Tamu boleh melihat hasil, tapi hasil tidak tercatat di mana pun.
+      setSaveState("guest");
+      return;
+    }
+    setSaveState("saving");
+    saveAttemptMutation.mutate({
+      twk,
+      tiu,
+      tkp,
+      total,
+      durationSeconds: result.durationSeconds,
+      answers: Object.entries(answersRef.current).map(([index, chosen]) => ({
+        index: Number(index),
+        chosen,
+      })),
+    });
+  }
+
+  function retrySave() {
+    if (!lastResult) return;
+    setSaveState("saving");
+    saveAttemptMutation.mutate({
+      twk: lastResult.twk,
+      tiu: lastResult.tiu,
+      tkp: lastResult.tkp,
+      total: lastResult.total,
+      durationSeconds: lastResult.durationSeconds,
+      answers: Object.entries(answersRef.current).map(([index, chosen]) => ({
+        index: Number(index),
+        chosen,
+      })),
+    });
   }
 
   useEffect(() => {
@@ -99,6 +145,7 @@ export function TryoutPlayer() {
     setFlagged({});
     setIndex(0);
     setSecondsLeft(TOTAL_SECONDS);
+    setSaveState("idle");
     setPhase("running");
   }
 
@@ -134,7 +181,7 @@ export function TryoutPlayer() {
             <li>· Timer 100 menit berjalan mundur dan tryout otomatis terkumpul saat waktu habis.</li>
             <li>· Kamu bisa lompat ke soal mana pun lewat grid nomor soal dan menandai soal yang ragu-ragu.</li>
             <li>· Setelah selesai, kamu melihat skor TWK, TIU, dan TKP terpisah, status lolos/tidak, dan pembahasan semua soal.</li>
-            <li>· Riwayat tryout tersimpan di perangkat ini.</li>
+            <li>· Riwayat tryout tersimpan di akunmu — login dulu supaya tidak hilang.</li>
           </ul>
           <button
             onClick={start}
@@ -204,6 +251,29 @@ export function TryoutPlayer() {
             Pelajari materi yang lemah
           </Link>
         </div>
+        {saveState === "guest" ? (
+          <p className="mt-6 rounded-2xl bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
+            Login untuk menyimpan progresmu — tanpa login, hasil tryout ini tidak tercatat di
+            akunmu.{" "}
+            <Link href="/login" className="font-bold underline">
+              Login sekarang
+            </Link>
+          </p>
+        ) : saveState === "saving" ? (
+          <p className="mt-6 text-center text-sm text-neutral-500">Menyimpan hasil tryout ke akunmu…</p>
+        ) : saveState === "saved" ? (
+          <p className="mt-6 text-center text-sm font-medium text-emerald-700">
+            Hasil tryout tersimpan di akunmu.
+          </p>
+        ) : saveState === "failed" ? (
+          <p className="mt-6 rounded-2xl bg-red-50 p-4 text-sm leading-relaxed text-red-800">
+            {friendlyProgressError(saveAttemptMutation.error)} Hasilmu tetap terlihat di halaman
+            ini, tapi tidak tercatat.{" "}
+            <button onClick={retrySave} className="font-bold underline">
+              Coba simpan lagi
+            </button>
+          </p>
+        ) : null}
         <h2 className="mt-10 text-xl font-bold text-[#131316]">Pembahasan semua soal</h2>
         <ol className="mt-4 space-y-3">
           {TRYOUT_QUESTIONS.map((q: Question, i: number) => {

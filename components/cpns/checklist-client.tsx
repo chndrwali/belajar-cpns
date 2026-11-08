@@ -1,34 +1,76 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { Check, CheckCircle2, LogIn } from "lucide-react";
 import { CHECKLIST_ITEMS } from "@/lib/cpns/checklist";
-import { LS_KEYS, getChecklistDone, writeJson } from "@/lib/cpns/progress";
+import { useTRPC } from "@/trpc/client";
+import { friendlyProgressError, useDashboardProgress, useInvalidateDashboard } from "@/components/cpns/progress-hooks";
 
 const CATEGORIES = ["Identitas", "Pendidikan", "Foto & Dokumen", "Pernyataan"] as const;
 
 export function ChecklistClient() {
+  const { sessionPending, isLoggedIn, dashboard, dashboardLoading, dashboardError } = useDashboardProgress();
+  const trpc = useTRPC();
+  const invalidateDashboard = useInvalidateDashboard();
   const [done, setDone] = useState<string[]>([]);
-  const [ready, setReady] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setDone(getChecklistDone());
-    setReady(true);
-  }, []);
+    setDone(dashboard?.checklistDone ?? []);
+  }, [dashboard]);
+
+  const setMutation = useMutation(
+    trpc.progress.setChecklist.mutationOptions({
+      onSuccess: () => invalidateDashboard(),
+      onError: (err) => {
+        setError(friendlyProgressError(err));
+      },
+    }),
+  );
 
   function toggle(id: string) {
+    if (!isLoggedIn) return;
+    setError(null);
     const next = done.includes(id) ? done.filter((d) => d !== id) : [...done, id];
     setDone(next);
-    writeJson(LS_KEYS.checklist, next);
+    setMutation.mutate({ itemId: id, checked: !done.includes(id) });
   }
 
   const pct = Math.round((done.length / CHECKLIST_ITEMS.length) * 100);
   const complete = done.length === CHECKLIST_ITEMS.length;
 
-  if (!ready) return null;
+  if (sessionPending || (isLoggedIn && dashboardLoading)) {
+    return <div className="h-64 animate-pulse rounded-3xl border border-neutral-200 bg-neutral-50" />;
+  }
+
+  if (isLoggedIn && dashboardError) {
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-800">
+        Checklist gagal dimuat dari database. Coba muat ulang halaman.
+      </div>
+    );
+  }
 
   return (
     <div>
+      {!isLoggedIn ? (
+        <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+          <p className="font-semibold text-amber-900">Login untuk menyimpan checklistmu</p>
+          <p className="mt-1 text-sm leading-relaxed text-amber-800">
+            Checklist hanya bisa dicentang kalau kamu login — progresnya tersimpan di akunmu,
+            bukan di perangkat ini, jadi bisa dibuka dari mana pun.
+          </p>
+          <Link
+            href="/login"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#131316] px-4 py-2 text-sm font-semibold text-white"
+          >
+            <LogIn className="h-4 w-4" /> Login
+          </Link>
+        </div>
+      ) : null}
+
       <div className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -53,6 +95,10 @@ export function ChecklistClient() {
         </div>
       </div>
 
+      {error ? (
+        <p className="mt-4 rounded-2xl bg-red-50 p-3 text-sm font-medium text-red-700">{error}</p>
+      ) : null}
+
       {CATEGORIES.map((cat) => (
         <section key={cat} className="mt-8">
           <h2 className="text-lg font-bold text-[#131316]">{cat}</h2>
@@ -63,9 +109,13 @@ export function ChecklistClient() {
                 <button
                   key={item.id}
                   onClick={() => toggle(item.id)}
+                  disabled={!isLoggedIn}
+                  title={isLoggedIn ? undefined : "Login dulu untuk mencentang checklist"}
                   className={`flex w-full items-start gap-4 rounded-3xl border-2 p-5 text-left transition ${
-                    isDone ? "border-emerald-400 bg-emerald-50" : "border-neutral-200 bg-white hover:border-orange-300"
-                  }`}
+                    isDone
+                      ? "border-emerald-400 bg-emerald-50"
+                      : "border-neutral-200 bg-white hover:border-orange-300"
+                  } ${isLoggedIn ? "" : "cursor-not-allowed opacity-60"}`}
                 >
                   <span
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 ${

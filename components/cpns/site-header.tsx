@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpenCheck, GraduationCap, Menu, X } from "lucide-react";
+import { BookOpenCheck, GraduationCap, LogIn, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { signOut, useSession } from "@/lib/auth-client";
+import { useLegacyProgressImport } from "@/components/cpns/progress-hooks";
 
 const NAV = [
   { href: "/", label: "Beranda" },
@@ -16,6 +18,14 @@ const NAV = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
+  // Migrasi satu kali: progres lama dari localStorage dipindah ke database saat login.
+  useLegacyProgressImport();
+
+  async function handleSignOut() {
+    await signOut();
+    window.location.href = "/";
+  }
   return (
     <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -43,6 +53,28 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          {session?.user ? (
+            <span className="hidden items-center gap-2 sm:flex">
+              <span className="max-w-32 truncate text-sm font-medium text-neutral-600">
+                {session.user.name ?? session.user.email}
+              </span>
+              <button
+                onClick={handleSignOut}
+                className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 px-3.5 py-2 text-sm font-semibold text-[#131316] transition hover:bg-neutral-100"
+              >
+                <LogOut className="h-4 w-4" />
+                Keluar
+              </button>
+            </span>
+          ) : (
+            <Link
+              href="/login"
+              className="hidden items-center gap-1.5 rounded-full border border-neutral-300 px-3.5 py-2 text-sm font-semibold text-[#131316] transition hover:bg-neutral-100 sm:inline-flex"
+            >
+              <LogIn className="h-4 w-4" />
+              Masuk
+            </Link>
+          )}
           <Link
             href="/tryout"
             className="hidden items-center gap-1.5 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-4 py-2 text-sm font-semibold text-white sm:inline-flex"
@@ -73,6 +105,22 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          {session?.user ? (
+            <button
+              onClick={handleSignOut}
+              className="mt-1 block w-full rounded-xl px-3 py-2.5 text-left text-sm font-medium text-neutral-700"
+            >
+              Keluar ({session.user.name ?? session.user.email})
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              onClick={() => setOpen(false)}
+              className="mt-1 block rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700"
+            >
+              Masuk / Daftar
+            </Link>
+          )}
         </nav>
       ) : null}
     </header>

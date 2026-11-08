@@ -41,6 +41,50 @@ Ini membuat tabel `user`, `account`, `credential`, `session`, `verification`
 di database Neon baru. Kalau gagal karena `DATABASE_URL` kosong, cek lagi
 langkah 2–3.
 
+## Progres belajar tersimpan di database
+
+Semua progres belajar — bukan lagi localStorage — tersimpan di database
+per akun, lewat tRPC `progress` (semua endpoint wajib login):
+
+| Tabel | Isi |
+|---|---|
+| `material_progress` | Materi yang ditandai sudah dibaca (satu baris per user + materi) |
+| `quiz_best` | Skor terbaik kuis per bab (satu baris per user + materi) |
+| `tryout_attempt` | Riwayat tryout SKD lengkap: skor TWK/TIU/TKP, total, lolos/tidak, durasi, dan jawaban per soal (JSONB) |
+| `checklist_progress` | Centangan checklist administrasi (satu baris per user + item) |
+
+Migrasi tabel-tabel ini ikut dalam perintah yang sama (`npx prisma migrate deploy`,
+migrasi `add_learning_progress`). Tamu (belum login) tetap bisa belajar, kuis,
+dan tryout — tapi hasilnya tidak tercatat; saat selesai mereka diminta login.
+
+**Progres lama di localStorage:** kalau sebelumnya sudah belajar sebelum
+perubahan ini, progres lama (key `belajar-cpns:*`) dipindahkan otomatis saat
+login pertama — endpoint `progress.importLegacy` melakukan upsert (tryout
+tidak diduplikat, dicocokkan tanggal + skor), lalu keempat key localStorage
+dihapus. Tidak perlu tindakan manual.
+
+## Rate limit (web publik, anti brute-force & spam)
+
+Situs ini dibagikan di sosmed, jadi ada 3 lapis perlindungan — tanpa
+service eksternal baru dan tanpa env wajib baru:
+
+| Lapisan | Aturan | Tujuan |
+|---|---|---|
+| **1. Better Auth** (sudah ada di `lib/auth.ts`) | Global 100/menit; `/login/*` 5/menit; `/register/*` 3/menit; `/forgot-password` & `/reset-password` 3/menit | Anti brute-force login & spam akun |
+| **2. Proxy** (`proxy.ts`, `/api/trpc/*` saja) | 100 req/menit per IP → 429 + header `Retry-After` | Pembatas kasar per IP. Halaman GET publik (`/`, `/materi`, `/kuis`, `/tryout`, `/checklist`) TIDAK dibatasi; `/api/auth/*` juga tidak dobel-dibatasi di sini |
+| **3. tRPC progress** (`trpc/init.ts` → router `progress`) | `getDashboard`/`getChecklist` 60/menit; `toggleMaterial`/`setChecklist` 30/menit; `saveQuizBest` 20/menit; `saveTryoutAttempt` 5/menit; `importLegacy` 3/menit (per user yang login) → error `TOO_MANY_REQUESTS`, pesan Bahasa Indonesia | Mencegah spam simpan progres; UI menampilkan pesan 429 dengan baik, bukan crash |
+
+Semua angka hidup di **satu tempat**: `RATE_LIMITS` di `lib/rate-limit.ts` —
+ubah angkanya di sana untuk melonggarkan/mengetatkan, tidak perlu ubah
+tiap endpoint. Semua limit di atas longgar untuk pemakaian wajar (satu
+orang mengerjakan tryout, centang checklist, simpan skor).
+
+**Catatan in-memory vs Upstash:** limit ini in-memory per instance server
+— di Vercel serverless tiap instance punya hitungannya sendiri, jadi ini
+perlindungan praktis, bukan pembatas distribusi yang sempurna. Kalau nanti
+mau yang ketat lintas instance, jalurnya Upstash Redis (opsional, belum
+dipasang).
+
 ### 5. Daftar & login
 ```bash
 npm run dev   # http://localhost:3000

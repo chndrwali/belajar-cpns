@@ -26,6 +26,11 @@ model User {
   credentials Credential[]
   sessions    Session[]
 
+  materialProgress  MaterialProgress[]
+  quizBest          QuizBest[]
+  tryoutAttempts    TryoutAttempt[]
+  checklistProgress ChecklistProgress[]
+
   role       String?
   banned     Boolean?  @default(false)
   banReason  String?
@@ -106,4 +111,67 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+// --- Progres belajar CPNS (tersimpan di database, per user) ---
+
+model MaterialProgress {
+  id           String   @id @default(cuid())
+  userId       String
+  materialSlug String
+  done         Boolean  @default(true)
+  completedAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, materialSlug])
+  @@index([userId])
+  @@map("material_progress")
+}
+
+model QuizBest {
+  id             String   @id @default(cuid())
+  userId         String
+  materialSlug   String
+  bestScore      Int
+  totalQuestions Int
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, materialSlug])
+  @@index([userId])
+  @@map("quiz_best")
+}
+
+model TryoutAttempt {
+  id              String   @id @default(cuid())
+  userId          String
+  twk             Int
+  tiu             Int
+  tkp             Int
+  total           Int
+  passed          Boolean
+  durationSeconds Int
+  answers         Json?
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("tryout_attempt")
+}
+
+model ChecklistProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  itemId    String
+  checked   Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@index([userId])
+  @@map("checklist_progress")
 }

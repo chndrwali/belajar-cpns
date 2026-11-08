@@ -74,7 +74,7 @@ export default function HomePage() {
         <h2 className="mb-4 text-lg font-bold text-[#131316]">Progres belajarmu</h2>
         <DashboardProgress />
         <p className="mt-3 text-xs text-neutral-400">
-          Progres tersimpan di perangkatmu (localStorage), tanpa akun dan tanpa database.
+          Progresmu tersimpan di akunmu dan bisa dibuka dari perangkat mana pun setelah login.
         </p>
       </section>
 

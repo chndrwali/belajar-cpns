@@ -2,6 +2,7 @@ import { getSession } from "@/hooks/get-session";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { cache } from "react";
+import { checkRateLimit, RATE_LIMIT_MESSAGE } from "@/lib/rate-limit";
 
 export const createTRPCContext = cache(async (opts?: { req: Request }) => {
   /**
@@ -47,3 +48,19 @@ export const adminProcedure = protectedProcedure.use(async ({ ctx, next }) => {
   }
   return next();
 });
+
+/**
+ * Procedure login + rate limit (sliding-window in-memory, lihat lib/rate-limit.ts).
+ * Kunci: userId kalau login, IP kalau tamu. Dijalankan SETELAH cek login
+ * (dirangkai di atas protectedProcedure), jadi progres selalu terikat akun.
+ * Kena limit -> error TOO_MANY_REQUESTS dengan pesan Bahasa Indonesia.
+ */
+export const rateLimitedProcedure = (limit: number, windowMs = 60_000) =>
+  protectedProcedure.use(async ({ ctx, next }) => {
+    const key = ctx.auth.user?.id ? `user:${ctx.auth.user.id}` : `ip:${ctx.ip}`;
+    const result = checkRateLimit({ key, limit, windowMs });
+    if (!result.allowed) {
+      throw new TRPCError({ code: "TOO_MANY_REQUESTS", message: RATE_LIMIT_MESSAGE });
+    }
+    return next();
+  });

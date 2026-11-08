@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, RotateCcw, X, XCircle } from "lucide-react";
 import type { Material, Question } from "@/lib/cpns/types";
-import { LS_KEYS, getQuizBest, writeJson } from "@/lib/cpns/progress";
+import { useTRPC } from "@/trpc/client";
+import { friendlyProgressError, useDashboardProgress, useInvalidateDashboard } from "@/components/cpns/progress-hooks";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
 
@@ -13,6 +15,19 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
   const [chosen, setChosen] = useState<Record<number, number>>({});
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const [finished, setFinished] = useState(false);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed" | "guest">("idle");
+  const { isLoggedIn, dashboard } = useDashboardProgress();
+  const trpc = useTRPC();
+  const invalidateDashboard = useInvalidateDashboard();
+  const saveBestMutation = useMutation(
+    trpc.progress.saveQuizBest.mutationOptions({
+      onSuccess: () => {
+        setSaveState("saved");
+        invalidateDashboard();
+      },
+      onError: () => setSaveState("failed"),
+    }),
+  );
 
   const q = questions[index];
   const isTkp = q.section === "tkp";
@@ -37,9 +52,18 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
 
   function finish() {
     setFinished(true);
-    const best = getQuizBest();
-    const prev = best[material.slug] ?? 0;
-    if (correctCount > prev) writeJson(LS_KEYS.quizBest, { ...best, [material.slug]: correctCount });
+    if (!isLoggedIn) {
+      setSaveState("guest");
+      return;
+    }
+    // Server menyimpan skor tertinggi (best) — skor lama tidak tertimpa skor baru yang lebih rendah.
+    const prev = dashboard?.quizBest[material.slug] ?? 0;
+    if (correctCount > prev) {
+      setSaveState("saving");
+      saveBestMutation.mutate({ slug: material.slug, score: correctCount, total: questions.length });
+    } else {
+      setSaveState("saved");
+    }
   }
 
   function reset() {
@@ -62,6 +86,23 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
           <p className="mt-2 text-sm text-neutral-500">
             {pct >= 80 ? "Mantap, sudah sangat siap. Lanjut ke bab berikutnya atau coba tryout SKD." : pct >= 60 ? "Lumayan, tapi masih ada yang perlu diulang. Baca lagi materinya lalu coba lagi." : "Belum lolos — baca lagi materinya, tonton video referensinya, lalu ulangi kuis ini."}
           </p>
+          {saveState === "guest" ? (
+            <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
+              Login untuk menyimpan progresmu — tanpa login, skor kuis ini tidak tercatat.{" "}
+              <Link href="/login" className="font-bold underline">
+                Login sekarang
+              </Link>
+            </p>
+          ) : saveState === "saving" ? (
+            <p className="mt-4 text-sm text-neutral-500">Menyimpan skor terbaikmu ke akunmu…</p>
+          ) : saveState === "saved" ? (
+            <p className="mt-4 text-sm font-medium text-emerald-700">Skor terbaikmu tersimpan di akunmu.</p>
+          ) : saveState === "failed" ? (
+            <p className="mt-4 rounded-2xl bg-red-50 p-4 text-sm leading-relaxed text-red-800">
+              {friendlyProgressError(saveBestMutation.error)} Skor kuis ini tetap terlihat di atas,
+              tapi tidak tercatat — coba ulangi kuis setelah koneksi membaik.
+            </p>
+          ) : null}
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button onClick={reset} className="inline-flex items-center gap-2 rounded-full bg-[#131316] px-5 py-2.5 text-sm font-semibold text-white">
               <RotateCcw className="h-4 w-4" /> Ulangi kuis

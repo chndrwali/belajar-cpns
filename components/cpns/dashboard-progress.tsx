@@ -1,35 +1,65 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, ClipboardList, Target } from "lucide-react";
+import { CheckCircle2, ClipboardList, LogIn, Target } from "lucide-react";
 import { CHECKLIST_ITEMS } from "@/lib/cpns/checklist";
 import { MATERIALS } from "@/lib/cpns/materials";
 import { QUIZ_QUESTIONS } from "@/lib/cpns/quiz-questions";
-import { getChecklistDone, getMaterialsDone, getQuizBest, getTryoutHistory } from "@/lib/cpns/progress";
+import { useDashboardProgress } from "@/components/cpns/progress-hooks";
 
 export function DashboardProgress() {
-  const [ready, setReady] = useState(false);
-  const [stats, setStats] = useState({ checklist: 0, materials: 0, quizBest: 0, tryouts: 0, lastTotal: null as number | null });
-
-  useEffect(() => {
-    const done = getChecklistDone();
-    const mats = getMaterialsDone();
-    const best = getQuizBest();
-    const history = getTryoutHistory();
-    setStats({
-      checklist: done.length,
-      materials: mats.length,
-      quizBest: Object.keys(best).length,
-      tryouts: history.length,
-      lastTotal: history.length > 0 ? history[history.length - 1].total : null,
-    });
-    setReady(true);
-  }, []);
-
-  if (!ready) return null;
+  const { sessionPending, isLoggedIn, dashboard, dashboardLoading, dashboardError } = useDashboardProgress();
 
   const quizTotal = new Set(QUIZ_QUESTIONS.map((q) => q.id.slice(0, q.id.lastIndexOf("-q")))).size;
+
+  if (sessionPending || (isLoggedIn && dashboardLoading)) {
+    return (
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="h-[104px] animate-pulse rounded-2xl border border-neutral-200 bg-neutral-50" />
+        ))}
+      </div>
+    );
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+        <p className="font-semibold text-amber-900">Progres belajarmu belum tercatat</p>
+        <p className="mt-1 text-sm leading-relaxed text-amber-800">
+          Kamu tetap bisa belajar, kuis, dan tryout tanpa login — tapi progresmu tidak akan
+          tersimpan. Login untuk menyimpan progresmu di akunmu dan membukanya dari perangkat
+          mana pun.
+        </p>
+        <Link
+          href="/login"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#131316] px-4 py-2 text-sm font-semibold text-white"
+        >
+          <LogIn className="h-4 w-4" /> Login untuk menyimpan progres
+        </Link>
+      </div>
+    );
+  }
+
+  if (dashboardError || !dashboard) {
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-800">
+        Progres gagal dimuat dari database. Coba muat ulang halaman — kalau masih gagal, cek
+        koneksi database di SETUP.md.
+      </div>
+    );
+  }
+
+  const stats = {
+    checklist: dashboard.checklistDone.length,
+    materials: dashboard.materialsDone.length,
+    quizBest: Object.keys(dashboard.quizBest).length,
+    tryouts: dashboard.tryoutHistory.length,
+    lastTotal:
+      dashboard.tryoutHistory.length > 0
+        ? dashboard.tryoutHistory[dashboard.tryoutHistory.length - 1].total
+        : null,
+  };
   const items = [
     { icon: ClipboardList, label: "Checklist administrasi", value: `${stats.checklist}/${CHECKLIST_ITEMS.length} selesai`, href: "/checklist" },
     { icon: CheckCircle2, label: "Materi selesai dibaca", value: `${stats.materials}/${MATERIALS.length} materi`, href: "/materi" },

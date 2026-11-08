@@ -55,20 +55,31 @@ export const auth = betterAuth({
     enabled: true,
     window: 60, // 60 seconds window
     max: 100, // Default max requests per window
-    // Custom rules for auth endpoints
+    // Custom rules for auth endpoints.
+    // PENTING: path di sini adalah path API Better Auth (setelah /api/auth),
+    // BUKAN path halaman. Aturan lama ("/login/*", "/register/*",
+    // "/forgot-password") tidak pernah cocok dengan path API, sehingga
+    // yang berlaku malah aturan bawaan Better Auth (sign-in/sign-up
+    // dibatasi 3 percobaan per 10 detik). Path di bawah sudah diperbaiki
+    // supaya batas yang dimaksud (5/menit login, 3/menit sisanya) benar-benar
+    // berlaku dan menimpa aturan bawaan tersebut.
     customRules: {
       // Stricter limit for sign-in (brute force protection)
-      "/login/*": {
+      "/sign-in/*": {
         window: 60,
         max: 5, // 5 attempts per minute
       },
       // Stricter limit for sign-up (spam protection)
-      "/register/*": {
+      "/sign-up/*": {
         window: 60,
         max: 3, // 3 attempts per minute
       },
       // Stricter limit for password reset
-      "/forgot-password": {
+      "/forget-password": {
+        window: 60,
+        max: 3,
+      },
+      "/request-password-reset": {
         window: 60,
         max: 3,
       },
