@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Play, Youtube } from "lucide-react";
-import type { YoutubeChannel } from "@/lib/cpns/types";
+import { ArrowRight, BookOpen, Play, Youtube } from "lucide-react";
+import type { EbookReference, YoutubeChannel } from "@/lib/cpns/types";
 
 export function SectionHeading({ eyebrow, title, desc }: { eyebrow: string; title: string; desc?: string }) {
   return (
@@ -31,6 +31,31 @@ export function YoutubeCard({ channel, topic }: { channel: YoutubeChannel; topic
         <span className="mt-0.5 block text-sm font-medium text-orange-700">{channel.specialty}</span>
         <span className="mt-1 block text-sm leading-relaxed text-neutral-500">{channel.forWhom}</span>
         {topic ? <span className="mt-1 block text-xs text-neutral-400">Cari: {channel.name} CPNS {topic}</span> : null}
+      </span>
+    </a>
+  );
+}
+
+export function EbookCard({ ebook }: { ebook: EbookReference }) {
+  return (
+    <a
+      href={ebook.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-start gap-3 rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-orange-200 hover:shadow-md"
+    >
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white">
+        <BookOpen className="h-5 w-5" />
+      </span>
+      <span className="min-w-0">
+        <span className="flex items-center gap-1.5 font-semibold text-[#131316]">
+          {ebook.title}
+          <ArrowRight className="h-3.5 w-3.5 text-orange-600 transition group-hover:translate-x-0.5" />
+        </span>
+        <span className="mt-1 block text-sm leading-relaxed text-neutral-500">{ebook.desc}</span>
+        <span className="mt-2 block text-xs leading-relaxed text-neutral-400">
+          Isi: {ebook.items.join(" · ")}
+        </span>
       </span>
     </a>
   );
