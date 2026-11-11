@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, CheckSquare, Clock, ListChecks, Target, Timer } from "lucide-react";
 import { MATERIALS, SECTION_INFO } from "@/lib/cpns/materials";
+import { EBOOK_REFERENCES } from "@/lib/cpns/ebooks";
 import { YOUTUBE_CHANNELS } from "@/lib/cpns/youtube";
 import { PASSING_GRADE } from "@/lib/cpns/types";
 import { DashboardProgress } from "@/components/cpns/dashboard-progress";
-import { GradientButton, SectionHeading, YoutubeCard } from "@/components/cpns/shared";
+import { GradientButton, SectionHeading, EbookCard, YoutubeCard } from "@/components/cpns/shared";
 
 const SECTION_CARDS = [
   {
@@ -158,6 +159,20 @@ export default function HomePage() {
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {YOUTUBE_CHANNELS.map((ch) => (
             <YoutubeCard key={ch.name} channel={ch} />
+          ))}
+        </div>
+      </section>
+
+      {/* Ebook references — alternatif belajar selain video */}
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <SectionHeading
+          eyebrow="Belajar lewat bacaan"
+          title="Kumpulan ebook CPNS"
+          desc="Kalau lebih suka baca daripada nonton video, folder Google Drive ini berisi ebook dan latihan soal CPNS yang bisa diunduh dan dipelajari sendiri."
+        />
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {EBOOK_REFERENCES.map((ebook) => (
+            <EbookCard key={ebook.title} ebook={ebook} />
           ))}
         </div>
       </section>
