@@ -21,6 +21,14 @@ export interface YoutubeChannel {
   searchUrl: string;
 }
 
+export interface EbookReference {
+  title: string;
+  desc: string;
+  /** Daftar isi di dalam folder/koleksi. */
+  items: string[];
+  url: string;
+}
+
 export interface Question {
   id: string;
   section: SkdSection;
