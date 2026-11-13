@@ -13,6 +13,52 @@ import { friendlyProgressError, useDashboardProgress, useInvalidateDashboard } f
 const LETTERS = ["A", "B", "C", "D", "E"];
 const TOTAL_SECONDS = TRYOUT_MINUTES * 60;
 
+// ---------------------------------------------------------------------------
+// DRAF TRYOUT (localStorage, sementara, hanya di perangkat ini)
+// ---------------------------------------------------------------------------
+// BEDAKAN dengan aturan lama "jangan simpan progres di localStorage": aturan
+// itu soal REKAMAN PROGRES (materi selesai, skor terbaik, riwayat tryout) —
+// dan itu sudah pindah ke database via tRPC dan TETAP begitu: hasil akhir
+// tryout tetap disimpan lewat `saveTryoutAttempt`, tidak berubah sedikit pun.
+// Yang disimpan di sini HANYALAH draf tryout yang sedang berjalan (jawaban,
+// soal yang ditandai ragu, posisi soal, dan tenggat waktu), supaya tryout
+// 100 menit tidak hilang kalau tab tertutup atau halaman di-refresh. Draf ini
+// otomatis TERHAPUS saat tryout disubmit atau waktunya habis, dan tidak pernah
+// dibaca sebagai progres. Draf jalan untuk tamu tanpa login sekalipun.
+// ---------------------------------------------------------------------------
+const DRAFT_KEY = "belajar-cpns:tryout-draft";
+
+type TryoutDraft = {
+  answers: Record<number, number>;
+  flagged: Record<number, boolean>;
+  index: number;
+  endsAt: number; // epoch ms — sumber kebenaran sisa waktu
+  savedAt: number;
+};
+
+function readDraft(): TryoutDraft | null {
+  try {
+    const raw = window.localStorage.getItem(DRAFT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as TryoutDraft;
+    if (!parsed || typeof parsed.endsAt !== "number" || parsed.endsAt <= Date.now()) {
+      window.localStorage.removeItem(DRAFT_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function clearDraft() {
+  try {
+    window.localStorage.removeItem(DRAFT_KEY);
+  } catch {
+    // Abaikan — draf hanya kenyamanan, bukan bagian penting.
+  }
+}
+
 function formatTime(s: number): string {
   const m = Math.floor(s / 60);
   const sec = s % 60;
@@ -34,6 +80,8 @@ export function TryoutPlayer() {
   const [history, setHistory] = useState<TryoutResult[]>([]);
   const [lastResult, setLastResult] = useState<TryoutResult | null>(null);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed" | "guest">("idle");
+  const [draft, setDraft] = useState<TryoutDraft | null>(null);
+  const endsAtRef = useRef(0);
   const { isLoggedIn, dashboard } = useDashboardProgress();
   const trpc = useTRPC();
   const invalidateDashboard = useInvalidateDashboard();
@@ -62,10 +110,35 @@ export function TryoutPlayer() {
     if (dashboard) setHistory(dashboard.tryoutHistory);
   }, [dashboard]);
 
+  // Baca draf sekali saat komponen mount (hanya di client).
+  useEffect(() => {
+    setDraft(readDraft());
+  }, []);
+
+  // Simpan draf selama tryout berjalan (jawaban + ragu + posisi + tenggat).
+  useEffect(() => {
+    if (phase !== "running" || !endsAtRef.current) return;
+    try {
+      const d: TryoutDraft = {
+        answers,
+        flagged,
+        index,
+        endsAt: endsAtRef.current,
+        savedAt: Date.now(),
+      };
+      window.localStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+    } catch {
+      // Abaikan — draf hanya kenyamanan, tryout tetap jalan tanpa draf.
+    }
+  }, [phase, answers, flagged, index]);
+
   function submit() {
     if (submittedRef.current) return;
     submittedRef.current = true;
     if (timerRef.current) clearInterval(timerRef.current);
+    // Tryout selesai — draf sementara dihapus, hasil akhir tetap ke database.
+    clearDraft();
+    setDraft(null);
     let twk = 0, tiu = 0, tkp = 0;
     TRYOUT_QUESTIONS.forEach((q, i) => {
       const a = answersRef.current[i];
@@ -146,15 +219,60 @@ export function TryoutPlayer() {
     setIndex(0);
     setSecondsLeft(TOTAL_SECONDS);
     setSaveState("idle");
+    clearDraft();
+    setDraft(null);
+    endsAtRef.current = Date.now() + TOTAL_SECONDS * 1000;
     setPhase("running");
+  }
+
+  function resumeDraft(d: TryoutDraft) {
+    submittedRef.current = false;
+    setAnswers(d.answers ?? {});
+    setFlagged(d.flagged ?? {});
+    setIndex(Math.min(Math.max(0, d.index ?? 0), 109));
+    setSecondsLeft(Math.max(1, Math.ceil((d.endsAt - Date.now()) / 1000)));
+    setSaveState("idle");
+    endsAtRef.current = d.endsAt;
+    setPhase("running");
+  }
+
+  function discardDraft() {
+    clearDraft();
+    setDraft(null);
   }
 
   const answeredCount = Object.keys(answers).length;
   const flaggedCount = Object.values(flagged).filter(Boolean).length;
 
   if (phase === "intro") {
+    const draftAnswered = draft ? Object.keys(draft.answers ?? {}).length : 0;
+    const draftSecondsLeft = draft ? Math.max(0, Math.ceil((draft.endsAt - Date.now()) / 1000)) : 0;
     return (
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+        {draft ? (
+          <div className="mb-6 rounded-3xl border border-orange-200 bg-orange-50 p-6">
+            <p className="font-bold text-[#131316]">Kamu punya tryout yang belum selesai</p>
+            <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+              Terakhir disimpan {new Date(draft.savedAt).toLocaleString("id-ID")} — sudah dijawab{" "}
+              {draftAnswered} dari 110 soal, sisa waktu {formatTime(draftSecondsLeft)}. Lanjutkan
+              dari posisi terakhir, atau mulai dari awal.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <button
+                onClick={() => resumeDraft(draft)}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:opacity-90"
+              >
+                <Timer className="h-4 w-4" /> Lanjutkan tryout — {formatTime(draftSecondsLeft)}
+              </button>
+              <button
+                onClick={discardDraft}
+                className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-[#131316] transition hover:bg-neutral-100"
+              >
+                Hapus draf
+              </button>
+            </div>
+          </div>
+        ) : null}
         <div className="rounded-3xl border border-neutral-200 bg-white p-8">
           <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">Simulasi ujian</p>
           <h1 className="mt-2 text-3xl font-bold text-[#131316]">Tryout SKD Lengkap</h1>
@@ -181,6 +299,7 @@ export function TryoutPlayer() {
             <li>· Timer 100 menit berjalan mundur dan tryout otomatis terkumpul saat waktu habis.</li>
             <li>· Kamu bisa lompat ke soal mana pun lewat grid nomor soal dan menandai soal yang ragu-ragu.</li>
             <li>· Setelah selesai, kamu melihat skor TWK, TIU, dan TKP terpisah, status lolos/tidak, dan pembahasan semua soal.</li>
+            <li>· Jawaban dan sisa waktumu tersimpan otomatis di perangkat ini — kalau tab tertutup atau halaman di-refresh, kamu bisa melanjutkan tryout dari posisi terakhir.</li>
             <li>· Riwayat tryout tersimpan di akunmu — login dulu supaya tidak hilang.</li>
           </ul>
           <button

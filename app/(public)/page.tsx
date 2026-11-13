@@ -5,6 +5,8 @@ import { EBOOK_REFERENCES } from "@/lib/cpns/ebooks";
 import { YOUTUBE_CHANNELS } from "@/lib/cpns/youtube";
 import { PASSING_GRADE } from "@/lib/cpns/types";
 import { DashboardProgress } from "@/components/cpns/dashboard-progress";
+import { FaqAccordion } from "@/components/cpns/faq";
+import { FAQ_ITEMS } from "@/lib/cpns/faq";
 import { GradientButton, SectionHeading, EbookCard, YoutubeCard } from "@/components/cpns/shared";
 
 const SECTION_CARDS = [
@@ -26,8 +28,18 @@ const SECTION_CARDS = [
 ];
 
 export default function HomePage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero — Modulify style: white, oversized centered headline, warm gradient accent */}
       <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24">
         <p className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
@@ -161,6 +173,16 @@ export default function HomePage() {
             <YoutubeCard key={ch.name} channel={ch} />
           ))}
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <SectionHeading
+          eyebrow="Pertanyaan umum"
+          title="Yang sering ditanyakan"
+          desc="Jawaban singkat seputar pendaftaran, format SKD, cara hitung skor, dan cara pakai situs ini."
+        />
+        <FaqAccordion />
       </section>
 
       {/* Ebook references — alternatif belajar selain video */}

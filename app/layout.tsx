@@ -19,10 +19,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://belajar-cpns-eta.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Belajar CPNS — Materi, Kuis & Tryout SKD TWK/TIU/TKP",
   description:
     "Sistem belajar CPNS: materi SKD TWK/TIU/TKP, kuis per bab, tryout SKD lengkap 110 soal dengan timer, dan checklist administrasi.",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: SITE_URL,
+    siteName: "Belajar CPNS",
+    title: "Belajar CPNS — Materi, Kuis & Tryout SKD TWK/TIU/TKP",
+    description:
+      "Materi TWK, TIU, dan TKP yang ringkas, kuis per bab, tryout SKD lengkap 110 soal dengan timer, plus checklist administrasi — gratis dan bisa dipakai tanpa login.",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Belajar CPNS — Lulus SKD CPNS, mulai dari sini." }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Belajar CPNS — Materi, Kuis & Tryout SKD TWK/TIU/TKP",
+    description:
+      "Materi TWK, TIU, dan TKP yang ringkas, kuis per bab, tryout SKD lengkap 110 soal dengan timer, plus checklist administrasi — gratis dan bisa dipakai tanpa login.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

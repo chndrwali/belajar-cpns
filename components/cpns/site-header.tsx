@@ -142,6 +142,34 @@ export function SiteFooter() {
             </p>
           </div>
           <div className="text-sm text-neutral-500">
+            <p className="font-semibold text-[#131316]">Tentang</p>
+            <p className="mt-2">
+              <Link href="/tentang" className="hover:text-[#131316] hover:underline">
+                Tentang Belajar CPNS
+              </Link>
+            </p>
+            <p className="mt-1">
+              <Link href="/privasi" className="hover:text-[#131316] hover:underline">
+                Kebijakan Privasi
+              </Link>
+            </p>
+            <p className="mt-1">
+              <Link href="/syarat" className="hover:text-[#131316] hover:underline">
+                Syarat Layanan
+              </Link>
+            </p>
+            <p className="mt-1">
+              <a
+                className="text-orange-600 underline"
+                href="https://github.com/chndrwali/belajar-cpns"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub — chndrwali/belajar-cpns
+              </a>
+            </p>
+          </div>
+          <div className="text-sm text-neutral-500">
             <p className="font-semibold text-[#131316]">Sumber resmi</p>
             <p className="mt-2">
               Portal pendaftaran:{" "}
