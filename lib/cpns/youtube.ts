@@ -12,10 +12,11 @@ export const YOUTUBE_CHANNELS: YoutubeChannel[] = [
   },
   {
     name: "Sang Tutor",
+    handle: "@sangtutor",
     specialty: "Trik cepat TIU",
     forWhom: "Kamu yang sering kehabisan waktu di soal hitungan.",
     topics: ["tiu"],
-    searchUrl: ytSearch("Sang Tutor CPNS TIU"),
+    searchUrl: "https://www.youtube.com/@sangtutor",
   },
   {
     name: "Dhedi R. Ghazali",
@@ -23,28 +24,31 @@ export const YOUTUBE_CHANNELS: YoutubeChannel[] = [
     specialty: "TWK — sejarah dan UUD 1945",
     forWhom: "Kamu yang menganggap TWK membosankan dan sulit dihafal.",
     topics: ["twk"],
-    searchUrl: ytSearch("Dhedi R Ghazali TanyaCPNS TWK"),
+    searchUrl: "https://www.youtube.com/@TanyaCPNS",
   },
   {
     name: "Fandi AP",
+    handle: "@bimbelcpns",
     specialty: "TKP — logika di balik jawaban",
     forWhom: "Kamu yang bingung kenapa satu opsi TKP bernilai 5 dan yang lain 1.",
     topics: ["tkp"],
-    searchUrl: ytSearch("Fandi AP CPNS TKP"),
+    searchUrl: "https://www.youtube.com/@bimbelcpns",
   },
   {
     name: "Viracun",
+    handle: "@VIRACUN",
     specialty: "TIU konsep mendalam",
     forWhom: "Kamu yang mau paham konsep, bukan sekadar hafal trik.",
     topics: ["tiu"],
-    searchUrl: ytSearch("Viracun CPNS TIU"),
+    searchUrl: "https://www.youtube.com/@VIRACUN",
   },
   {
     name: "Ping Lie",
+    handle: "@pinglie",
     specialty: "TKP dan matematika",
     forWhom: "Kamu yang butuh pembahasan soal TIU dengan cara sederhana.",
     topics: ["tiu", "tkp"],
-    searchUrl: ytSearch("Ping Lie CPNS"),
+    searchUrl: "https://www.youtube.com/@pinglie",
   },
 ];
 

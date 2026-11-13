@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, CheckSquare, Clock, ListChecks, Target, Timer } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, CheckSquare, Clock, ExternalLink, ListChecks, Target, Timer } from "lucide-react";
 import { MATERIALS, SECTION_INFO } from "@/lib/cpns/materials";
 import { EBOOK_REFERENCES } from "@/lib/cpns/ebooks";
 import { YOUTUBE_CHANNELS } from "@/lib/cpns/youtube";
@@ -42,10 +42,18 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero — Modulify style: white, oversized centered headline, warm gradient accent */}
       <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24">
-        <p className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
+        <a
+          href="https://sscasn.bkn.go.id"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700 transition hover:bg-orange-100"
+        >
           <Clock className="h-3.5 w-3.5" />
           CPNS 2026 — Pendaftaran direncanakan November 2026
-        </p>
+          <span className="inline-flex items-center gap-1 text-orange-600">
+            Info resmi <ExternalLink className="h-3 w-3" />
+          </span>
+        </a>
         <h1 className="mx-auto mt-6 max-w-3xl text-5xl leading-[1.05] font-bold tracking-tight text-[#131316] sm:text-7xl">
           Lulus SKD CPNS,{" "}
           <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
@@ -157,6 +165,56 @@ export default function HomePage() {
             >
               Buka Checklist <ArrowRight className="h-4 w-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Contoh hasil tryout — tampilan ulang layar hasil (data contoh, statis) */}
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <SectionHeading
+          eyebrow="Hasil tryout"
+          title="Contoh hasil tryout"
+          desc="Begini tampilan hasil yang kamu dapat setelah menyelesaikan tryout: status lolos atau belum, skor tiap bagian melawan passing grade, dan pembahasan semua soal."
+        />
+        <div className="mx-auto mt-10 max-w-3xl">
+          <div className="rounded-3xl bg-emerald-600 p-8 text-center text-white">
+            <CheckCircle2 className="mx-auto h-12 w-12" />
+            <h3 className="mt-3 text-3xl font-bold">LOLOS Passing Grade</h3>
+            <p className="mt-2 text-white/80">
+              Total skor 410 · Waktu yang dipakai 82 menit 14 detik
+            </p>
+            <p className="mt-1 text-sm text-white/60">
+              Passing grade acuan 2024 — TWK {PASSING_GRADE.twk}, TIU {PASSING_GRADE.tiu}, TKP{" "}
+              {PASSING_GRADE.tkp}.
+            </p>
+            <p className="mx-auto mt-4 inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white">
+              Contoh hasil — bukan skor pengguna sungguhan
+            </p>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            {(
+              [
+                { label: "TWK", score: 95, max: 150, pg: PASSING_GRADE.twk, color: "text-red-600" },
+                { label: "TIU", score: 125, max: 175, pg: PASSING_GRADE.tiu, color: "text-blue-600" },
+                { label: "TKP", score: 190, max: 225, pg: PASSING_GRADE.tkp, color: "text-emerald-600" },
+              ] as const
+            ).map((s) => (
+              <div key={s.label} className="rounded-3xl border border-neutral-200 bg-white p-5 text-center">
+                <p className={`text-sm font-bold ${s.color}`}>{s.label}</p>
+                <p className="mt-1 text-3xl font-bold text-[#131316]">{s.score}</p>
+                <p className="text-xs text-neutral-400">
+                  dari {s.max} · PG {s.pg}
+                </p>
+                <p className="mt-2 text-sm font-semibold text-emerald-600">Lolos</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-center text-xs text-neutral-400">
+            Angka di atas hanya contoh tampilan — skor aslimu dihitung dari jawabanmu sendiri setelah
+            tryout selesai.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <GradientButton href="/tryout">Coba tryout sekarang</GradientButton>
           </div>
         </div>
       </section>

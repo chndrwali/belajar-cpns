@@ -4,7 +4,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Kapan pendaftaran CPNS 2026 dibuka?",
     answer:
-      "Menurut Kepala BKN (10 November 2026), pengumuman tahapan dan formasi direncanakan sekitar 20 November 2026, dan pendaftaran dibuka pada pekan keempat November 2026. Itu masih rencana dan bisa berubah — pantau pengumuman resmi hanya di portal SSCASN (sscasn.bkn.go.id) dan jangan percaya jadwal dari sumber tidak resmi.",
+      "Menurut Kepala BKN (10 November 2026), pengumuman tahapan dan formasi direncanakan sekitar 20 November 2026, dan pendaftaran dibuka pada pekan keempat November 2026. Itu masih rencana dan bisa berubah — pantau pengumuman resmi hanya di portal SSCASN (https://sscasn.bkn.go.id) dan jangan percaya jadwal dari sumber tidak resmi.",
   },
   {
     question: "Apa itu SKD dan apa saja bagiannya?",
@@ -34,6 +34,6 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Bagaimana cara mendaftar CPNS?",
     answer:
-      "Pendaftaran resmi hanya lewat portal SSCASN di sscasn.bkn.go.id dan gratis — tidak ada pungutan apa pun. Siapkan dokumennya dari sekarang: KTP, Kartu Keluarga, ijazah, transkrip nilai, pas foto latar merah, swafoto, e-meterai, surat lamaran, dan surat pernyataan. Daftar lengkapnya ada di halaman Checklist Administrasi situs ini.",
+      "Pendaftaran resmi hanya lewat portal SSCASN di https://sscasn.bkn.go.id dan gratis — tidak ada pungutan apa pun. Siapkan dokumennya dari sekarang: KTP, Kartu Keluarga, ijazah, transkrip nilai, pas foto latar merah, swafoto, e-meterai, surat lamaran, dan surat pernyataan. Daftar lengkapnya ada di halaman Checklist Administrasi situs ini.",
   },
 ];
