@@ -1,8 +1,8 @@
 import { AuthForm } from "@/modules/auth/ui/form";
 
 export const metadata = {
-  title: "Register",
-  description: "Register to your account",
+  title: "Daftar",
+  description: "Buat akun Belajar CPNS gratis untuk menyimpan progres belajar, skor kuis, dan riwayat tryout",
   robots: { index: false, follow: false },
 };
 

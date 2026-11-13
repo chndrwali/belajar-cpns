@@ -1,18 +1,11 @@
 import { AuthForm } from "@/modules/auth/ui/form";
-import { LoginAccountInfo } from "@/components/custom/login-account-info";
 
 export const metadata = {
-  title: "Login",
-  description: "Login to your account",
+  title: "Masuk",
+  description: "Masuk ke akun Belajar CPNS untuk melanjutkan progres belajarmu",
   robots: { index: false, follow: false },
 };
 
 export default function LoginPage() {
-  return (
-    <div className="w-full flex flex-col items-center justify-center">
-      {/* Delete div wrapper and component above if don't need this info */}
-      <LoginAccountInfo />
-      <AuthForm variant="login" />
-    </div>
-  );
+  return <AuthForm variant="login" />;
 }

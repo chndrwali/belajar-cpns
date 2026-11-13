@@ -43,19 +43,21 @@ type AuthFormProps = {
 // ────────────────────────────────────────────
 const variantConfig = {
   login: {
-    title: "SIGN IN TO YOUR ACCOUNT",
-    description: "Enter your email and password to access the app",
-    submitLabel: "Sign In",
-    footerText: "Don't have an account?",
-    footerLinkText: "Register now",
+    eyebrow: "Selamat datang kembali",
+    title: "Masuk ke akunmu",
+    description: "Masuk untuk melanjutkan progres belajarmu",
+    submitLabel: "Masuk",
+    footerText: "Belum punya akun?",
+    footerLinkText: "Daftar sekarang",
     footerLinkHref: "/register",
   },
   register: {
-    title: "CREATE ACCOUNT, IT'S FREE!",
-    description: "Enter your email and password to start registration",
-    submitLabel: "Sign Up",
-    footerText: "Already have an account?",
-    footerLinkText: "Go to login",
+    eyebrow: "Gratis, tanpa kartu kredit",
+    title: "Buat akun gratis",
+    description: "Daftar untuk menyimpan progres belajar, skor kuis, dan riwayat tryout",
+    submitLabel: "Daftar",
+    footerText: "Sudah punya akun?",
+    footerLinkText: "Masuk",
     footerLinkHref: "/login",
   },
 } as const;
@@ -96,7 +98,7 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
           onRequest: () => setLoading(true),
           onSuccess: () => {
             setLoading(false);
-            appToast.success("Successfully logged in!");
+            appToast.success("Berhasil masuk!");
             router.push("/admin");
           },
           onError: (ctx) => {
@@ -120,7 +122,7 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
           onRequest: () => setLoading(true),
           onSuccess: () => {
             setLoading(false);
-            appToast.success("Registration successful! Please login.");
+            appToast.success("Pendaftaran berhasil! Silakan masuk.");
             router.push("/login");
           },
           onError: (ctx) => {
@@ -135,10 +137,31 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
   };
 
   return (
-    <Card className="w-full max-w-lg border-none shadow-none bg-transparent">
-      <CardHeader>
-        <CardTitle className="text-xl font-bold">{config.title}</CardTitle>
-        <CardDescription>{config.description}</CardDescription>
+    <Card className="w-full rounded-3xl border border-neutral-200 bg-white shadow-sm">
+      <CardHeader className="text-center">
+        <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">
+          {config.eyebrow}
+        </p>
+        <CardTitle className="mt-2 text-3xl font-bold tracking-tight text-[#131316]">
+          {isLogin ? (
+            <>
+              Masuk ke{" "}
+              <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
+                akunmu
+              </span>
+            </>
+          ) : (
+            <>
+              Buat{" "}
+              <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
+                akun gratis
+              </span>
+            </>
+          )}
+        </CardTitle>
+        <CardDescription className="text-base text-neutral-500">
+          {config.description}
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-4">
@@ -157,10 +180,13 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel className="font-semibold text-[#131316]">
+                      Nama Lengkap
+                    </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Enter full name"
+                        placeholder="Masukkan nama lengkapmu"
+                        className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
                         {...field}
                         disabled={loading}
                       />
@@ -177,10 +203,13 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel className="font-semibold text-[#131316]">
+                    Alamat Email
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Enter your email address"
+                      placeholder="Masukkan alamat emailmu"
+                      className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
                       {...field}
                       disabled={loading}
                     />
@@ -196,14 +225,17 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="font-semibold text-[#131316]">
+                    Kata Sandi
+                  </FormLabel>
                   <FormControl>
                     <PasswordInput
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Enter your password"
+                      placeholder="Masukkan kata sandimu"
                       required
                       disabled={loading}
+                      className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
                       {...(!isLogin && { showRules: true, showStrength: true })}
                     />
                   </FormControl>
@@ -225,12 +257,12 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
                           type="checkbox"
                           checked={field.value ?? false}
                           onChange={field.onChange}
-                          className="size-4 rounded border-gray-300 text-primary focus:ring-primary"
+                          className="size-4 rounded border-neutral-300 accent-orange-600"
                           disabled={loading}
                         />
                       </FormControl>
-                      <FormLabel className="text-sm font-normal cursor-pointer">
-                        Remember me
+                      <FormLabel className="text-sm font-normal cursor-pointer text-neutral-600">
+                        Ingat saya
                       </FormLabel>
                     </FormItem>
                   )}
@@ -238,22 +270,27 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
 
                 <Link
                   href="/forgot-password"
-                  className="text-sm font-medium text-primary hover:underline"
+                  className="text-sm font-semibold text-orange-600 hover:underline"
                 >
-                  Forgot password?
+                  Lupa kata sandi?
                 </Link>
               </div>
             )}
 
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button
+              type="submit"
+              size="lg"
+              className="h-11 w-full rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:opacity-90"
+              disabled={loading}
+            >
               {loading ? <Spinner /> : config.submitLabel}
             </Button>
 
-            <p className="text-sm text-center text-muted-foreground">
+            <p className="text-sm text-center text-neutral-500">
               {config.footerText}{" "}
               <Link
                 href={config.footerLinkHref}
-                className="text-primary cursor-pointer hover:underline"
+                className="font-semibold text-orange-600 cursor-pointer hover:underline"
               >
                 {config.footerLinkText}
               </Link>
