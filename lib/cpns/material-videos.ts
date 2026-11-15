@@ -5,8 +5,10 @@
  *
  * Kurasi 13 Nov 2026: 15 video pembahasan, tiap video dicari lewat YouTube
  * dan diverifikasi lewat oEmbed (HTTP 200 + judul + nama channel cocok
- * dengan topik materi). 15 Nov 2026: ditambah 14 video materi (TIU Verbal
- * belum ada — tidak ada video konsep analogi dari channel yang diizinkan).
+ * dengan topik materi). 15 Nov 2026: ditambah 15 video materi — video
+ * konsep TIU Verbal dari berASN (channel di luar daftar prioritas,
+ * disetujui Candra 15 Nov 2026) karena tidak ada video konsep analogi
+ * dari channel yang diizinkan.
  * Jangan tambah videoId tanpa verifikasi oEmbed dulu — videoId yang tidak
  * terverifikasi tidak boleh dipakai (iframe akan menampilkan error YouTube).
  *
@@ -129,6 +131,14 @@ export const MATERIAL_VIDEOS: MaterialVideo[] = [
     title: "FOKUS TWK #24 - MATERI + SOAL TWK KALIMAT EFEKTIF",
     channel: "Dhedi R Ghazali",
     channelHandle: "TanyaCPNS",
+  },
+  {
+    slug: "tiu-verbal",
+    kind: "materi",
+    videoId: "hKdpCF_BVnY",
+    title: "MATERI DAN SOAL TES CPNS TIU ANALOGI KATA DAN KALIMAT | PERSIAPAN TES CPNS 2024",
+    channel: "berASN",
+    channelHandle: "berasn",
   },
   {
     slug: "tiu-verbal",
