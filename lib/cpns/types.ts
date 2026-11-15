@@ -12,6 +12,20 @@ export interface Material {
   exampleAnswer: string;
 }
 
+/** Satu bagian materi bacaan — pola yang sama seperti Belajar Islam. */
+export interface MaterialSection {
+  heading: string;
+  /** 2–3 paragraf prosa per bagian. */
+  body: string[];
+}
+
+/** Materi bacaan panjang per materi (ditulis sendiri, bukan salinan ebook). */
+export interface MaterialReading {
+  sections: MaterialSection[];
+  /** Rujukan yang dipakai — pasal, kitab, atau sumber resmi (tanpa nomor yang dikarang). */
+  sources: string[];
+}
+
 export interface YoutubeChannel {
   name: string;
   handle?: string;
