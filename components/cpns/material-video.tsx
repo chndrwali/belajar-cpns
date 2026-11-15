@@ -2,19 +2,24 @@ import { Play, Youtube } from "lucide-react";
 import type { MaterialVideo } from "@/lib/cpns/material-videos";
 
 /**
- * Embed video pembahasan YouTube di halaman detail materi.
+ * Embed video YouTube di halaman detail materi.
  * Satu iframe 16:9, lazy-load (baru dimuat saat terlihat di layar),
  * memakai domain privacy-enhanced youtube-nocookie.com.
+ * Judul menyesuaikan jenis video: "materi" (konsep dari nol) atau
+ * "pembahasan" (pembahasan soal).
  */
 export function MaterialVideo({ video }: { video: MaterialVideo }) {
   const watchUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+  const isMateri = video.kind === "materi";
   return (
     <section className="mt-6 rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
       <h2 className="flex items-center gap-2 text-lg font-bold text-[#131316]">
-        <Youtube className="h-5 w-5 text-red-600" /> Video pembahasan
+        <Youtube className="h-5 w-5 text-red-600" /> {isMateri ? "Video materi" : "Video pembahasan"}
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-neutral-500">
-        Tonton pembahasan materi ini langsung di sini — tidak perlu buka YouTube.
+        {isMateri
+          ? "Pelajari konsep dasar materi ini dari nol — tonton dulu sebelum latihan soal."
+          : "Tonton pembahasan materi ini langsung di sini — tidak perlu buka YouTube."}
       </p>
       <div className="mt-4 overflow-hidden rounded-2xl bg-neutral-950">
         <iframe
