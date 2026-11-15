@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, Lightbulb, Youtube } from "lucide-react";
 import { getMaterial, SECTION_INFO } from "@/lib/cpns/materials";
-import { getMaterialVideo } from "@/lib/cpns/material-videos";
+import { getMaterialVideos } from "@/lib/cpns/material-videos";
 import { YOUTUBE_CHANNELS } from "@/lib/cpns/youtube";
 import { MarkDoneButton } from "@/components/cpns/mark-done-button";
 import { MaterialVideo } from "@/components/cpns/material-video";
@@ -25,7 +25,7 @@ export default async function MateriDetailPage({ params }: { params: Promise<{ s
   if (!material) notFound();
   const info = SECTION_INFO[material.section];
   const channels = channelsForMaterial(material.slug, material.section);
-  const video = getMaterialVideo(material.slug);
+  const videos = getMaterialVideos(material.slug);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -65,7 +65,9 @@ export default async function MateriDetailPage({ params }: { params: Promise<{ s
         </p>
       </section>
 
-      {video ? <MaterialVideo video={video} /> : null}
+      {videos.map((v) => (
+        <MaterialVideo key={v.videoId} video={v} />
+      ))}
 
       <div className="mt-8 flex flex-wrap gap-3">
         <MarkDoneButton slug={material.slug} />
