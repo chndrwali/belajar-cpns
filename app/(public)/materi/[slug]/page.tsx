@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, Lightbulb, Youtube } from "lucide-react";
 import { getMaterial, SECTION_INFO } from "@/lib/cpns/materials";
 import { getMaterialVideos } from "@/lib/cpns/material-videos";
+import { getMaterialReading } from "@/lib/cpns/material-reading";
 import { YOUTUBE_CHANNELS } from "@/lib/cpns/youtube";
 import { MarkDoneButton } from "@/components/cpns/mark-done-button";
 import { MaterialVideo } from "@/components/cpns/material-video";
+import { MaterialReadingSection } from "@/components/cpns/material-reading";
 import { YoutubeCard } from "@/components/cpns/shared";
 
 function channelsForMaterial(slug: string, section: string) {
@@ -26,6 +28,7 @@ export default async function MateriDetailPage({ params }: { params: Promise<{ s
   const info = SECTION_INFO[material.section];
   const channels = channelsForMaterial(material.slug, material.section);
   const videos = getMaterialVideos(material.slug);
+  const reading = getMaterialReading(material.slug);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -53,6 +56,8 @@ export default async function MateriDetailPage({ params }: { params: Promise<{ s
           ))}
         </ul>
       </section>
+
+      {reading ? <MaterialReadingSection reading={reading} /> : null}
 
       <section className="mt-6 rounded-3xl bg-amber-50 p-6 sm:p-8">
         <h2 className="flex items-center gap-2 text-lg font-bold text-[#131316]">
