@@ -61,7 +61,7 @@ export default function HomePage() {
           </span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-neutral-500 sm:text-lg">
-          Materi TWK, TIU, dan TKP yang ringkas, kuis per bab, tryout SKD lengkap 110 soal dengan
+          Materi TWK, TIU, dan TKP yang ringkas, kuis per bab, 2 tryout SKD lengkap 110 soal dengan
           timer, plus checklist administrasi — semuanya gratis dan bisa dipakai tanpa login.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -84,8 +84,8 @@ export default function HomePage() {
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal kuis per bab</p>
           </div>
           <div>
-            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">110</p>
-            <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal tryout SKD</p>
+            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">220</p>
+            <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal tryout SKD (2 set)</p>
           </div>
         </div>
       </section>
@@ -142,8 +142,9 @@ export default function HomePage() {
             <Timer className="h-8 w-8 text-orange-400" />
             <h3 className="mt-4 text-2xl font-bold">Tryout SKD Lengkap</h3>
             <p className="mt-2 text-sm leading-relaxed text-neutral-300">
-              110 soal persis format SKD — 30 TWK, 35 TIU, 45 TKP — dengan timer 100 menit,
+              Dua set soal persis format SKD — 30 TWK, 35 TIU, 45 TKP — dengan timer 100 menit,
               navigasi nomor soal, tandai ragu-ragu, dan pembahasan per soal setelah selesai.
+              Tryout 2 (HOTS) lebih susah dari Tryout 1.
             </p>
             <Link
               href="/tryout"

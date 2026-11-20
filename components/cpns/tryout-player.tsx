@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Flag, RotateCcw, Timer } from "lucide-react";
 import { PASSING_GRADE, TRYOUT_MINUTES, scoreKnowledge, scoreTkp } from "@/lib/cpns/types";
 import type { Question, TryoutResult } from "@/lib/cpns/types";
-import { TRYOUT_QUESTIONS } from "@/lib/cpns/tryout-questions";
+import type { TryoutConfig } from "@/lib/cpns/tryouts";
 import { useTRPC } from "@/trpc/client";
 import { friendlyProgressError, useDashboardProgress, useInvalidateDashboard } from "@/components/cpns/progress-hooks";
 
@@ -26,8 +26,6 @@ const TOTAL_SECONDS = TRYOUT_MINUTES * 60;
 // otomatis TERHAPUS saat tryout disubmit atau waktunya habis, dan tidak pernah
 // dibaca sebagai progres. Draf jalan untuk tamu tanpa login sekalipun.
 // ---------------------------------------------------------------------------
-const DRAFT_KEY = "belajar-cpns:tryout-draft";
-
 type TryoutDraft = {
   answers: Record<number, number>;
   flagged: Record<number, boolean>;
@@ -36,13 +34,13 @@ type TryoutDraft = {
   savedAt: number;
 };
 
-function readDraft(): TryoutDraft | null {
+function readDraft(draftKey: string): TryoutDraft | null {
   try {
-    const raw = window.localStorage.getItem(DRAFT_KEY);
+    const raw = window.localStorage.getItem(draftKey);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as TryoutDraft;
     if (!parsed || typeof parsed.endsAt !== "number" || parsed.endsAt <= Date.now()) {
-      window.localStorage.removeItem(DRAFT_KEY);
+      window.localStorage.removeItem(draftKey);
       return null;
     }
     return parsed;
@@ -51,9 +49,9 @@ function readDraft(): TryoutDraft | null {
   }
 }
 
-function clearDraft() {
+function clearDraft(draftKey: string) {
   try {
-    window.localStorage.removeItem(DRAFT_KEY);
+    window.localStorage.removeItem(draftKey);
   } catch {
     // Abaikan — draf hanya kenyamanan, bukan bagian penting.
   }
@@ -71,7 +69,9 @@ function sectionOf(index: number): { key: string; label: string; color: string }
   return { key: "tkp", label: "TKP", color: "bg-emerald-600" };
 }
 
-export function TryoutPlayer() {
+export function TryoutPlayer({ config }: { config: TryoutConfig }) {
+  const QUESTIONS = config.questions;
+  const DRAFT_KEY = config.draftKey;
   const [phase, setPhase] = useState<"intro" | "running" | "result">("intro");
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
@@ -112,7 +112,7 @@ export function TryoutPlayer() {
 
   // Baca draf sekali saat komponen mount (hanya di client).
   useEffect(() => {
-    setDraft(readDraft());
+    setDraft(readDraft(DRAFT_KEY));
   }, []);
 
   // Simpan draf selama tryout berjalan (jawaban + ragu + posisi + tenggat).
@@ -137,10 +137,10 @@ export function TryoutPlayer() {
     submittedRef.current = true;
     if (timerRef.current) clearInterval(timerRef.current);
     // Tryout selesai — draf sementara dihapus, hasil akhir tetap ke database.
-    clearDraft();
+    clearDraft(DRAFT_KEY);
     setDraft(null);
     let twk = 0, tiu = 0, tkp = 0;
-    TRYOUT_QUESTIONS.forEach((q, i) => {
+    QUESTIONS.forEach((q, i) => {
       const a = answersRef.current[i];
       if (a === undefined) return;
       if (q.section === "twk") twk += scoreKnowledge(q, a);
@@ -219,7 +219,7 @@ export function TryoutPlayer() {
     setIndex(0);
     setSecondsLeft(TOTAL_SECONDS);
     setSaveState("idle");
-    clearDraft();
+    clearDraft(DRAFT_KEY);
     setDraft(null);
     endsAtRef.current = Date.now() + TOTAL_SECONDS * 1000;
     setPhase("running");
@@ -237,7 +237,7 @@ export function TryoutPlayer() {
   }
 
   function discardDraft() {
-    clearDraft();
+    clearDraft(DRAFT_KEY);
     setDraft(null);
   }
 
@@ -249,6 +249,9 @@ export function TryoutPlayer() {
     const draftSecondsLeft = draft ? Math.max(0, Math.ceil((draft.endsAt - Date.now()) / 1000)) : 0;
     return (
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+        <Link href="/tryout" className="text-sm font-semibold text-orange-600 hover:underline">
+          ← Pilih tryout lain
+        </Link>
         {draft ? (
           <div className="mb-6 rounded-3xl border border-orange-200 bg-orange-50 p-6">
             <p className="font-bold text-[#131316]">Kamu punya tryout yang belum selesai</p>
@@ -275,11 +278,11 @@ export function TryoutPlayer() {
         ) : null}
         <div className="rounded-3xl border border-neutral-200 bg-white p-8">
           <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">Simulasi ujian</p>
-          <h1 className="mt-2 text-3xl font-bold text-[#131316]">Tryout SKD Lengkap</h1>
+          <h1 className="mt-2 text-3xl font-bold text-[#131316]">{config.title}</h1>
           <p className="mt-3 leading-relaxed text-neutral-500">
-            Simulasi Seleksi Kompetensi Dasar persis format ujian: 110 soal dalam 100 menit.
-            TWK 30 soal, TIU 35 soal, TKP 45 soal. TWK dan TIU: benar 5 poin, salah 0. TKP: tiap
-            jawaban bernilai 1–5 poin.
+            {config.subtitle} Simulasi Seleksi Kompetensi Dasar persis format ujian: 110 soal
+            dalam 100 menit. TWK 30 soal, TIU 35 soal, TKP 45 soal. TWK dan TIU: benar 5 poin,
+            salah 0. TKP: tiap jawaban bernilai 1–5 poin.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <div className="rounded-2xl bg-red-50 p-4">
@@ -395,7 +398,7 @@ export function TryoutPlayer() {
         ) : null}
         <h2 className="mt-10 text-xl font-bold text-[#131316]">Pembahasan semua soal</h2>
         <ol className="mt-4 space-y-3">
-          {TRYOUT_QUESTIONS.map((q: Question, i: number) => {
+          {QUESTIONS.map((q: Question, i: number) => {
             const chosen = answers[i];
             const pts = q.section === "tkp" ? scoreTkp(q, chosen ?? -1) : scoreKnowledge(q, chosen ?? -1);
             const max = q.section === "tkp" ? 5 : 5;
@@ -421,7 +424,7 @@ export function TryoutPlayer() {
   }
 
   // running
-  const q = TRYOUT_QUESTIONS[index];
+  const q = QUESTIONS[index];
   const sec = sectionOf(index);
   const picked = answers[index];
   const isFlagged = flagged[index] ?? false;
@@ -497,7 +500,7 @@ export function TryoutPlayer() {
               <button
                 onClick={() => {
                   if (answeredCount < 110) {
-                    const firstUnanswered = TRYOUT_QUESTIONS.findIndex((_, i) => answers[i] === undefined);
+                    const firstUnanswered = QUESTIONS.findIndex((_, i) => answers[i] === undefined);
                     if (firstUnanswered >= 0) setIndex(firstUnanswered);
                     return;
                   }
