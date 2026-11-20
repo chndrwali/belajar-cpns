@@ -9,7 +9,7 @@ export default function MateriPage() {
       <SectionHeading
         eyebrow="Materi SKD"
         title="Pelajari dulu, baru latihan"
-        desc="15 materi ringkas yang disusun dari kisi-kisi SKD. Tiap materi ada poin kunci, contoh soal, dan tombol latihan soal bab itu."
+        desc="17 materi ringkas yang disusun dari kisi-kisi SKD. Tiap materi ada poin kunci, contoh soal, dan tombol latihan soal bab itu."
       />
       <MateriList />
     </div>

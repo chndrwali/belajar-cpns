@@ -76,7 +76,7 @@ export default function HomePage() {
         </div>
         <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 divide-x divide-neutral-200 rounded-2xl border border-neutral-200 bg-white py-4">
           <div>
-            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">15</p>
+            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">17</p>
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Materi ringkas</p>
           </div>
           <div>

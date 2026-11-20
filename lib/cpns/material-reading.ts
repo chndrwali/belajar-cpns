@@ -56,6 +56,22 @@ export const READING_TWK: Record<string, MaterialReading> = {
         ],
       },
       {
+        heading: "Pancasila sebagai Ideologi Terbuka",
+        body: [
+          "Pancasila disebut ideologi terbuka, dan istilah ini sering muncul dalam soal TWK yang lebih sulit. Ideologi terbuka berarti pandangan hidup yang nilai-nilainya berasal dari bangsa itu sendiri, berorientasi pada masa depan, dan terbuka terhadap perkembangan zaman tanpa kehilangan jati dirinya. Pancasila tidak datang dari luar dan tidak dipaksakan kepada bangsa Indonesia, melainkan digali dari nilai-nilai yang sudah hidup di tengah masyarakat, seperti gotong royong, musyawarah, dan toleransi.",
+          "Ada beberapa ciri yang membuat sebuah ideologi disebut terbuka. Pertama, nilai dan cita-citanya berasal dari pribadi bangsa itu sendiri, bukan dari keinginan perseorangan atau dari budaya lain. Kedua, isinya tidak kaku dan bisa dijabarkan lebih lanjut mengikuti perkembangan zaman, tetapi penjabarannya tetap berakar pada nilai dasarnya. Ketiga, ia tidak memaksakan satu tafsir tunggal kepada semua orang, melainkan memberi ruang bagi musyawarah dan perbedaan pendapat yang sehat. Ketiga ciri inilah yang membedakan ideologi terbuka dari ideologi tertutup yang memaksakan satu kebenaran dan menolak perubahan.",
+          "Pancasila juga menjadi sumber etika dalam berbangsa dan bernegara, sebagaimana ditegaskan dalam Ketetapan MPR. Artinya, sikap dan tingkah laku penyelenggara negara maupun warga negara seharusnya diukur dengan nilai-nilai Pancasila. Ketika soal menanyakan sumber etika berbangsa, atau menanyakan unsur ideologi terbuka, kuncinya adalah mengingat bahwa Pancasila berasal dari bangsa sendiri dan terbuka pada masa depan. Pilihan jawaban yang menyebut keinginan perseorangan, kombinasi dengan budaya lain, atau isi yang kaku dan tidak bisa dijabarkan adalah pengecoh yang bertentangan dengan pengertian ideologi terbuka.",
+        ],
+      },
+      {
+        heading: "Pancasila, Pembukaan, dan Batang Tubuh: Satu Kesatuan",
+        body: [
+          "Pancasila, Pembukaan UUD 1945, dan Batang Tubuh UUD 1945 tidak bisa dipisahkan satu sama lain. Hubungan ketiganya disebut hubungan kausal organis: Pancasila adalah sumbernya, Pembukaan adalah perumusan dasarnya, dan Batang Tubuh adalah penjabarannya dalam aturan yang lebih rinci. Ibarat pohon, Pancasila adalah akar, Pembukaan adalah batang, dan Batang Tubuh adalah cabang dan rantingnya. Kalau akarnya dicabut, seluruh pohon akan roboh, dan kalau Pembukaannya diubah, dasar negara ikut berubah.",
+          "Karena hubungan inilah, Pancasila disebut juga paradigma pembangunan nasional. Paradigma artinya kerangka berpikir yang menjadi acuan dalam merencanakan dan melaksanakan pembangunan. Artinya, pembangunan di Indonesia tidak hanya diukur dari gedung dan jalan yang terbangun, melainkan juga dari apakah pembangunan itu mengamalkan nilai Pancasila: apakah ia adil, apakah ia mempersatukan, dan apakah ia menyejahterakan seluruh rakyat. Contoh pengamalan Pancasila sebagai paradigma adalah pembangunan yang memperhatikan pemerataan antar daerah dan tidak hanya menguntungkan segelintir orang.",
+          "Pancasila juga dipandang sebagai suatu sistem filsafat, yaitu pandangan yang menyeluruh tentang manusia, masyarakat, dan negara. Cara mengetahuinya adalah dengan cara induktif, yaitu dengan melihat nilai-nilai yang hidup di tengah masyarakat Indonesia lalu merumuskannya menjadi satu sistem. Inilah sebabnya Pancasila terasa dekat dengan kehidupan sehari-hari: ia memang berasal dari kehidupan itu sendiri. Dalam soal, hubungan kausal organis dan Pancasila sebagai paradigma sering muncul sebagai pertanyaan konsep, dan kuncinya adalah memahami bahwa ketiganya, Pancasila, Pembukaan, dan Batang Tubuh, adalah satu kesatuan yang tidak bisa dipisahkan.",
+        ],
+      },
+      {
         heading: "Cara Soal TWK Menguji Pancasila",
         body: [
           "Soal TWK tentang Pancasila jarang meminta kamu menghafal bunyi sila saja. Yang lebih sering keluar adalah studi kasus sikap sehari-hari, lalu kamu diminta menentukan sila yang paling relevan. Misalnya, ada cerita tentang warga berbeda agama yang saling menjaga saat hari raya, dan kamu harus memilih sila mana yang paling tercermin dari sikap itu.",
@@ -68,6 +84,7 @@ export const READING_TWK: Record<string, MaterialReading> = {
       "Pembukaan UUD 1945 alinea ke-4 (rumusan lima sila Pancasila)",
       "UUD 1945 Pasal 29 (Ketuhanan Yang Maha Esa dan kebebasan beragama)",
       "UUD 1945 Pasal 27 (persamaan kedudukan warga negara)",
+      "Ketetapan MPR tentang Pancasila sebagai sumber etika berbangsa dan bernegara",
     ],
   },
   "twk-uud-1945": {
@@ -113,6 +130,14 @@ export const READING_TWK: Record<string, MaterialReading> = {
         ],
       },
       {
+        heading: "Pasal 23A: Pajak dan Keuangan Negara",
+        body: [
+          "Pasal 23A UUD 1945 menyatakan bahwa pajak dan pungutan lain yang bersifat memaksa untuk keperluan negara diatur dengan undang-undang. Artinya, negara tidak boleh memungut apa pun dari warga tanpa dasar hukum yang jelas, dan warga hanya wajib membayar pungutan yang sudah diatur undang-undang. Pasal ini menjadi dasar dari seluruh sistem perpajakan di Indonesia, dan karena itu sering diujikan bersamaan dengan pertanyaan tentang kewajiban warga negara.",
+          "Pajak dibagi menjadi dua jenis yang wajib dibedakan. Pajak langsung adalah pajak yang bebannya ditanggung sendiri oleh wajib pajak dan tidak bisa dialihkan ke orang lain, contohnya Pajak Penghasilan (PPh) yang dipotong dari penghasilan seseorang. Pajak tidak langsung adalah pajak yang bebannya bisa dialihkan ke orang lain, contohnya Pajak Pertambahan Nilai (PPN) yang dibebankan penjual kepada pembeli saat barang dibeli. Perbedaan kuncinya ada pada bisa atau tidaknya beban pajak itu dialihkan: kalau bisa dialihkan, ia pajak tidak langsung; kalau harus ditanggung sendiri, ia pajak langsung.",
+          "Dalam soal, pajak sering muncul dalam bentuk tabel yang membandingkan ciri pajak langsung dan tidak langsung, lalu kamu diminta menentukan pernyataan mana yang benar. Cara menjawabnya adalah dengan mengingat ciri pembedanya: pajak langsung tidak memiliki surat ketetapan yang bisa dialihkan, sedangkan pajak tidak langsung membebani harga barang dan ditanggung oleh pembeli akhir. Kalau ada pilihan yang mengatakan pajak langsung bisa dialihkan, atau pajak tidak langsung ditanggung sendiri oleh penjual, pilihan itu salah, karena justru kebalikannya yang benar.",
+        ],
+      },
+      {
         heading: "Lembaga Negara dan Cara Soal Menguji Pasal",
         body: [
           "UUD 1945 mengatur delapan lembaga negara utama, yaitu MPR, DPR, DPD, Presiden, BPK, MA, MK, dan KY. Masing-masing memiliki tugas yang berbeda: MPR mengubah UUD dan melantik presiden, DPR membuat undang-undang, DPD mewakili daerah, Presiden menjalankan pemerintahan, BPK mengawasi keuangan negara, MA mengawasi peradilan, MK menguji undang-undang, dan KY menjaga kehormatan hakim. Pembagian tugas yang jelas ini penting agar tidak ada satu lembaga pun yang memegang kekuasaan tanpa batas.",
@@ -126,6 +151,67 @@ export const READING_TWK: Record<string, MaterialReading> = {
       "UUD 1945 Pasal 1 ayat (1) dan (2)",
       "UUD 1945 Pasal 27",
       "UUD 1945 Pasal 28A–28J",
+      "UUD 1945 Pasal 23A (pajak dan pungutan untuk keperluan negara)",
+      "Amandemen UUD 1945 (1999, 2000, 2001, 2002)",
+    ],
+  },
+  "twk-konstitusi": {
+    sections: [
+      {
+        heading: "Apa Itu Konstitusi dan Kenapa Ia Mengikat",
+        body: [
+          "Konstitusi adalah hukum dasar tertinggi suatu negara. Di Indonesia, konstitusi itu adalah UUD 1945. Kedudukannya tertinggi berarti semua peraturan di bawahnya, mulai dari undang-undang sampai peraturan daerah, tidak boleh bertentangan dengannya. Kalau ada peraturan yang bertentangan dengan UUD, peraturan itu bisa dibatalkan melalui pengujian oleh Mahkamah Konstitusi.",
+          "Konstitusi juga membedakan dua jenis hukum yang sering diujikan. Hukum privat, atau hukum perdata, mengatur hubungan antar warga negara dengan warga negara lain, misalnya jual beli, perkawinan, dan warisan. Hukum publik mengatur hubungan negara dengan warga negara dan hubungan antar lembaga negara, misalnya hukum pidana, hukum tata negara, dan hukum administrasi negara. Cara membedakannya sederhana: kalau yang diatur adalah urusan antar warga, itu hukum privat; kalau yang diatur melibatkan kekuasaan negara, itu hukum publik.",
+          "Memahami konstitusi penting karena hampir semua soal TWK yang sulit bermuara ke sini: siapa yang berwenang apa, bagaimana aturan dibuat, dan bagaimana kekuasaan dibatasi. Konstitusi adalah aturan mainnya, dan soal TWK menguji apakah kamu memahami aturan main itu atau hanya menghafal namanya.",
+        ],
+      },
+      {
+        heading: "Amandemen UUD 1945: Empat Kali Perubahan",
+        body: [
+          "UUD 1945 telah diubah sebanyak empat kali, yaitu pada tahun 1999, 2000, 2001, dan 2002. Amandemen dilakukan karena UUD perlu menyesuaikan diri dengan tuntutan reformasi, terutama soal pembatasan kekuasaan dan jaminan hak asasi manusia. Pembukaan UUD tidak pernah diubah dalam keempat amandemen itu, yang diubah hanyalah batang tubuhnya.",
+          "Amandemen pertama (1999) antara lain membatasi masa jabatan presiden menjadi paling lama dua periode dan memperkuat kedudukan DPR. Amandemen kedua (2000) menambahkan bab khusus tentang hak asasi manusia (Pasal 28A sampai 28J) dan mengatur tentang otonomi daerah. Amandemen ketiga (2001) antara lain mengatur kekuasaan kehakiman dalam Pasal 24, membentuk Mahkamah Konstitusi, dan mengatur tentang Dewan Perwakilan Daerah. Amandemen keempat (2002) antara lain mengatur pemilihan presiden secara langsung dan menghapus beberapa ketentuan yang sudah tidak relevan.",
+          "Dalam soal, amandemen sering diuji dengan menanyakan apa yang berubah pada amandemen tertentu, atau kapan sebuah perubahan dilakukan. Misalnya, perubahan UUD yang ketiga dilaksanakan pada tanggal 9 November 2001 dan menambah ketentuan tentang kekuasaan kehakiman dalam Pasal 24. Cara mengingatnya adalah dengan mengaitkan tiap amandemen dengan perubahan besarnya: pertama membatasi presiden, kedua menambah HAM, ketiga mengatur kehakiman, keempat memilih presiden langsung.",
+        ],
+      },
+      {
+        heading: "Pasal 20: Bagaimana Undang-Undang Dibuat",
+        body: [
+          "Undang-undang dibuat oleh DPR bersama Presiden. Prosesnya dimulai dari rancangan undang-undang (RUU) yang diajukan, dibahas bersama, lalu disetujui bersama oleh DPR dan Presiden. Setelah disetujui bersama, RUU itu disahkan oleh Presiden menjadi undang-undang dan wajib diundangkan agar berlaku untuk umum.",
+          "Ada satu ketentuan yang sering diujikan dan sering dilupakan: Pasal 20 ayat (5) UUD 1945. Ayat ini menyatakan bahwa bila Presiden tidak mengesahkan RUU yang sudah disetujui bersama dalam waktu 30 hari sejak persetujuan itu, RUU tersebut sah menjadi undang-undang dan wajib diundangkan. Artinya, Presiden tidak bisa membatalkan sebuah undang-undang hanya dengan mendiamkannya. Ketentuan 30 hari ini adalah pengaman agar proses legislasi tidak macet karena satu pihak menahan-nahan.",
+          "Selain Pasal 20, ada pasal-pasal lain yang mengatur proses pembentukan undang-undang, misalnya Pasal 20 ayat (1) yang menyatakan DPR memegang kekuasaan membentuk undang-undang, dan Pasal 20 ayat (2) yang menyatakan setiap RUU dibahas oleh DPR dan Presiden untuk mendapatkan persetujuan bersama. Dalam soal, Pasal 20 biasanya muncul dalam bentuk studi kasus: apa yang terjadi bila Presiden tidak mengesahkan RUU dalam 30 hari, atau siapa yang berwenang membentuk undang-undang. Jawabannya selalu kembali ke ayat-ayat Pasal 20 ini.",
+        ],
+      },
+      {
+        heading: "Pasal 24: Kekuasaan Kehakiman",
+        body: [
+          "Pasal 24 UUD 1945 mengatur kekuasaan kehakiman, yaitu kekuasaan yang menegakkan hukum dan keadilan. Kekuasaan ini dijalankan oleh dua lembaga: Mahkamah Agung (MA) dan Mahkamah Konstitusi (MK). Mahkamah Agung adalah pengadilan tertinggi yang mengadili perkara pidana, perdata, dan tata usaha negara, serta mengawasi jalannya peradilan di bawahnya. Mahkamah Konstitusi menguji undang-undang terhadap UUD, memutus sengketa kewenangan antar lembaga negara, dan memutus perselisihan hasil pemilihan umum.",
+          "Selain MA dan MK, ada Komisi Yudisial (KY) yang bertugas menjaga kehormatan, keluhuran martabat, dan perilaku hakim. Komisi Yudisial bisa mengusulkan pengangkatan hakim agung kepada DPR dan mengawasi perilaku hakim, tetapi ia tidak mengadili perkara. Pembagian ini penting: MA mengadili, MK menguji undang-undang, dan KY menjaga perilaku hakim. Ketiganya bekerja sama menjaga agar kekuasaan kehakiman tetap merdeka dan bersih.",
+          "Dalam soal, Pasal 24 sering muncul dalam bentuk pertanyaan tentang lembaga mana yang berwenang menguji undang-undang, atau lembaga mana yang mengusulkan hakim agung. Jawabannya: yang menguji undang-undang adalah Mahkamah Konstitusi, yang mengusulkan hakim agung adalah Komisi Yudisial, dan yang mengadili perkara pada tingkat tertinggi adalah Mahkamah Agung. Jangan tertukar ketiganya, karena soal sengaja memasang ketiganya sebagai pilihan jawaban.",
+        ],
+      },
+      {
+        heading: "DPD: Suara Daerah di Parlemen",
+        body: [
+          "Dewan Perwakilan Daerah (DPD) adalah lembaga negara yang mewakili daerah. Anggota DPD dipilih langsung oleh rakyat di tiap provinsi, dan jumlahnya sama untuk setiap provinsi, berapa pun penduduknya. DPD berbeda dengan DPR: DPR mewakili rakyat berdasarkan jumlah penduduk, sedangkan DPD mewakili daerah sebagai kesatuan wilayah. Karena itu DPD sering disebut sebagai suara daerah di parlemen.",
+          "Kewenangan DPD diatur dalam Pasal 22D UUD 1945. DPD dapat mengajukan rancangan undang-undang kepada DPR yang berkaitan dengan otonomi daerah, hubungan pusat dan daerah, pembentukan dan pemekaran serta penggabungan daerah, pengelolaan sumber daya alam dan sumber daya ekonomi lainnya, serta perimbangan keuangan antara pusat dan daerah. Selain itu, DPD juga ikut membahas RUU tentang hal-hal tersebut bersama DPR, dan memberikan pertimbangan atas RUU lain seperti APBN, pajak, pendidikan, dan agama.",
+          "Dalam soal, DPD sering muncul dalam bentuk pertanyaan tentang apa yang bisa diajukan DPD kepada DPR, atau apa bedanya DPD dengan DPR. Kuncinya adalah mengingat daftar kewenangan DPD di atas: semuanya berkaitan dengan daerah, sumber daya, dan keuangan pusat-daerah. Kalau sebuah RUU tidak berkaitan dengan daerah, maka itu bukan kewenangan DPD untuk mengajukannya.",
+        ],
+      },
+      {
+        heading: "Amnesti, Grasi, Abolisi, Rehabilitasi, dan Pemberhentian Presiden",
+        body: [
+          "Presiden memiliki wewenang memberikan pengampunan yang diatur dalam Pasal 14 UUD 1945. Ada empat bentuk pengampunan yang wajib dibedakan. Grasi adalah pengampunan yang diberikan kepada terpidana perseorangan, dan Presiden memberikannya dengan memperhatikan pertimbangan Mahkamah Agung. Rehabilitasi adalah pemulihan nama baik dan hak-hak seseorang yang pernah dituntut atau dihukum, dan Presiden memberikannya dengan memperhatikan pertimbangan Mahkamah Agung juga.",
+          "Amnesti adalah pengampunan yang diberikan kepada sekelompok orang, biasanya untuk tindak pidana yang bersifat politik, dan Presiden memberikannya dengan memperhatikan pertimbangan DPR. Abolisi adalah penghapusan penuntutan terhadap seseorang, yaitu menghentikan proses hukum yang sedang berjalan, dan Presiden memberikannya dengan memperhatikan pertimbangan DPR juga. Cara mengingatnya: grasi dan rehabilitasi urusannya dengan Mahkamah Agung, amnesti dan abolisi urusannya dengan DPR. Empat istilah ini sering keluar bersamaan dalam satu soal, dan yang diuji adalah kemampuanmu membedakan siapa yang memberi pertimbangan untuk yang mana.",
+          "Selain pengampunan, UUD juga mengatur pemberhentian Presiden dalam Pasal 7B. Prosesnya bertahap: DPR mengusulkan pemberhentian setelah memeriksa pendapat bahwa Presiden melanggar hukum, lalu Mahkamah Konstitusi memeriksa dan memutus apakah pelanggaran itu terbukti, dan bila terbukti, MPR memutuskan dalam rapat paripurna. Keputusan MPR harus diambil dalam rapat paripurna yang dihadiri paling sedikit tiga perempat anggota dan disetujui paling sedikit dua pertiga dari yang hadir. Proses yang berlapis ini menunjukkan bahwa memberhentikan presiden tidak bisa dilakukan oleh satu lembaga saja.",
+        ],
+      },
+    ],
+    sources: [
+      "UUD 1945 Pasal 14 (grasi, rehabilitasi, amnesti, abolisi)",
+      "UUD 1945 Pasal 20 (pembentukan undang-undang)",
+      "UUD 1945 Pasal 22D (kewenangan DPD)",
+      "UUD 1945 Pasal 24 (kekuasaan kehakiman)",
+      "UUD 1945 Pasal 7B (pemberhentian Presiden)",
       "Amandemen UUD 1945 (1999, 2000, 2001, 2002)",
     ],
   },
@@ -185,6 +271,64 @@ export const READING_TWK: Record<string, MaterialReading> = {
       "UUD 1945 Pasal 27 ayat (3) (hak dan kewajiban bela negara)",
       "UUD 1945 Pasal 30 (usaha pertahanan dan keamanan negara)",
       "Lambang negara Garuda Pancasila (semboyan Bhinneka Tunggal Ika)",
+    ],
+  },
+  "twk-otonomi-daerah": {
+    sections: [
+      {
+        heading: "Apa Itu Otonomi Daerah dan Desentralisasi",
+        body: [
+          "Otonomi daerah adalah hak, wewenang, dan kewajiban daerah untuk mengatur dan mengurus urusan pemerintahannya sendiri. Prinsip yang melandasinya disebut desentralisasi, yaitu penyerahan wewenang dari pemerintah pusat kepada pemerintah daerah. Tujuannya adalah agar urusan yang menyangkut masyarakat setempat bisa diputuskan lebih cepat dan lebih tepat, karena yang paling tahu kebutuhan daerah adalah daerah itu sendiri.",
+          "Desentralisasi adalah lawan dari sentralisasi, yaitu ketika semua keputusan diambil oleh pemerintah pusat. Di masa lalu Indonesia pernah sangat sentralistis, sehingga daerah harus menunggu keputusan dari pusat untuk urusan yang sebenarnya bisa diputuskan sendiri. Setelah reformasi, UUD 1945 diamandemen untuk memberi ruang otonomi yang lebih luas kepada daerah, dan otonomi daerah menjadi bagian penting dari penyelenggaraan negara.",
+          "Yang perlu diingat, otonomi daerah tidak berarti daerah menjadi negara sendiri. Indonesia tetap negara kesatuan, dan otonomi berjalan dalam bingkai NKRI. Daerah boleh mengatur urusannya sendiri, tetapi tidak boleh membuat aturan yang bertentangan dengan peraturan di atasnya, dan urusan-urusan yang berskala nasional tetap menjadi wewenang pemerintah pusat.",
+        ],
+      },
+      {
+        heading: "Hubungan Wewenang Pusat dan Daerah",
+        body: [
+          "Pembagian wewenang antara pusat dan daerah diatur sedemikian rupa agar masing-masing fokus pada urusannya. Pemerintah pusat memegang urusan yang berskala nasional, yaitu politik luar negeri, pertahanan, keamanan, moneter dan fiskal, agama, serta peradilan. Keenam urusan ini disebut urusan pemerintahan absolut yang menjadi kewenangan pemerintah pusat dan tidak bisa diserahkan ke daerah.",
+          "Di luar enam urusan itu, daerah berwenang mengatur urusannya sendiri, misalnya pendidikan, kesehatan, pekerjaan umum, dan perizinan di wilayahnya. Pembagian ini diatur dalam undang-undang tentang pemerintahan daerah, dan menjadi dasar bagi daerah untuk menyusun peraturan daerah serta anggaran daerahnya. Kalau kamu membaca soal yang menanyakan siapa yang berwenang atas suatu urusan, pertama-tama tanyakan: apakah urusan itu masuk enam urusan absolut pusat? Kalau iya, jawabannya pusat; kalau tidak, jawabannya daerah.",
+          "Selain pembagian wewenang, ada juga hubungan keuangan antara pusat dan daerah, yang disebut perimbangan keuangan. Pemerintah pusat menyalurkan dana ke daerah, dan daerah mengelola anggarannya sendiri dengan tetap mempertanggungjawabkannya. Hubungan ini juga menjadi salah satu kewenangan DPD untuk memberikan pertimbangan, sebagaimana dibahas dalam materi Konstitusi.",
+        ],
+      },
+      {
+        heading: "Pemerintahan Daerah Berdasarkan Hukum",
+        body: [
+          "Otonomi tidak berarti daerah bebas berbuat apa saja. Pemerintahan daerah dalam menjalankan pemerintahannya tetap harus berdasarkan hukum yang berlaku, karena pemerintahan daerah adalah bagian dari pemerintahan negara yang berdasar atas hukum. Artinya, setiap kebijakan dan peraturan daerah harus sesuai dengan peraturan perundang-undangan yang lebih tinggi.",
+          "Contohnya, sebuah kabupaten tidak boleh membuat peraturan daerah yang isinya bertentangan dengan undang-undang. Kalau peraturan daerah itu bertentangan, maka peraturan daerah itu tidak berlaku dan bisa dibatalkan. Begitu pula kepala daerah tidak boleh mengeluarkan kebijakan yang melanggar hukum, meskipun ia dipilih langsung oleh rakyat daerahnya. Kekuasaan yang berasal dari rakyat tetap harus dijalankan dalam koridor hukum.",
+          "Dalam soal, prinsip ini sering muncul dalam bentuk studi kasus: sebuah daerah membuat aturan yang bertentangan dengan undang-undang, lalu soal bertanya bagaimana penilaiannya. Jawabannya selalu sama, yaitu aturan daerah itu tidak berlaku karena bertentangan dengan hukum yang lebih tinggi. Pegang prinsip ini baik-baik, karena ia adalah kunci dari hampir semua soal otonomi daerah yang berbentuk kasus.",
+        ],
+      },
+      {
+        heading: "Daerah Istimewa dan Otonomi Khusus",
+        body: [
+          "Selain daerah biasa, ada daerah-daerah yang memiliki status khusus dan diatur dengan undang-undang tersendiri. Ada dua istilah yang wajib dibedakan. Daerah istimewa adalah daerah yang memiliki keistimewaan dalam penyelenggaraan pemerintahannya karena sejarah dan budayanya, misalnya DI Yogyakarta dan DKI Jakarta. Otonomi khusus adalah kewenangan yang lebih luas yang diberikan kepada daerah tertentu, misalnya Aceh dan Papua, untuk mengatur urusannya sendiri sesuai kekhasan daerahnya.",
+          "Otonomi khusus Aceh diatur dengan UU 11/2006, sedangkan otonomi khusus Papua diatur dengan UU 21/2001. Kedua undang-undang ini memberikan kewenangan yang lebih luas daripada daerah biasa, antara lain dalam hal pengelolaan sumber daya dan penyelenggaraan pemerintahan yang sesuai dengan kekhasan daerah. DI Yogyakarta memiliki keistimewaan karena kesultanannya, sedangkan DKI Jakarta memiliki keistimewaan sebagai ibu kota negara.",
+          "Dalam soal, keempat daerah ini sering muncul sebagai pilihan jawaban, dan yang diuji adalah kemampuanmu membedakan mana yang berstatus istimewa dan mana yang berstatus otonomi khusus, serta undang-undang apa yang mengaturnya. Hafalkan pasangannya: Aceh dan Papua adalah otonomi khusus, Yogyakarta dan Jakarta adalah daerah istimewa, dan ingat UU 21/2001 untuk Papua serta UU 11/2006 untuk Aceh.",
+        ],
+      },
+      {
+        heading: "Otonomi Daerah dalam Kehidupan Sehari-hari",
+        body: [
+          "Otonomi daerah bukan hanya teori di buku, melainkan sesuatu yang kamu rasakan setiap hari. Ketika pemerintah kotamu memperbaiki jalan, membangun puskesmas, atau mengurus perizinan usaha, itu adalah wujud otonomi daerah bekerja. Urusan-urusan yang dekat dengan kehidupan warga sehari-hari memang sengaja diserahkan kepada daerah, karena daerah yang paling tahu kondisi jalan di wilayahnya, jumlah puskesmas yang dibutuhkan, dan usaha apa yang berkembang di sana.",
+          "Otonomi juga berarti warga bisa berpartisipasi lebih dekat dalam pemerintahan. Kamu bisa menyampaikan aspirasi kepada DPRD kotamu, mengikuti musyawarah perencanaan pembangunan di kelurahan, atau mengawasi penggunaan anggaran daerah. Kedekatan ini adalah keuntungan desentralisasi: pemerintah menjadi lebih mudah dijangkau dan diawasi oleh warganya sendiri.",
+          "Dalam soal, otonomi daerah dalam kehidupan sehari-hari sering muncul dalam bentuk cerita tentang pelayanan daerah, misalnya warga yang mengurus izin ke pemerintah kabupaten, atau kepala daerah yang membuat kebijakan untuk wilayahnya. Tugasmu adalah mengenali bahwa cerita itu tentang otonomi, lalu mengaitkannya dengan prinsip desentralisasi dan pemerintahan berdasarkan hukum.",
+        ],
+      },
+      {
+        heading: "Cara Soal TWK Menguji Otonomi Daerah",
+        body: [
+          "Soal otonomi daerah biasanya keluar dalam tiga bentuk. Bentuk pertama adalah hafalan, yaitu menanyakan pengertian desentralisasi, urusan absolut pusat, atau daerah yang berstatus istimewa dan otonomi khusus. Bentuk kedua adalah studi kasus, yaitu cerita tentang peraturan daerah yang bertentangan dengan undang-undang, lalu kamu diminta menilai keabsahannya. Bentuk ketiga adalah pernyataan yang harus dinilai benar atau salah, misalnya tentang hubungan wewenang antara pusat dan daerah.",
+          "Untuk bentuk hafalan, kunci utamanya adalah menghafal enam urusan absolut pusat dan empat daerah berstatus khusus beserta undang-undangnya. Untuk bentuk studi kasus, kuncinya adalah prinsip pemerintahan berdasarkan hukum: aturan daerah yang bertentangan dengan aturan yang lebih tinggi tidak berlaku. Untuk bentuk pernyataan, kuncinya adalah membaca tiap pernyataan dengan teliti dan memeriksa apakah ia sesuai dengan prinsip desentralisasi.",
+          "Terakhir, perhatikan bahwa soal otonomi daerah sering dikaitkan dengan materi lain, misalnya dengan DPD yang berwenang mengajukan RUU tentang otonomi daerah, atau dengan NKRI yang menjadi bingkai otonomi. Kalau kamu menemukan soal seperti itu, jangan bingung: otonomi adalah bagian dari NKRI, dan DPD adalah lembaga yang menyuarakan daerah. Memahami keterkaitan antar materi akan membuatmu lebih siap menghadapi soal yang menggabungkan dua topik sekaligus.",
+        ],
+      },
+    ],
+    sources: [
+      "UUD 1945 Pasal 18 (pemerintahan daerah)",
+      "UU 21/2001 tentang Otonomi Khusus bagi Provinsi Papua",
+      "UU 11/2006 tentang Pemerintahan Aceh",
+      "Prinsip desentralisasi dalam bingkai NKRI",
     ],
   },
   "twk-bhinneka": {
@@ -288,6 +432,22 @@ export const READING_TWK: Record<string, MaterialReading> = {
         ],
       },
       {
+        heading: "Sebelum 1908: Kerajaan, Prasasti, dan Masjid Kuno",
+        body: [
+          "Sejarah Indonesia tidak dimulai pada 1908. Jauh sebelum Budi Utomo berdiri, di Nusantara sudah ada kerajaan-kerajaan besar yang meninggalkan jejak tertulis. Yang paling awal adalah Kerajaan Kutai di Kalimantan Timur, yang rajanya bernama Mulawarman. Bukti keberadaannya adalah prasasti Yupa, yaitu tiang batu bertuliskan huruf Pallawa yang mencatat upacara keagamaan dan pemberian hadiah oleh Raja Mulawarman pada abad ke-4 Masehi. Prasasti Yupa adalah bukti tertulis tertua tentang adanya kerajaan di Indonesia.",
+          "Setelah Kutai, muncul kerajaan-kerajaan Hindu-Buddha lain seperti Sriwijaya dan Majapahit, lalu datanglah Islam yang menyebar melalui perdagangan dan dakwah. Percampuran budaya Hindu-Buddha dan Islam tampak jelas pada bangunan-bangunan kuno. Masjid Agung Demak, misalnya, memiliki atap bertingkat yang disebut atap tumpang, yang bentuknya terpengaruh arsitektur Hindu-Jawa. Menara Kudus bahkan bentuknya menyerupai candi, dengan bata merah yang disusun seperti bangunan Hindu, padahal fungsinya adalah menara masjid.",
+          "Dalam soal, topik ini sering muncul dalam bentuk pertanyaan tentang prasasti Yupa, tentang siapa raja yang mengeluarkannya, atau tentang bentuk percampuran budaya pada masjid kuno. Kuncinya adalah mengingat tiga hal: Yupa adalah prasasti Kerajaan Kutai dari Raja Mulawarman, masjid kuno menunjukkan percampuran Hindu-Buddha dan Islam, dan percampuran itu adalah bukti bahwa budaya Indonesia selalu terbuka dan menyerap pengaruh luar tanpa kehilangan jati dirinya.",
+        ],
+      },
+      {
+        heading: "Indonesia dan Dunia: ASEAN dan Gerakan Non-Blok",
+        body: [
+          "Indonesia tidak hanya berjuang di dalam negeri, tetapi juga aktif di dunia internasional. Pada 8 Agustus 1967, Indonesia bersama empat negara lain mendirikan ASEAN melalui Deklarasi Bangkok. Kelima penandatangannya adalah Adam Malik dari Indonesia, Tun Abdul Razak dari Malaysia, S. Rajaratnam dari Singapura, Thanat Khoman dari Thailand, dan Narciso Ramos dari Filipina. ASEAN didirikan untuk menjaga perdamaian dan kerja sama di Asia Tenggara, dan Indonesia menjadi salah satu pendirinya.",
+          "Selain ASEAN, Indonesia juga menjadi pelopor Gerakan Non-Blok. Gerakan ini lahir dari Konferensi Asia-Afrika di Bandung pada 1955 dan diresmikan di Beograd pada 1961, dengan Soekarno sebagai salah satu tokoh pendirinya. Tujuannya adalah agar negara-negara yang baru merdeka tidak terjebak dalam persaingan dua blok besar saat Perang Dingin, melainkan bisa berdiri sendiri dan bekerja sama atas dasar kesetaraan. Meskipun Perang Dingin sudah berakhir, Gerakan Non-Blok tetap relevan karena kerja sama antar negara berkembang masih dibutuhkan.",
+          "Setelah 1965, Indonesia juga menghadapi tugas berat memulihkan ekonominya, antara lain dengan merundingkan penjadwalan ulang utang luar negeri dengan negara-negara kreditor. Perundingan itu menjadi bagian dari upaya pemerintah Orde Baru menstabilkan ekonomi setelah masa pergolakan. Dalam soal, topik politik luar negeri ini sering muncul dalam bentuk pertanyaan tentang siapa penandatangan Deklarasi Bangkok, kapan ASEAN didirikan, atau mengapa Gerakan Non-Blok tetap relevan. Hafalkan nama lima penandatangan dan tahun berdirinya, lalu pahami alasan di balik berdirinya kedua organisasi itu.",
+        ],
+      },
+      {
         heading: "Cara Belajar Sejarah untuk SKD",
         body: [
           "Belajar sejarah untuk SKD berbeda dengan belajar sejarah untuk ujian sekolah. Di SKD, yang diuji bukan sekadar hafalan nama peristiwa, melainkan pemahaman tentang tahun, tokoh, dan dampaknya. Misalnya, jangan hanya hafal bahwa Budi Utomo berdiri pada 1908, tetapi pahami juga siapa pendirinya, apa yang membuatnya istimewa, dan mengapa tanggal itu diperingati sebagai Hari Kebangkitan Nasional.",
@@ -301,6 +461,9 @@ export const READING_TWK: Record<string, MaterialReading> = {
       "Sumpah Pemuda, 28 Oktober 1928",
       "Piagam Jakarta, 22 Juni 1945",
       "Proklamasi Kemerdekaan, 17 Agustus 1945",
+      "Prasasti Yupa, Kerajaan Kutai, Raja Mulawarman (abad ke-4)",
+      "Deklarasi Bangkok, 8 Agustus 1967 (pendirian ASEAN)",
+      "Konferensi Asia-Afrika 1955 dan Gerakan Non-Blok",
     ],
   },
   "twk-bahasa-indonesia": {
@@ -413,6 +576,22 @@ export const READING_TIU: Record<string, MaterialReading> = {
         ],
       },
       {
+        heading: "Kosakata Sulit yang Sering Keluar",
+        body: [
+          "Soal sinonim dan antonim di tingkat HOTS memakai kata-kata yang jarang muncul dalam percakapan sehari-hari, dan kata-kata itulah yang paling sering membuat peserta gugur. Berikut adalah kata-kata yang wajib kamu hafal beserta artinya, karena semuanya sudah terbukti keluar dalam soal. Primordial berarti asli atau yang berhubungan dengan awal mula, sinonimnya primitif. Taksa berarti tidak jelas atau samar, sinonimnya kabur dan ambigu. Kuosien berarti hasil bagi, yaitu hasil dari pembagian. Egaliter berarti menganut kesetaraan, sinonimnya setara dan sama rata.",
+          "Obsolet berarti ketinggalan zaman atau sudah tidak berlaku lagi, sinonimnya usang dan kuno. Reformasi berarti perbaikan atau pembaruan, sinonimnya pembaruan. Pailit berarti bangkrut, antonimnya makmur dan sejahtera. Resesi berarti kemerosotan ekonomi, antonimnya kemakmuran dan pertumbuhan. Picik berarti sempit pandangan dan tidak luas pikirannya, antonimnya lapang dan bijaksana. Natalitas berarti angka kelahiran, antonimnya mortalitas yang berarti angka kematian. Optimis berarti berpengharapan baik dan yakin, antonimnya pesimis. Bakhil berarti kikir dan pelit, antonimnya dermawan dan murah hati.",
+          "Cara menghafal kata-kata ini adalah dengan membuat kartu kecil berisi kata dan artinya, lalu mengulanginya setiap hari selama seminggu. Jangan hanya menghafal artinya, tetapi hafalkan juga sinonim dan antonimnya, karena soal bisa menanyakan dari arah mana saja. Misalnya, kalau kamu hafal bahwa pailit berarti bangkrut, kamu juga harus tahu bahwa antonimnya adalah makmur. Satu kata yang dihafal dengan pasangan sinonim dan antonimnya memberi kamu tiga jawaban sekaligus dalam ujian.",
+        ],
+      },
+      {
+        heading: "Jenis Hubungan Analogi",
+        body: [
+          "Analogi yang sulit bukan karena kata-katanya asing, melainkan karena hubungannya tidak langsung terlihat. Ada beberapa jenis hubungan yang sering dipakai dalam soal HOTS dan wajib kamu kenali polanya. Hubungan alat ukur: gempa diukur dengan richter, jadi pasangannya adalah sesuatu yang diukur dengan alatnya, misalnya suhu dengan termometer atau berat dengan timbangan. Hubungan ilmu: kardiologi adalah ilmu tentang jantung, jadi pasangannya adalah ilmu dengan objek yang dipelajarinya, misalnya geologi dengan bumi atau botani dengan tumbuhan.",
+          "Hubungan bagian: bawang terdiri dari siung, jadi pasangannya adalah benda dengan bagiannya, misalnya buku dengan halaman atau rumah dengan pintu. Hubungan hasil: susu dihasilkan oleh sapi, jadi pasangannya adalah produk dengan sumbernya, misalnya madu dengan lebah atau telur dengan ayam. Hubungan alat dan bahan: gergaji dipakai untuk memotong kayu, jadi pasangannya adalah alat dengan bahan yang dikerjakannya, misalnya palu dengan paku atau gunting dengan kain. Hubungan kategori: baju adalah salah satu jenis pakaian, jadi pasangannya adalah anggota dengan kelompoknya, misalnya beras adalah salah satu jenis makanan pokok.",
+          "Cara memakai pola ini adalah dengan merumuskan hubungan pasangan pertama dalam satu kalimat pendek, lalu menguji tiap opsi dengan kalimat yang sama. Misalnya pasangan pertama adalah gempa dan richter, dan kalimatnya adalah 'richter adalah alat untuk mengukur gempa'. Kalau opsi adalah 'suhu dan termometer', kalimatnya menjadi 'termometer adalah alat untuk mengukur suhu', dan itu cocok. Kalau opsi adalah 'panas dan api', kalimatnya menjadi 'api adalah alat untuk mengukur panas', dan itu tidak cocok. Rumuskan kalimatnya dulu, baru uji opsinya, dan kamu tidak akan lagi menebak secara acak.",
+        ],
+      },
+      {
         heading: "Berlatih Verbal dengan Timer",
         body: [
           "Kemampuan verbal tumbuh dari latihan yang rutin, bukan dari membaca teori sekali lalu selesai. Sisihkan waktu lima belas sampai dua puluh menit setiap hari untuk mengerjakan sepuluh soal verbal, lalu periksa jawabanmu dan pahami kenapa jawaban yang benar itu benar. Latihan yang sedikit tetapi rutin jauh lebih efektif daripada latihan seratus soal sekaligus lalu tidak berlatih lagi selama seminggu, karena otakmu butuh pengulangan untuk menyimpan pola.",
@@ -467,6 +646,30 @@ export const READING_TIU: Record<string, MaterialReading> = {
           "Soal cerita adalah soal hitungan yang dibungkus dalam kisah sehari-hari, misalnya tentang kecepatan kendaraan, jumlah pekerja, atau harga barang. Kesalahan paling umum adalah langsung menghitung di kepala begitu selesai membaca, padahal yang diketahui dan yang ditanya belum jelas. Cara yang benar adalah menulis dulu di kertas: apa saja yang diketahui, dan apa yang ditanyakan. Tulisan singkat ini memaksa otakmu memisahkan informasi yang penting dari yang hanya hiasan cerita.",
           "Contohnya sebuah mobil menempuh jarak 180 km dalam waktu 3 jam, dan ditanyakan kecepatannya. Yang diketahui adalah jarak 180 km dan waktu 3 jam, yang ditanya adalah kecepatan. Kecepatan adalah jarak dibagi waktu, jadi 180 dibagi 3 sama dengan 60 km per jam. Contoh ini terlihat mudah, tetapi ketika ceritanya lebih panjang, misalnya ada dua mobil yang berangkat dari arah berlawanan, tulisan tentang yang diketahui dan yang ditanya inilah yang menyelamatkanmu dari kebingungan. Jangan malu menulis, karena kertas coretan itu bagian dari cara kerja, bukan tanda tidak bisa.",
           "Soal cerita juga sering menyembunyikan operasi hitungnya dalam kata-kata: kata 'selisih' berarti pengurangan, 'jumlah' berarti penjumlahan, 'tiap' atau 'per' biasanya berarti pembagian, dan 'kali' berarti perkalian. Biasakan menerjemahkan kata-kata itu menjadi operasi sebelum menghitung, karena salah menerjemahkan satu kata saja sudah cukup untuk membuat jawabanmu salah. Setelah mendapat jawaban, periksa kembali dengan akal sehat: apakah jawabannya masuk akal dengan cerita soalnya? Kalau sebuah mobil melaju 600 km per jam, jelas ada yang salah dalam hitunganmu.",
+        ],
+      },
+      {
+        heading: "Deret Tingkat Lanjut: Kuadrat, Loncat, dan Dua Operasi",
+        body: [
+          "Deret tingkat lanjut memakai pola yang tidak terlihat dari selisih biasa, dan karena itu ia menjadi pembeda antara peserta biasa dan peserta yang siap. Pola pertama adalah deret kuadrat, yaitu bilangan yang merupakan hasil kuadrat dari bilangan lain. Contohnya deret 225, 196, 169: kalau kamu mengenali bahwa 225 adalah 15 kuadrat, 196 adalah 14 kuadrat, dan 169 adalah 13 kuadrat, maka polanya jelas, yaitu bilangan dasarnya berkurang satu setiap langkah, sehingga bilangan berikutnya adalah 12 kuadrat, yaitu 144. Hafalkan kuadrat 1 sampai 20, karena deret kuadrat hampir selalu memakai bilangan dalam rentang itu.",
+          "Pola kedua adalah deret loncat dua lapis, yaitu dua deret yang diseling menjadi satu. Contohnya deret 16, 480, 36, 240, 56, 120: suku pada posisi ganjil adalah 16, 36, 56 yang bertambah 20 setiap langkah, sedangkan suku pada posisi genap adalah 480, 240, 120 yang dibagi dua setiap langkah. Cara menemukannya adalah dengan memisahkan suku ganjil dan suku genap, lalu mencari pola masing-masing. Kalau sebuah deret terasa kacau dan tidak berpola, cobalah pisahkan suku ganjil dan genapnya, karena kemungkinan besar ada dua pola yang berjalan bersamaan.",
+          "Pola ketiga adalah deret dua operasi, yaitu deret yang setiap langkahnya memakai dua operasi sekaligus. Contohnya deret 5, 13, 15, 26, 45, 52: dari 5 ke 13 ditambah 8, dari 13 ke 15 ditambah 2, dari 15 ke 26 ditambah 11, dari 26 ke 45 ditambah 19, dan dari 45 ke 52 ditambah 7. Kalau diperhatikan, pertambahannya mengikuti pola yang bergantian, dan menemukan pola pertambahannya adalah kunci. Untuk deret seperti ini, tuliskan selisihnya di kertas, lalu carilah pola pada selisih itu, karena jawaban sering tersembunyi di lapis kedua.",
+        ],
+      },
+      {
+        heading: "Diagram Venn dan Himpunan",
+        body: [
+          "Diagram Venn adalah gambar dua lingkaran yang beririsan, dan ia adalah alat paling ampuh untuk soal himpunan. Bayangkan ada dua kelompok, misalnya balita yang diberi vaksin campak dan balita yang diberi vaksin polio. Lingkaran pertama berisi semua balita yang diberi vaksin campak, lingkaran kedua berisi semua balita yang diberi vaksin polio, dan bagian yang beririsan berisi balita yang diberi kedua vaksin itu. Yang tidak masuk kedua lingkaran adalah balita yang tidak diberi vaksin apa pun.",
+          "Contoh soalnya seperti ini: dari 30 balita, 6 balita pernah diberi vaksin campak dan polio, 3 balita belum pernah diberi vaksin kedua penyakit itu, dan banyak balita yang diberi vaksin campak adalah dua kali lipat dari yang diberi vaksin polio. Berapa balita yang diberi vaksin campak? Cara menyelesaikannya adalah dengan memisalkan jumlah balita yang diberi vaksin polio adalah x, maka yang diberi vaksin campak adalah 2x. Balita yang hanya diberi vaksin campak adalah 2x dikurangi 6, balita yang hanya diberi vaksin polio adalah x dikurangi 6, dan ketiganya ditambah yang tidak diberi vaksin harus sama dengan 30. Persamaannya menjadi (2x dikurangi 6) ditambah (x dikurangi 6) ditambah 6 ditambah 3 sama dengan 30, sehingga 3x sama dengan 33, x sama dengan 11, dan balita yang diberi vaksin campak adalah 2 dikali 11, yaitu 22.",
+          "Kunci mengerjakan soal Venn adalah selalu menuliskan dulu apa yang diketahui: totalnya berapa, irisannya berapa, yang tidak masuk berapa, lalu memisalkan yang belum diketahui dengan huruf. Jangan mencoba menghitung di kepala, karena soal Venn sengaja dibuat dengan angka yang mengecoh. Gambar lingkarannya di kertas coretan, isi tiap bagiannya satu per satu, dan periksa kembali apakah jumlah semua bagian sama dengan totalnya. Kalau jumlahnya tidak sama, ada yang salah hitung, dan lebih baik mengulang dari awal daripada memaksakan jawaban.",
+        ],
+      },
+      {
+        heading: "Soal Cerita Multi-Langkah: Dagang dan Pekerjaan",
+        body: [
+          "Soal cerita multi-langkah adalah soal yang tidak selesai dalam satu hitungan, melainkan butuh dua atau tiga langkah berurutan. Jenis yang paling sering keluar adalah soal jual beli. Sebelum menghitung, hafalkan dulu satuan dagangnya: satu lusin sama dengan 12 buah, satu kodi sama dengan 20 buah, dan satu gross sama dengan 144 buah atau 12 lusin. Misalnya koperasi membeli 5 lusin pulpen dengan harga 18 ribu per lusin, maka jumlah pulpennya adalah 60 buah dan modalnya 90 ribu. Kalau koperasi ingin untung 36 ribu, maka total harga jualnya harus 126 ribu, dan harga jual per pulpen adalah 126 ribu dibagi 60, yaitu 2.100 rupiah. Langkahnya adalah samakan satuan dulu, hitung modal, tambah keuntungan, baru bagi ke harga satuan.",
+          "Jenis kedua adalah soal pekerjaan dengan gangguan di tengah jalan. Contohnya, sebuah proyek harus selesai dalam 30 hari dengan 15 pekerja, tetapi setelah 6 hari pelaksanaan proyek dihentikan sementara. Untuk menyelesaikan soal seperti ini, hitung dulu berapa pekerjaan yang sudah selesai dalam 6 hari, lalu berapa sisa pekerjaan dan sisa waktunya, dan terakhir berapa pekerja yang dibutuhkan untuk menyelesaikan sisa itu dalam waktu yang tersisa. Kuncinya adalah memisahkan pekerjaan menjadi 'yang sudah selesai' dan 'yang masih tersisa', lalu menghitung masing-masing dengan rumus yang sama: jumlah pekerjaan sama dengan jumlah pekerja dikali waktu.",
+          "Jenis ketiga adalah soal kecepatan yang melibatkan dua kendaraan atau dua cara berpergian. Misalnya jarak 120 km ditempuh mobil dalam 2 jam, sedangkan jarak 100 meter ditempuh jalan kaki dalam waktu tertentu. Untuk soal seperti ini, samakan dulu satuannya, misalnya ubah kilometer menjadi meter atau sebaliknya, lalu hitung kecepatan masing-masing dengan rumus jarak dibagi waktu. Kesalahan yang paling umum adalah langsung membandingkan angka tanpa menyamakan satuan, sehingga jawabannya meleset jauh. Tulis yang diketahui, samakan satuan, baru hitung.",
         ],
       },
       {
@@ -646,6 +849,14 @@ export const READING_TKP: Record<string, MaterialReading> = {
         ],
       },
       {
+        heading: "Skenario Sulit: Tim yang Tidak Kompak",
+        body: [
+          "Tidak semua tim bekerja dengan kompak, dan soal TKP sering mengujimu dengan tim yang bermasalah. Contohnya, rekan kerjamu yang paling aktif mulai sering absen dan tidak bersemangat, sehingga target tim terancam. Atau, ada rekan yang tidak mau mengikuti rapat karena sibuk dengan urusannya sendiri. Dalam situasi seperti ini, jawaban yang dinilai paling baik bukan langsung mengadu ke atasan, melainkan mendekati rekan itu dulu dan menanyakan apa yang sebenarnya terjadi.",
+          "Alasannya sederhana: masalah di tim sering kali bukan karena orangnya malas, melainkan karena ada kendala yang tidak terlihat, misalnya masalah keluarga, beban kerja yang tidak seimbang, atau kesalahpahaman dengan anggota tim lain. Dengan bertanya baik-baik, kamu bisa menemukan akar masalahnya dan menawarkan bantuan yang tepat, misalnya membagi tugas sementara atau menemani rekan itu berbicara dengan atasan. Sikap ini menunjukkan empati dan inisiatif, dua nilai yang paling dicari dalam soal jejaring kerja.",
+          "Kalau pendekatan pribadi sudah dilakukan tetapi rekan itu tetap tidak berubah dan target tim benar-benar terancam, barulah kamu melibatkan atasan, dan itu pun dengan cara yang konstruktif: sampaikan fakta dan dampaknya pada target tim, bukan dengan mengeluh atau menyalahkan. Urutan ini penting, yaitu bantu dulu, bicara baik-baik, baru libatkan atasan bila sudah mentok. Soal TKP hampir selalu menempatkan opsi 'langsung mengadu' sebagai pilihan dengan skor rendah, dan opsi 'mendekati dan membantu dulu' sebagai pilihan dengan skor tertinggi.",
+        ],
+      },
+      {
         heading: "Cara Menjawab Soal Jejaring Kerja",
         body: [
           "Saat mengerjakan soal jejaring kerja, bayangkan dirimu benar-benar anggota tim itu. Tanyakan pada dirimu: apa yang akan membuat tim ini berhasil dan tetap rukun? Biasanya jawabannya adalah komunikasi, bantuan, dan pembagian tugas yang adil. Pilihlah opsi yang paling menjaga hubungan baik sekaligus menyelesaikan pekerjaan, bukan opsi yang menyelesaikan pekerjaan dengan mengorbankan hubungan, atau menjaga hubungan dengan mengorbankan pekerjaan.",
@@ -816,6 +1027,14 @@ export const READING_TKP: Record<string, MaterialReading> = {
           "Ini adalah jenis soal profesionalisme yang paling sering keluar dan paling penting dipahami. Bayangkan atasanmu memintamu mempercepat pengurusan berkas kerabatnya dengan melompati antrean, atau memintamu mengubah data agar sesuai dengan keinginannya. Kamu berada di antara dua tekanan: mematuhi atasan atau memegang aturan.",
           "Jawaban terbaik adalah menolak dengan sopan dan berpegang pada aturan. Menolak bukan berarti membangkang, melainkan menyampaikan dengan bahasa yang baik bahwa semua berkas diproses sesuai antrean dan aturan yang berlaku, lalu menawarkan bantuan yang masih dalam koridor aturan, misalnya menjelaskan syarat yang harus dilengkapi. Sikap ini menunjukkan integritas sekaligus rasa hormat kepada atasan.",
           "Yang harus dihindari adalah dua ekstrem: menuruti perintah yang salah karena takut kepada atasan, dan menolak dengan kasar atau mempermalukan atasan di depan orang lain. Yang pertama mengorbankan integritas, yang kedua mengorbankan hubungan kerja. Jalan tengahnya adalah menolak dengan sopan, menjelaskan alasannya, dan tetap membantu sebatas yang dibenarkan aturan.",
+        ],
+      },
+      {
+        heading: "Skenario Sulit: Pimpinan yang Sulit dan Tekanan Kerja",
+        body: [
+          "Dalam dunia kerja, kamu tidak selalu mendapat pimpinan yang mudah diajak bekerja sama. Soal TKP sering menghadirkan pimpinan yang kasar, kaku, atau sewenang-wenang, lalu menanyakan bagaimana sikapmu. Misalnya, pimpinanmu sering memarahi bawahan di depan umum, atau pimpinanmu menolak semua usulan tanpa memberi alasan. Dalam situasi seperti ini, jawaban terbaik bukan melawan pimpinan di depan umum, bukan pula diam dan memendam, melainkan tetap profesional dan menyampaikan pendapat dengan tenang melalui jalur yang tepat.",
+          "Kuncinya adalah membedakan antara sikap yang tidak menyenangkan dan pelanggaran aturan. Kalau pimpinan hanya galak tetapi tidak melanggar aturan, cara terbaik adalah bersikap sabar, bekerja dengan baik, dan menyampaikan masukan pada saat yang tepat, misalnya dalam pertemuan tertutup. Kalau pimpinan sudah melanggar aturan, misalnya menyalahgunakan wewenang atau memotong hak bawahan, barulah kamu melaporkannya melalui jalur resmi, misalnya ke atasan yang lebih tinggi atau ke unit pengawasan internal. Urutan ini penting: komunikasikan dulu, laporkan bila sudah melanggar.",
+          "Tekanan kerja juga sering muncul dalam soal profesionalisme, misalnya kamu diberi tugas dengan tenggat yang sangat mepet sementara rekanmu sedang cuti. Dalam situasi seperti ini, jawaban terbaik adalah tetap menyelesaikan tugas dengan mengutamakan yang paling penting, meminta bantuan bila perlu, dan berkomunikasi dengan atasan tentang kondisi yang sebenarnya. Soal profesionalisme selalu menghargai sikap yang tenang, bertanggung jawab, dan terbuka, bukan sikap yang panik, menyalahkan orang lain, atau mengorbankan kualitas demi mengejar tenggat.",
         ],
       },
       {
