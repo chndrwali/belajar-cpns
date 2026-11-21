@@ -282,6 +282,146 @@ export const QUIZ_QUESTIONS: Question[] = [
     "explanation": "Pasal 4 ayat (1) UUD 1945: Presiden memegang kekuasaan pemerintahan menurut Undang-Undang Dasar.",
   },
   {
+    "id": "twk-konstitusi-q1",
+    "section": "twk",
+    "question": "Kedudukan UUD 1945 dalam tata urutan peraturan perundang-undangan di Indonesia adalah ...",
+    "options": [
+      "Hukum dasar tertinggi",
+      "Peraturan pelaksana undang-undang",
+      "Peraturan daerah",
+      "Keputusan presiden",
+      "Peraturan pemerintah"
+    ],
+    "answer": 0,
+    "explanation": "UUD 1945 adalah hukum dasar tertinggi; semua peraturan di bawahnya, dari undang-undang sampai peraturan daerah, tidak boleh bertentangan dengannya.",
+  },
+  {
+    "id": "twk-konstitusi-q2",
+    "section": "twk",
+    "question": "UUD 1945 telah diamandemen sebanyak ... kali.",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "1"
+    ],
+    "answer": 2,
+    "explanation": "UUD 1945 diamandemen 4 kali, pada tahun 1999, 2000, 2001, dan 2002. Pembukaannya tidak pernah diubah.",
+  },
+  {
+    "id": "twk-konstitusi-q3",
+    "section": "twk",
+    "question": "Amandemen ketiga UUD 1945 (2001) antara lain mengatur tentang ...",
+    "options": [
+      "Pemilihan presiden secara langsung",
+      "Hak asasi manusia Pasal 28A sampai 28J",
+      "Kekuasaan kehakiman (Pasal 24) dan pembentukan Mahkamah Konstitusi",
+      "Pembatasan masa jabatan presiden dua periode",
+      "Penghapusan Dewan Pertimbangan Agung"
+    ],
+    "answer": 2,
+    "explanation": "Amandemen ketiga (9 November 2001) antara lain mengatur kekuasaan kehakiman dalam Pasal 24, membentuk Mahkamah Konstitusi, dan mengatur tentang Dewan Perwakilan Daerah.",
+  },
+  {
+    "id": "twk-konstitusi-q4",
+    "section": "twk",
+    "question": "Sebuah RUU sudah disetujui bersama oleh DPR dan Presiden, tetapi Presiden tidak mengesahkannya dalam waktu 30 hari. Apa status RUU itu?",
+    "options": [
+      "RUU itu batal dan harus dibahas ulang dari awal",
+      "RUU itu sah menjadi undang-undang dan wajib diundangkan",
+      "RUU itu berubah menjadi peraturan pemerintah",
+      "RUU itu menunggu pengesahan DPR",
+      "RUU itu dikembalikan ke DPD untuk dibahas lagi"
+    ],
+    "answer": 1,
+    "explanation": "Pasal 20 ayat (5) UUD 1945: RUU yang sudah disetujui bersama sah menjadi undang-undang bila Presiden tidak mengesahkannya dalam 30 hari.",
+  },
+  {
+    "id": "twk-konstitusi-q5",
+    "section": "twk",
+    "question": "Lembaga negara yang berwenang menguji undang-undang terhadap UUD 1945 adalah ...",
+    "options": [
+      "Mahkamah Agung",
+      "Mahkamah Konstitusi",
+      "Komisi Yudisial",
+      "DPR",
+      "MPR"
+    ],
+    "answer": 1,
+    "explanation": "Mahkamah Konstitusi menguji undang-undang terhadap UUD, memutus sengketa kewenangan antar lembaga negara, dan memutus perselisihan hasil pemilihan umum.",
+  },
+  {
+    "id": "twk-konstitusi-q6",
+    "section": "twk",
+    "question": "Lembaga yang berwenang mengusulkan pengangkatan hakim agung kepada DPR adalah ...",
+    "options": [
+      "Mahkamah Agung",
+      "Mahkamah Konstitusi",
+      "Komisi Yudisial",
+      "DPR",
+      "Presiden"
+    ],
+    "answer": 2,
+    "explanation": "Komisi Yudisial menjaga kehormatan, keluhuran martabat, dan perilaku hakim, serta mengusulkan pengangkatan hakim agung kepada DPR. KY tidak mengadili perkara.",
+  },
+  {
+    "id": "twk-konstitusi-q7",
+    "section": "twk",
+    "question": "DPD dapat mengajukan rancangan undang-undang kepada DPR tentang ...",
+    "options": [
+      "Otonomi daerah",
+      "Politik luar negeri",
+      "Pertahanan negara",
+      "Pajak",
+      "APBN"
+    ],
+    "answer": 0,
+    "explanation": "Pasal 22D: DPD dapat mengajukan RUU tentang otonomi daerah, hubungan pusat-daerah, pembentukan/pemekaran/penggabungan daerah, pengelolaan SDA, dan perimbangan keuangan pusat-daerah. APBN dan pajak hanya diberi pertimbangan, bukan diajukan.",
+  },
+  {
+    "id": "twk-konstitusi-q8",
+    "section": "twk",
+    "question": "Presiden memberikan grasi dengan memperhatikan pertimbangan ...",
+    "options": [
+      "DPR",
+      "Mahkamah Agung",
+      "Mahkamah Konstitusi",
+      "Komisi Yudisial",
+      "MPR"
+    ],
+    "answer": 1,
+    "explanation": "Pasal 14 ayat (1): Presiden memberi grasi dan rehabilitasi dengan memperhatikan pertimbangan Mahkamah Agung. Amnesti dan abolisi diberikan dengan memperhatikan pertimbangan DPR.",
+  },
+  {
+    "id": "twk-konstitusi-q9",
+    "section": "twk",
+    "question": "Abolisi adalah pengampunan berupa ...",
+    "options": [
+      "Pengampunan kepada terpidana perseorangan",
+      "Pengampunan kepada sekelompok orang untuk tindak pidana politik",
+      "Penghapusan penuntutan terhadap seseorang",
+      "Pemulihan nama baik seseorang yang pernah dihukum",
+      "Pengurangan masa hukuman terpidana"
+    ],
+    "answer": 2,
+    "explanation": "Abolisi adalah penghapusan penuntutan terhadap seseorang, yaitu menghentikan proses hukum yang sedang berjalan, dan Presiden memberikannya dengan memperhatikan pertimbangan DPR.",
+  },
+  {
+    "id": "twk-konstitusi-q10",
+    "section": "twk",
+    "question": "Dalam proses pemberhentian Presiden, lembaga yang memeriksa dan memutus apakah Presiden terbukti melanggar hukum adalah ...",
+    "options": [
+      "DPR",
+      "MPR",
+      "Mahkamah Konstitusi",
+      "Mahkamah Agung",
+      "Komisi Yudisial"
+    ],
+    "answer": 2,
+    "explanation": "Pasal 7B: DPR mengusulkan pemberhentian, Mahkamah Konstitusi memeriksa dan memutus apakah pelanggaran terbukti, lalu MPR memutuskan dalam rapat paripurna.",
+  },
+  {
     "id": "twk-nkri-q1",
     "section": "twk",
     "question": "Bentuk negara Indonesia adalah ...",
@@ -420,6 +560,146 @@ export const QUIZ_QUESTIONS: Question[] = [
     ],
     "answer": 1,
     "explanation": "Literasi digital dan menolak hoaks adalah bagian dari bela negara di era digital.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q1",
+    "section": "twk",
+    "question": "Desentralisasi adalah ...",
+    "options": [
+      "Penyerahan wewenang pemerintah pusat kepada pemerintah daerah",
+      "Pengambilan semua keputusan oleh pemerintah pusat",
+      "Pembentukan negara bagian yang berdaulat sendiri",
+      "Penugasan pemerintah pusat kepada gubernur sebagai wakil pusat",
+      "Pemisahan daerah dari NKRI"
+    ],
+    "answer": 0,
+    "explanation": "Desentralisasi adalah penyerahan wewenang dari pemerintah pusat kepada pemerintah daerah, agar urusan setempat diputuskan lebih cepat dan tepat oleh daerah itu sendiri.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q2",
+    "section": "twk",
+    "question": "Otonomi daerah diselenggarakan dalam bingkai ...",
+    "options": [
+      "Negara federal",
+      "NKRI",
+      "Negara serikat",
+      "Konfederasi",
+      "Negara bagian"
+    ],
+    "answer": 1,
+    "explanation": "Indonesia tetap negara kesatuan; otonomi berjalan dalam bingkai NKRI dan daerah tidak boleh menjadi negara sendiri.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q3",
+    "section": "twk",
+    "question": "Berikut ini yang termasuk urusan pemerintahan absolut yang menjadi kewenangan pemerintah pusat adalah ...",
+    "options": [
+      "Pendidikan",
+      "Kesehatan",
+      "Politik luar negeri",
+      "Pekerjaan umum",
+      "Perizinan"
+    ],
+    "answer": 2,
+    "explanation": "Enam urusan absolut pusat: politik luar negeri, pertahanan, keamanan, moneter dan fiskal, agama, dan peradilan. Pendidikan, kesehatan, pekerjaan umum, dan perizinan adalah urusan daerah.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q4",
+    "section": "twk",
+    "question": "Berikut ini yang menjadi wewenang daerah, bukan urusan absolut pemerintah pusat, adalah ...",
+    "options": [
+      "Pertahanan",
+      "Agama",
+      "Politik luar negeri",
+      "Pendidikan",
+      "Keamanan"
+    ],
+    "answer": 3,
+    "explanation": "Pendidikan adalah urusan daerah. Pertahanan, agama, politik luar negeri, dan keamanan termasuk enam urusan absolut pemerintah pusat.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q5",
+    "section": "twk",
+    "question": "Pemerintah kabupaten membuat peraturan daerah yang isinya bertentangan dengan undang-undang. Bagaimana penilaian terhadap peraturan daerah itu?",
+    "options": [
+      "Peraturan daerah itu tetap berlaku karena daerah berotonomi",
+      "Peraturan daerah itu tidak berlaku karena bertentangan dengan peraturan yang lebih tinggi",
+      "Peraturan daerah itu berlaku setelah disetujui DPRD",
+      "Peraturan daerah itu berlaku sementara selama satu tahun",
+      "Peraturan daerah itu hanya berlaku untuk warga kabupaten"
+    ],
+    "answer": 1,
+    "explanation": "Pemerintahan daerah harus berdasarkan hukum; peraturan daerah yang bertentangan dengan undang-undang tidak berlaku dan bisa dibatalkan.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q6",
+    "section": "twk",
+    "question": "Daerah yang berstatus daerah istimewa adalah ...",
+    "options": [
+      "Aceh",
+      "Papua",
+      "DI Yogyakarta",
+      "Bali",
+      "Jawa Barat"
+    ],
+    "answer": 2,
+    "explanation": "Daerah istimewa: DI Yogyakarta (kesultanan) dan DKI Jakarta (ibu kota). Aceh dan Papua berstatus otonomi khusus.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q7",
+    "section": "twk",
+    "question": "Otonomi khusus Papua diatur dengan undang-undang ...",
+    "options": [
+      "UU 21/2001",
+      "UU 11/2006",
+      "UU 23/2014",
+      "UU 13/2012",
+      "UU 32/2004"
+    ],
+    "answer": 0,
+    "explanation": "Otonomi khusus Papua diatur dengan UU 21/2001, sedangkan otonomi khusus Aceh diatur dengan UU 11/2006.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q8",
+    "section": "twk",
+    "question": "Otonomi khusus Aceh diatur dengan undang-undang ...",
+    "options": [
+      "UU 21/2001",
+      "UU 11/2006",
+      "UU 23/2014",
+      "UU 13/2012",
+      "UU 32/2004"
+    ],
+    "answer": 1,
+    "explanation": "Otonomi khusus Aceh diatur dengan UU 11/2006, sedangkan otonomi khusus Papua diatur dengan UU 21/2001.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q9",
+    "section": "twk",
+    "question": "Pemerintahan daerah diatur dalam UUD 1945 pada Pasal ...",
+    "options": [
+      "Pasal 18",
+      "Pasal 20",
+      "Pasal 24",
+      "Pasal 22D",
+      "Pasal 27"
+    ],
+    "answer": 0,
+    "explanation": "Pemerintahan daerah diatur dalam UUD 1945 Pasal 18. Pasal 20 mengatur pembentukan undang-undang, Pasal 24 kekuasaan kehakiman, dan Pasal 22D kewenangan DPD.",
+  },
+  {
+    "id": "twk-otonomi-daerah-q10",
+    "section": "twk",
+    "question": "Pemerintah kota memperbaiki jalan rusak dan membangun puskesmas di wilayahnya. Hal itu merupakan wujud ...",
+    "options": [
+      "Sentralisasi",
+      "Otonomi daerah",
+      "Dekonsentrasi",
+      "Tugas pembantuan",
+      "Federalisme"
+    ],
+    "answer": 1,
+    "explanation": "Urusan yang dekat dengan warga sehari-hari, seperti jalan, puskesmas, dan perizinan, diserahkan kepada daerah — itulah otonomi daerah bekerja.",
   },
   {
     "id": "twk-bhinneka-q1",

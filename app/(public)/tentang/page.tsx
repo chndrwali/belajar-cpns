@@ -17,7 +17,7 @@ export default function TentangPage() {
         <p>
           Belajar CPNS adalah platform belajar mandiri untuk Seleksi Kompetensi Dasar (SKD) CPNS —
           gratis, tanpa iklan, dan bisa dipakai tanpa login. Di dalamnya ada 17 materi ringkas TWK,
-          TIU, dan TKP, 150 soal kuis per bab, dua paket tryout SKD lengkap 220 soal dengan timer
+          TIU, dan TKP, 170 soal kuis per bab, dua paket tryout SKD lengkap 220 soal dengan timer
           100 menit, serta checklist dokumen administrasi untuk persiapan pendaftaran.
         </p>
         <p>
