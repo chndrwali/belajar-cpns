@@ -80,7 +80,7 @@ export default function HomePage() {
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Materi ringkas</p>
           </div>
           <div>
-            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">150</p>
+            <p className="text-2xl font-bold text-[#131316] sm:text-3xl">170</p>
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal kuis per bab</p>
           </div>
           <div>
