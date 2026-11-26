@@ -18,7 +18,7 @@ export function YoutubeCard({ channel, topic }: { channel: YoutubeChannel; topic
       href={channel.searchUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-red-200 hover:shadow-md"
+      className="group flex h-full items-start gap-3 rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-red-200 hover:shadow-md"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
         <Youtube className="h-5 w-5" />
@@ -42,7 +42,7 @@ export function EbookCard({ ebook }: { ebook: EbookReference }) {
       href={ebook.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-orange-200 hover:shadow-md"
+      className="group flex h-full items-start gap-3 rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-orange-200 hover:shadow-md"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white">
         <BookOpen className="h-5 w-5" />

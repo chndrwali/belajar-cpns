@@ -6,6 +6,7 @@ import { CHECKLIST_ITEMS } from "@/lib/cpns/checklist";
 import { MATERIALS } from "@/lib/cpns/materials";
 import { QUIZ_QUESTIONS } from "@/lib/cpns/quiz-questions";
 import { useDashboardProgress } from "@/components/cpns/progress-hooks";
+import { Stagger, StaggerItem } from "@/components/cpns/animate";
 
 export function DashboardProgress() {
   const { sessionPending, isLoggedIn, dashboard, dashboardLoading, dashboardError } = useDashboardProgress();
@@ -67,14 +68,16 @@ export function DashboardProgress() {
     { icon: Target, label: "Tryout SKD selesai", value: stats.tryouts === 0 ? "Belum ada" : `${stats.tryouts}x — skor terakhir ${stats.lastTotal}`, href: "/tryout" },
   ];
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <Stagger className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item) => (
-        <Link key={item.label} href={item.href} className="rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-orange-300 hover:shadow-md">
-          <item.icon className="h-5 w-5 text-orange-600" />
-          <p className="mt-2 text-sm font-semibold text-[#131316]">{item.label}</p>
-          <p className="mt-0.5 text-sm text-neutral-500">{item.value}</p>
-        </Link>
+        <StaggerItem key={item.label} className="h-full">
+          <Link href={item.href} className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-4 transition hover:border-orange-300 hover:shadow-md">
+            <item.icon className="h-5 w-5 text-orange-600" />
+            <p className="mt-2 text-sm font-semibold text-[#131316]">{item.label}</p>
+            <p className="mt-0.5 text-sm text-neutral-500">{item.value}</p>
+          </Link>
+        </StaggerItem>
       ))}
-    </div>
+    </Stagger>
   );
 }

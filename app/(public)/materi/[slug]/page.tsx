@@ -9,6 +9,7 @@ import { MarkDoneButton } from "@/components/cpns/mark-done-button";
 import { MaterialVideo } from "@/components/cpns/material-video";
 import { MaterialReadingSection } from "@/components/cpns/material-reading";
 import { YoutubeCard } from "@/components/cpns/shared";
+import { Reveal } from "@/components/cpns/animate";
 
 function channelsForMaterial(slug: string, section: string) {
   const alFaiz = YOUTUBE_CHANNELS.find((c) => c.name === "Privat Al-Faiz");
@@ -35,27 +36,31 @@ export default async function MateriDetailPage({ params }: { params: Promise<{ s
       <Link href="/materi" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-[#131316]">
         <ArrowLeft className="h-4 w-4" /> Semua materi
       </Link>
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <span className={`rounded-full px-3 py-1 text-sm font-bold text-white ${info.color}`}>{info.name}</span>
-        <span className="text-sm text-neutral-500">{info.full}</span>
-        <span className="inline-flex items-center gap-1 text-sm text-neutral-400">
-          <Clock className="h-3.5 w-3.5" /> ±{material.estimatedMinutes} menit
-        </span>
-      </div>
-      <h1 className="mt-4 text-4xl font-bold tracking-tight text-[#131316]">{material.title}</h1>
-      <p className="mt-3 text-lg leading-relaxed text-neutral-500">{material.short}</p>
+      <Reveal>
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          <span className={`rounded-full px-3 py-1 text-sm font-bold text-white ${info.color}`}>{info.name}</span>
+          <span className="text-sm text-neutral-500">{info.full}</span>
+          <span className="inline-flex items-center gap-1 text-sm text-neutral-400">
+            <Clock className="h-3.5 w-3.5" /> ±{material.estimatedMinutes} menit
+          </span>
+        </div>
+        <h1 className="mt-4 text-4xl font-bold tracking-tight text-[#131316]">{material.title}</h1>
+        <p className="mt-3 text-lg leading-relaxed text-neutral-500">{material.short}</p>
+      </Reveal>
 
-      <section className="mt-8 rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
-        <h2 className="text-lg font-bold text-[#131316]">Poin kunci</h2>
-        <ul className="mt-4 space-y-3">
-          {material.keyPoints.map((point) => (
-            <li key={point} className="flex gap-3 text-sm leading-relaxed text-neutral-600 sm:text-base">
-              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-orange-500 to-pink-500" />
-              {point}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Reveal delay={0.08}>
+        <section className="mt-8 rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <h2 className="text-lg font-bold text-[#131316]">Poin kunci</h2>
+          <ul className="mt-4 space-y-3">
+            {material.keyPoints.map((point) => (
+              <li key={point} className="flex gap-3 text-sm leading-relaxed text-neutral-600 sm:text-base">
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-orange-500 to-pink-500" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Reveal>
 
       {reading ? <MaterialReadingSection reading={reading} /> : null}
 

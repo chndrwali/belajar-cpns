@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   CheckCircle2,
   ChevronDown,
@@ -142,11 +143,18 @@ export function ProfileDropdown() {
         <ChevronDown className="absolute -right-0.5 -bottom-0.5 h-3.5 w-3.5 rounded-full bg-white text-[#131316] ring-1 ring-neutral-200" />
       </button>
 
-      {open ? (
-        <div
-          role="menu"
-          className="absolute right-0 z-50 mt-2 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl sm:w-96"
-        >
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            key="menu"
+            role="menu"
+            initial={{ opacity: 0, scale: 0.97, y: -6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.97, y: -6 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformOrigin: "top right" }}
+            className="absolute right-0 z-50 mt-2 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl sm:w-96"
+          >
           <div className="flex items-center gap-3 border-b border-neutral-100 px-4 py-3">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 via-amber-500 to-pink-500 text-sm font-bold text-white">
               {initials(user.name, user.email)}
@@ -279,8 +287,9 @@ export function ProfileDropdown() {
           >
             <LogOut className="h-4 w-4" /> Keluar
           </button>
-        </div>
-      ) : null}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

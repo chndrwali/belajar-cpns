@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useMutation } from "@tanstack/react-query";
+import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Flag, RotateCcw, Timer } from "lucide-react";
 import { PASSING_GRADE, TRYOUT_MINUTES, scoreKnowledge, scoreTkp } from "@/lib/cpns/types";
 import type { Question, TryoutResult } from "@/lib/cpns/types";
@@ -358,7 +359,12 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
   if (phase === "result" && lastResult) {
     const r = lastResult;
     return (
-      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="mx-auto max-w-4xl px-4 py-10 sm:px-6"
+      >
         <div className={`rounded-3xl p-8 text-center text-white ${r.passed ? "bg-emerald-600" : "bg-[#131316]"}`}>
           <CheckCircle2 className="mx-auto h-12 w-12" />
           <h1 className="mt-3 text-3xl font-bold">{r.passed ? "LOLOS Passing Grade" : "Belum Lolos"}</h1>
@@ -437,7 +443,7 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
             );
           })}
         </ol>
-      </div>
+      </motion.div>
     );
   }
 
@@ -467,7 +473,13 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
       </div>
 
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[1fr_280px]">
-        <div className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8"
+        >
           <p className="text-xs font-semibold tracking-wider text-neutral-400 uppercase">
             {sec.label} · {q.section === "tkp" ? "Pilih jawaban yang paling tepat (nilai 1–5)" : "Pilih satu jawaban yang benar"}
           </p>
@@ -530,7 +542,7 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
               </button>
             )}
           </div>
-        </div>
+        </motion.div>
 
         <aside className="rounded-3xl border border-neutral-200 bg-white p-5 lg:sticky lg:top-32 lg:self-start">
           <h2 className="text-sm font-bold text-[#131316]">Navigasi Soal</h2>
