@@ -206,6 +206,7 @@ exports.Prisma.QuizBestScalarFieldEnum = {
 exports.Prisma.TryoutAttemptScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  tryoutId: 'tryoutId',
   twk: 'twk',
   tiu: 'tiu',
   tkp: 'tkp',

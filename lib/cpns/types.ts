@@ -63,6 +63,10 @@ export interface ChecklistItem {
 
 /** Satu hasil tryout SKD — bentuk yang dikembalikan tRPC progress.getDashboard. */
 export interface TryoutResult {
+  /** id baris tryout_attempt — dipakai untuk membuka halaman review jawaban. */
+  id: string;
+  /** Tryout yang dikerjakan: "1" (Dasar) atau "2" (HOTS). */
+  tryoutId: "1" | "2";
   date: string; // ISO string
   twk: number;
   tiu: number;

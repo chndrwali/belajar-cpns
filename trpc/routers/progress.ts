@@ -27,6 +27,8 @@ const legacyTryoutSchema = z.object({
 });
 
 function toTryoutResult(a: {
+  id: string;
+  tryoutId: string;
   createdAt: Date;
   twk: number;
   tiu: number;
@@ -36,6 +38,8 @@ function toTryoutResult(a: {
   durationSeconds: number;
 }): TryoutResult {
   return {
+    id: a.id,
+    tryoutId: a.tryoutId === "2" ? "2" : "1",
     date: a.createdAt.toISOString(),
     twk: a.twk,
     tiu: a.tiu,
@@ -45,6 +49,11 @@ function toTryoutResult(a: {
     durationSeconds: a.durationSeconds,
   };
 }
+
+/** Bentuk jawaban tersimpan di kolom answers (Json) — divalidasi saat dibaca. */
+const savedAnswersSchema = z.array(
+  z.object({ index: z.number().int().min(0).max(109), chosen: z.number().int().min(0).max(4) }),
+);
 
 export const progressRouter = createTRPCRouter({
   /** Semua progres user yang login: materi, skor kuis terbaik, riwayat tryout, checklist. */
@@ -71,6 +80,26 @@ export const progressRouter = createTRPCRouter({
     });
     return rows.map((r) => r.itemId);
   }),
+
+  /**
+   * Satu percobaan tryout milik user, lengkap dengan jawaban tersimpan —
+   * dipakai halaman review (read-only) untuk evaluasi. Bukan milik user
+   * lain, dan jawaban lama yang rusak bentuknya dikembalikan sebagai list
+   * kosong supaya halaman tetap bisa dibuka.
+   */
+  getTryoutAttempt: rateLimitedProcedure(RATE_LIMITS.progressGetDashboard.limit)
+    .input(z.object({ id: z.string().cuid() }))
+    .query(async ({ ctx, input }) => {
+      const attempt = await prisma.tryoutAttempt.findFirst({
+        where: { id: input.id, userId: ctx.auth.user.id },
+      });
+      if (!attempt) return null;
+      const answers = savedAnswersSchema.safeParse(attempt.answers);
+      return {
+        ...toTryoutResult(attempt),
+        answers: answers.success ? answers.data : [],
+      };
+    }),
 
   toggleMaterial: rateLimitedProcedure(RATE_LIMITS.progressToggle.limit)
     .input(z.object({ slug: slugSchema, done: z.boolean() }))
@@ -114,6 +143,7 @@ export const progressRouter = createTRPCRouter({
   saveTryoutAttempt: rateLimitedProcedure(RATE_LIMITS.progressSaveTryout.limit)
     .input(
       z.object({
+        tryoutId: z.enum(["1", "2"]),
         twk: z.number().int().min(0).max(150),
         tiu: z.number().int().min(0).max(175),
         tkp: z.number().int().min(0).max(225),
@@ -139,6 +169,7 @@ export const progressRouter = createTRPCRouter({
       const saved = await prisma.tryoutAttempt.create({
         data: {
           userId: ctx.auth.user.id,
+          tryoutId: input.tryoutId,
           twk: input.twk,
           tiu: input.tiu,
           tkp: input.tkp,

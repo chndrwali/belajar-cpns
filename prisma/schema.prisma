@@ -147,6 +147,9 @@ model QuizBest {
 model TryoutAttempt {
   id              String   @id @default(cuid())
   userId          String
+  /** Tryout yang dikerjakan: "1" (Dasar) atau "2" (HOTS). Default "1"
+   * untuk riwayat lama dari era sebelum Tryout 2 ada. */
+  tryoutId        String   @default("1")
   twk             Int
   tiu             Int
   tkp             Int

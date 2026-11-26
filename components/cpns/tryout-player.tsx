@@ -149,6 +149,10 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
     });
     const total = twk + tiu + tkp;
     const result: TryoutResult = {
+      // id diisi server saat attempt tersimpan (onSuccess mengganti
+      // lastResult dengan hasil yang sudah punya id asli).
+      id: "",
+      tryoutId: config.id,
       date: new Date().toISOString(),
       twk,
       tiu,
@@ -166,6 +170,7 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
     }
     setSaveState("saving");
     saveAttemptMutation.mutate({
+      tryoutId: config.id,
       twk,
       tiu,
       tkp,
@@ -182,6 +187,7 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
     if (!lastResult) return;
     setSaveState("saving");
     saveAttemptMutation.mutate({
+      tryoutId: lastResult.tryoutId,
       twk: lastResult.twk,
       tiu: lastResult.tiu,
       tkp: lastResult.tkp,
@@ -318,18 +324,30 @@ export function TryoutPlayer({ config }: { config: TryoutConfig }) {
 
         {history.length > 0 ? (
           <div className="mt-6 rounded-3xl border border-neutral-200 bg-white p-6">
-            <h2 className="font-bold text-[#131316]">Riwayat tryoutmu</h2>
+            <h2 className="font-bold text-[#131316]">Riwayat {config.shortTitle}mu</h2>
+            <p className="mt-1 text-sm text-neutral-500">
+              Klik salah satu untuk melihat lagi jawabanmu, kunci, dan pembahasan tiap soal — tanpa
+              bisa mengubah jawaban.
+            </p>
             <ul className="mt-3 space-y-2 text-sm">
-              {[...history].reverse().map((h, i) => (
-                <li key={`${h.date}-${i}`} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-neutral-50 px-4 py-3">
-                  <span className="text-neutral-600">
-                    {new Date(h.date).toLocaleString("id-ID")} — TWK {h.twk} · TIU {h.tiu} · TKP {h.tkp}
-                  </span>
-                  <span className={`font-bold ${h.passed ? "text-emerald-600" : "text-red-600"}`}>
-                    Total {h.total} · {h.passed ? "LOLOS" : "BELUM LOLOS"}
-                  </span>
-                </li>
-              ))}
+              {[...history]
+                .filter((h) => h.tryoutId === config.id)
+                .reverse()
+                .map((h, i) => (
+                  <li key={h.id || `${h.date}-${i}`}>
+                    <Link
+                      href={`/tryout/riwayat/${h.id}`}
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-neutral-50 px-4 py-3 transition hover:bg-orange-50 hover:ring-1 hover:ring-orange-200"
+                    >
+                      <span className="text-neutral-600">
+                        {new Date(h.date).toLocaleString("id-ID")} — TWK {h.twk} · TIU {h.tiu} · TKP {h.tkp}
+                      </span>
+                      <span className={`font-bold ${h.passed ? "text-emerald-600" : "text-red-600"}`}>
+                        Total {h.total} · {h.passed ? "LOLOS" : "BELUM LOLOS"}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
         ) : null}

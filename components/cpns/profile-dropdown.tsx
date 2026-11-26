@@ -15,6 +15,8 @@ import { signOut, useSession } from "@/lib/auth-client";
 import { CHECKLIST_ITEMS } from "@/lib/cpns/checklist";
 import { MATERIALS } from "@/lib/cpns/materials";
 import { QUIZ_QUESTIONS } from "@/lib/cpns/quiz-questions";
+import { TRYOUTS } from "@/lib/cpns/tryouts";
+import type { TryoutResult } from "@/lib/cpns/types";
 import { useDashboardProgress } from "@/components/cpns/progress-hooks";
 
 /** Inisial untuk avatar: huruf pertama nama, fallback huruf pertama email. */
@@ -75,8 +77,18 @@ export function ProfileDropdown() {
     dashboard && dashboard.tryoutHistory.length > 0
       ? dashboard.tryoutHistory[dashboard.tryoutHistory.length - 1]
       : null;
-  // Riwayat tryout: terbaru dulu (server mengembalikan urutan menaik).
+  // Riwayat tryout: terbaru dulu (server mengembalikan urutan menaik),
+  // dipisah per tryout supaya TO 1 dan TO 2 tidak tercampur.
   const tryoutNewestFirst = dashboard ? [...dashboard.tryoutHistory].reverse() : [];
+  const tryoutGroups: Array<{ id: "1" | "2"; title: string; items: TryoutResult[] }> = (
+    ["1", "2"] as const
+  )
+    .map((id) => ({
+      id,
+      title: TRYOUTS[id].title,
+      items: tryoutNewestFirst.filter((a) => a.tryoutId === id),
+    }))
+    .filter((g) => g.items.length > 0);
   // Riwayat kuis: hanya skor TERBAIK per bab yang tersimpan di database —
   // tidak ada riwayat tiap percobaan, jadi tampilkan apa adanya.
   const quizHistory = dashboard
@@ -191,32 +203,45 @@ export function ProfileDropdown() {
                 </p>
               ) : (
                 <>
-                  {tryoutNewestFirst.length > 0 ? (
+                  {tryoutGroups.length > 0 ? (
                     <div className="mt-2">
-                      <p className="text-xs font-semibold text-neutral-500">Tryout SKD</p>
-                      <ul className="mt-1 divide-y divide-neutral-100">
-                        {tryoutNewestFirst.map((a) => (
-                          <li key={a.date + a.total} className="py-2">
-                            <span className="flex items-center justify-between gap-2">
-                              <span className="text-sm font-semibold text-[#131316]">
-                                {formatDate(a.date)} · {a.total} poin
-                              </span>
-                              <span
-                                className={`rounded-full px-2 py-0.5 text-xs font-bold ${
-                                  a.passed
-                                    ? "bg-emerald-100 text-emerald-700"
-                                    : "bg-neutral-100 text-neutral-600"
-                                }`}
-                              >
-                                {a.passed ? "LOLOS" : "Belum lolos"}
-                              </span>
-                            </span>
-                            <span className="mt-0.5 block text-xs text-neutral-500">
-                              TWK {a.twk} · TIU {a.tiu} · TKP {a.tkp}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <p className="text-xs font-semibold text-neutral-500">
+                        Tryout SKD — klik untuk lihat jawaban &amp; pembahasan
+                      </p>
+                      {tryoutGroups.map((g) => (
+                        <div key={g.id} className="mt-2">
+                          <p className="text-xs font-bold text-[#131316]">{g.title}</p>
+                          <ul className="mt-1 divide-y divide-neutral-100">
+                            {g.items.map((a) => (
+                              <li key={a.id} className="py-2">
+                                <Link
+                                  href={`/tryout/riwayat/${a.id}`}
+                                  onClick={() => setOpen(false)}
+                                  className="block rounded-lg transition hover:bg-orange-50"
+                                >
+                                  <span className="flex items-center justify-between gap-2">
+                                    <span className="text-sm font-semibold text-[#131316]">
+                                      {formatDate(a.date)} · {a.total} poin
+                                    </span>
+                                    <span
+                                      className={`rounded-full px-2 py-0.5 text-xs font-bold ${
+                                        a.passed
+                                          ? "bg-emerald-100 text-emerald-700"
+                                          : "bg-neutral-100 text-neutral-600"
+                                      }`}
+                                    >
+                                      {a.passed ? "LOLOS" : "Belum lolos"}
+                                    </span>
+                                  </span>
+                                  <span className="mt-0.5 block text-xs text-neutral-500">
+                                    TWK {a.twk} · TIU {a.tiu} · TKP {a.tkp}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
                   ) : null}
                   {quizHistory.length > 0 ? (

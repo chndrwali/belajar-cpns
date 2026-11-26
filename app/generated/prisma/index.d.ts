@@ -9684,6 +9684,7 @@ export namespace Prisma {
   export type TryoutAttemptMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    tryoutId: string | null
     twk: number | null
     tiu: number | null
     tkp: number | null
@@ -9696,6 +9697,7 @@ export namespace Prisma {
   export type TryoutAttemptMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    tryoutId: string | null
     twk: number | null
     tiu: number | null
     tkp: number | null
@@ -9708,6 +9710,7 @@ export namespace Prisma {
   export type TryoutAttemptCountAggregateOutputType = {
     id: number
     userId: number
+    tryoutId: number
     twk: number
     tiu: number
     tkp: number
@@ -9739,6 +9742,7 @@ export namespace Prisma {
   export type TryoutAttemptMinAggregateInputType = {
     id?: true
     userId?: true
+    tryoutId?: true
     twk?: true
     tiu?: true
     tkp?: true
@@ -9751,6 +9755,7 @@ export namespace Prisma {
   export type TryoutAttemptMaxAggregateInputType = {
     id?: true
     userId?: true
+    tryoutId?: true
     twk?: true
     tiu?: true
     tkp?: true
@@ -9763,6 +9768,7 @@ export namespace Prisma {
   export type TryoutAttemptCountAggregateInputType = {
     id?: true
     userId?: true
+    tryoutId?: true
     twk?: true
     tiu?: true
     tkp?: true
@@ -9863,6 +9869,7 @@ export namespace Prisma {
   export type TryoutAttemptGroupByOutputType = {
     id: string
     userId: string
+    tryoutId: string
     twk: number
     tiu: number
     tkp: number
@@ -9895,6 +9902,7 @@ export namespace Prisma {
   export type TryoutAttemptSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    tryoutId?: boolean
     twk?: boolean
     tiu?: boolean
     tkp?: boolean
@@ -9909,6 +9917,7 @@ export namespace Prisma {
   export type TryoutAttemptSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    tryoutId?: boolean
     twk?: boolean
     tiu?: boolean
     tkp?: boolean
@@ -9923,6 +9932,7 @@ export namespace Prisma {
   export type TryoutAttemptSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    tryoutId?: boolean
     twk?: boolean
     tiu?: boolean
     tkp?: boolean
@@ -9937,6 +9947,7 @@ export namespace Prisma {
   export type TryoutAttemptSelectScalar = {
     id?: boolean
     userId?: boolean
+    tryoutId?: boolean
     twk?: boolean
     tiu?: boolean
     tkp?: boolean
@@ -9947,7 +9958,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type TryoutAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "twk" | "tiu" | "tkp" | "total" | "passed" | "durationSeconds" | "answers" | "createdAt", ExtArgs["result"]["tryoutAttempt"]>
+  export type TryoutAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tryoutId" | "twk" | "tiu" | "tkp" | "total" | "passed" | "durationSeconds" | "answers" | "createdAt", ExtArgs["result"]["tryoutAttempt"]>
   export type TryoutAttemptInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -9966,6 +9977,11 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      /**
+       * * Tryout yang dikerjakan: "1" (Dasar) atau "2" (HOTS). Default "1"
+       *    * untuk riwayat lama dari era sebelum Tryout 2 ada.
+       */
+      tryoutId: string
       twk: number
       tiu: number
       tkp: number
@@ -10400,6 +10416,7 @@ export namespace Prisma {
   interface TryoutAttemptFieldRefs {
     readonly id: FieldRef<"TryoutAttempt", 'String'>
     readonly userId: FieldRef<"TryoutAttempt", 'String'>
+    readonly tryoutId: FieldRef<"TryoutAttempt", 'String'>
     readonly twk: FieldRef<"TryoutAttempt", 'Int'>
     readonly tiu: FieldRef<"TryoutAttempt", 'Int'>
     readonly tkp: FieldRef<"TryoutAttempt", 'Int'>
@@ -12011,6 +12028,7 @@ export namespace Prisma {
   export const TryoutAttemptScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    tryoutId: 'tryoutId',
     twk: 'twk',
     tiu: 'tiu',
     tkp: 'tkp',
@@ -12708,6 +12726,7 @@ export namespace Prisma {
     NOT?: TryoutAttemptWhereInput | TryoutAttemptWhereInput[]
     id?: StringFilter<"TryoutAttempt"> | string
     userId?: StringFilter<"TryoutAttempt"> | string
+    tryoutId?: StringFilter<"TryoutAttempt"> | string
     twk?: IntFilter<"TryoutAttempt"> | number
     tiu?: IntFilter<"TryoutAttempt"> | number
     tkp?: IntFilter<"TryoutAttempt"> | number
@@ -12722,6 +12741,7 @@ export namespace Prisma {
   export type TryoutAttemptOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    tryoutId?: SortOrder
     twk?: SortOrder
     tiu?: SortOrder
     tkp?: SortOrder
@@ -12739,6 +12759,7 @@ export namespace Prisma {
     OR?: TryoutAttemptWhereInput[]
     NOT?: TryoutAttemptWhereInput | TryoutAttemptWhereInput[]
     userId?: StringFilter<"TryoutAttempt"> | string
+    tryoutId?: StringFilter<"TryoutAttempt"> | string
     twk?: IntFilter<"TryoutAttempt"> | number
     tiu?: IntFilter<"TryoutAttempt"> | number
     tkp?: IntFilter<"TryoutAttempt"> | number
@@ -12753,6 +12774,7 @@ export namespace Prisma {
   export type TryoutAttemptOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    tryoutId?: SortOrder
     twk?: SortOrder
     tiu?: SortOrder
     tkp?: SortOrder
@@ -12774,6 +12796,7 @@ export namespace Prisma {
     NOT?: TryoutAttemptScalarWhereWithAggregatesInput | TryoutAttemptScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"TryoutAttempt"> | string
     userId?: StringWithAggregatesFilter<"TryoutAttempt"> | string
+    tryoutId?: StringWithAggregatesFilter<"TryoutAttempt"> | string
     twk?: IntWithAggregatesFilter<"TryoutAttempt"> | number
     tiu?: IntWithAggregatesFilter<"TryoutAttempt"> | number
     tkp?: IntWithAggregatesFilter<"TryoutAttempt"> | number
@@ -13446,6 +13469,7 @@ export namespace Prisma {
 
   export type TryoutAttemptCreateInput = {
     id?: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -13460,6 +13484,7 @@ export namespace Prisma {
   export type TryoutAttemptUncheckedCreateInput = {
     id?: string
     userId: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -13472,6 +13497,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -13486,6 +13512,7 @@ export namespace Prisma {
   export type TryoutAttemptUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -13499,6 +13526,7 @@ export namespace Prisma {
   export type TryoutAttemptCreateManyInput = {
     id?: string
     userId: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -13511,6 +13539,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -13524,6 +13553,7 @@ export namespace Prisma {
   export type TryoutAttemptUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -14143,6 +14173,7 @@ export namespace Prisma {
   export type TryoutAttemptCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    tryoutId?: SortOrder
     twk?: SortOrder
     tiu?: SortOrder
     tkp?: SortOrder
@@ -14164,6 +14195,7 @@ export namespace Prisma {
   export type TryoutAttemptMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    tryoutId?: SortOrder
     twk?: SortOrder
     tiu?: SortOrder
     tkp?: SortOrder
@@ -14176,6 +14208,7 @@ export namespace Prisma {
   export type TryoutAttemptMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    tryoutId?: SortOrder
     twk?: SortOrder
     tiu?: SortOrder
     tkp?: SortOrder
@@ -15044,6 +15077,7 @@ export namespace Prisma {
 
   export type TryoutAttemptCreateWithoutUserInput = {
     id?: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -15056,6 +15090,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUncheckedCreateWithoutUserInput = {
     id?: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -15277,6 +15312,7 @@ export namespace Prisma {
     NOT?: TryoutAttemptScalarWhereInput | TryoutAttemptScalarWhereInput[]
     id?: StringFilter<"TryoutAttempt"> | string
     userId?: StringFilter<"TryoutAttempt"> | string
+    tryoutId?: StringFilter<"TryoutAttempt"> | string
     twk?: IntFilter<"TryoutAttempt"> | number
     tiu?: IntFilter<"TryoutAttempt"> | number
     tkp?: IntFilter<"TryoutAttempt"> | number
@@ -16043,6 +16079,7 @@ export namespace Prisma {
 
   export type TryoutAttemptCreateManyUserInput = {
     id?: string
+    tryoutId?: string
     twk: number
     tiu: number
     tkp: number
@@ -16227,6 +16264,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -16239,6 +16277,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
@@ -16251,6 +16290,7 @@ export namespace Prisma {
 
   export type TryoutAttemptUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tryoutId?: StringFieldUpdateOperationsInput | string
     twk?: IntFieldUpdateOperationsInput | number
     tiu?: IntFieldUpdateOperationsInput | number
     tkp?: IntFieldUpdateOperationsInput | number
