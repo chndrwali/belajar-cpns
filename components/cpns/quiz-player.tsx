@@ -77,58 +77,58 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
     const pct = Math.round((correctCount / questions.length) * 100);
     return (
       <div className="mx-auto max-w-2xl px-4 py-10">
-        <div className="rounded-3xl border border-neutral-200 bg-white p-8 text-center">
-          <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" />
-          <h1 className="mt-4 text-2xl font-bold text-[#131316]">Kuis selesai</h1>
-          <p className="mt-2 text-neutral-500">
-            {material.title} — kamu menjawab benar {correctCount} dari {questions.length} soal ({pct}%).
+        <div className="rounded-lg border border-ink/10 bg-white p-8 text-center">
+          <CheckCircle2 className="mx-auto h-12 w-12 text-success" />
+          <h1 className="mt-4 text-2xl font-bold text-ink">Kuis selesai</h1>
+          <p className="mt-2 text-muted-text">
+            {material.title} · kamu menjawab benar {correctCount} dari {questions.length} soal ({pct}%).
           </p>
-          <p className="mt-2 text-sm text-neutral-500">
-            {pct >= 80 ? "Mantap, sudah sangat siap. Lanjut ke bab berikutnya atau coba tryout SKD." : pct >= 60 ? "Lumayan, tapi masih ada yang perlu diulang. Baca lagi materinya lalu coba lagi." : "Belum lolos — baca lagi materinya, tonton video referensinya, lalu ulangi kuis ini."}
+          <p className="mt-2 text-sm text-muted-text">
+            {pct >= 80 ? "Mantap, sudah sangat siap. Lanjut ke bab berikutnya atau coba tryout SKD." : pct >= 60 ? "Lumayan, tapi masih ada yang perlu diulang. Baca lagi materinya lalu coba lagi." : "Belum lolos. Baca lagi materinya, tonton video referensinya, lalu ulangi kuis ini."}
           </p>
           {saveState === "guest" ? (
-            <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
-              Login untuk menyimpan progresmu — tanpa login, skor kuis ini tidak tercatat.{" "}
+            <p className="mt-4 rounded-md bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
+              Login untuk menyimpan progresmu. Tanpa login, skor kuis ini tidak tercatat.{" "}
               <Link href="/login" className="font-bold underline">
                 Login sekarang
               </Link>
             </p>
           ) : saveState === "saving" ? (
-            <p className="mt-4 text-sm text-neutral-500">Menyimpan skor terbaikmu ke akunmu…</p>
+            <p className="mt-4 text-sm text-muted-text">Menyimpan skor terbaikmu ke akunmu…</p>
           ) : saveState === "saved" ? (
-            <p className="mt-4 text-sm font-medium text-emerald-700">Skor terbaikmu tersimpan di akunmu.</p>
+            <p className="mt-4 text-sm font-medium text-success">Skor terbaikmu tersimpan di akunmu.</p>
           ) : saveState === "failed" ? (
-            <p className="mt-4 rounded-2xl bg-red-50 p-4 text-sm leading-relaxed text-red-800">
+            <p className="mt-4 rounded-md bg-danger-soft p-4 text-sm leading-relaxed text-danger">
               {friendlyProgressError(saveBestMutation.error)} Skor kuis ini tetap terlihat di atas,
-              tapi tidak tercatat — coba ulangi kuis setelah koneksi membaik.
+              tapi tidak tercatat. Coba ulangi kuis setelah koneksi membaik.
             </p>
           ) : null}
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <button onClick={reset} className="inline-flex items-center gap-2 rounded-full bg-[#131316] px-5 py-2.5 text-sm font-semibold text-white">
+            <button onClick={reset} className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-white">
               <RotateCcw className="h-4 w-4" /> Ulangi kuis
             </button>
-            <Link href={`/materi/${material.slug}`} className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-2.5 text-sm font-semibold text-[#131316]">
+            <Link href={`/materi/${material.slug}`} className="inline-flex items-center gap-2 rounded-md border border-ink/15 px-5 py-2.5 text-sm font-semibold text-ink">
               Baca lagi materi
             </Link>
-            <Link href="/kuis" className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-2.5 text-sm font-semibold text-[#131316]">
+            <Link href="/kuis" className="inline-flex items-center gap-2 rounded-md border border-ink/15 px-5 py-2.5 text-sm font-semibold text-ink">
               Semua kuis
             </Link>
           </div>
           <div className="mt-8 text-left">
-            <h2 className="font-bold text-[#131316]">Pembahasan semua soal</h2>
+            <h2 className="font-bold text-ink">Pembahasan semua soal</h2>
             <ol className="mt-3 space-y-3">
               {questions.map((qq, i) => {
                 const ok = qq.section === "tkp" ? (qq.points?.[chosen[i] ?? -1] ?? 0) === 5 : chosen[i] === qq.answer;
                 return (
-                  <li key={qq.id} className="rounded-2xl border border-neutral-200 p-4 text-sm">
-                    <p className="font-semibold text-[#131316]">
+                  <li key={qq.id} className="rounded-md border border-ink/10 p-4 text-sm">
+                    <p className="font-semibold text-ink">
                       {i + 1}. {qq.question}{" "}
-                      <span className={ok ? "text-emerald-600" : "text-red-600"}>{ok ? "(Benar)" : "(Belum tepat)"}</span>
+                      <span className={ok ? "text-success" : "text-danger"}>{ok ? "(Benar)" : "(Belum tepat)"}</span>
                     </p>
-                    <p className="mt-1 text-neutral-500">
+                    <p className="mt-1 text-muted-text">
                       Jawaban benar: {LETTERS[qq.answer]}. {qq.options[qq.answer]}
                     </p>
-                    <p className="mt-1 text-neutral-500">{qq.explanation}</p>
+                    <p className="mt-1 text-muted-text">{qq.explanation}</p>
                   </li>
                 );
               })}
@@ -141,21 +141,21 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
 
   const answered = Object.keys(chosen).length;
   return (
-    <div className="min-h-screen bg-neutral-50">
-      {/* Dicoding-style header: navy bar + progress */}
-      <div className="bg-[#2D3E50] text-white">
+    <div className="min-h-screen bg-paper">
+      {/* Header tinta + progress */}
+      <div className="bg-ink text-white">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <p className="text-xs font-semibold tracking-wider text-sky-300 uppercase">Kuis · {material.sectionName}</p>
+              <p className="text-xs font-semibold tracking-wider text-amber-accent uppercase">Kuis · {material.sectionName}</p>
               <h1 className="mt-0.5 text-lg font-bold sm:text-xl">{material.title}</h1>
             </div>
-            <p className="text-sm text-neutral-300">
+            <p className="text-sm text-white/70">
               Soal {index + 1} dari {questions.length} · Dijawab {answered}
             </p>
           </div>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/20">
-            <div className="h-full rounded-full bg-gradient-to-r from-orange-400 to-pink-400 transition-all" style={{ width: `${(answered / questions.length) * 100}%` }} />
+            <div className="h-full rounded-full bg-brand transition-all" style={{ width: `${(answered / questions.length) * 100}%` }} />
           </div>
         </div>
       </div>
@@ -163,46 +163,46 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[1fr_260px]">
         {/* Question card */}
         <div>
-          <div className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8">
-            <p className="text-xs font-semibold tracking-wider text-neutral-400 uppercase">
+          <div className="rounded-lg border border-ink/10 bg-white p-6 sm:p-8">
+            <p className="text-xs font-semibold tracking-wider text-muted-text uppercase">
               Soal {index + 1} · {isTkp ? "Pilih jawaban yang paling tepat (nilai 1–5)" : "Pilih satu jawaban yang benar"}
             </p>
-            <p className="mt-3 text-base leading-relaxed font-medium text-[#131316] sm:text-lg">{q.question}</p>
+            <p className="mt-3 text-base leading-relaxed font-medium text-ink sm:text-lg">{q.question}</p>
             <div className="mt-6 space-y-3">
               {q.options.map((opt, oi) => {
                 const isPicked = picked === oi;
                 const isCorrect = oi === q.answer;
-                let cls = "border-neutral-200 bg-white hover:border-[#2D3E50]";
+                let cls = "border-ink/10 bg-white hover:border-brand";
                 if (isRevealed) {
                   if (isTkp) {
                     const pts = q.points?.[oi] ?? 0;
-                    if (isPicked) cls = pts === 5 ? "border-emerald-500 bg-emerald-50" : pts >= 3 ? "border-amber-400 bg-amber-50" : "border-red-400 bg-red-50";
-                    else if (pts === 5) cls = "border-emerald-500 bg-emerald-50";
-                  } else if (isCorrect) cls = "border-emerald-500 bg-emerald-50";
-                  else if (isPicked) cls = "border-red-400 bg-red-50";
+                    if (isPicked) cls = pts === 5 ? "border-success bg-success-soft" : pts >= 3 ? "border-amber-400 bg-amber-50" : "border-danger bg-danger-soft";
+                    else if (pts === 5) cls = "border-success bg-success-soft";
+                  } else if (isCorrect) cls = "border-success bg-success-soft";
+                  else if (isPicked) cls = "border-danger bg-danger-soft";
                 } else if (isPicked) {
-                  cls = "border-[#2D3E50] bg-slate-100";
+                  cls = "border-ink bg-brand-soft";
                 }
                 return (
                   <button
                     key={oi}
                     onClick={() => pick(oi)}
-                    className={`flex w-full items-start gap-3 rounded-2xl border-2 p-4 text-left transition ${cls}`}
+                    className={`flex w-full items-start gap-3 rounded-md border-2 p-4 text-left transition ${cls}`}
                   >
                     <span
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold ${
                         isRevealed && isCorrect
-                          ? "border-emerald-500 bg-emerald-500 text-white"
+                          ? "border-success bg-success text-white"
                           : isPicked
-                            ? "border-[#2D3E50] bg-[#2D3E50] text-white"
-                            : "border-neutral-300 bg-white text-neutral-600"
+                            ? "border-brand bg-brand text-white"
+                            : "border-ink/15 bg-white text-muted-text"
                       }`}
                     >
                       {isRevealed && isCorrect ? <Check className="h-4 w-4" /> : isRevealed && isPicked ? <X className="h-4 w-4" /> : LETTERS[oi]}
                     </span>
-                    <span className="text-sm leading-relaxed text-[#131316] sm:text-base">{opt}</span>
+                    <span className="text-sm leading-relaxed text-ink sm:text-base">{opt}</span>
                     {isRevealed && isTkp && q.points ? (
-                      <span className="ml-auto shrink-0 rounded-full bg-white px-2 py-0.5 text-xs font-bold text-neutral-600">
+                      <span className="ml-auto shrink-0 rounded-full bg-white px-2 py-0.5 text-xs font-bold text-muted-text">
                         {q.points[oi]} poin
                       </span>
                     ) : null}
@@ -212,7 +212,7 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
             </div>
 
             {isRevealed ? (
-              <div className={`mt-5 rounded-2xl p-4 text-sm leading-relaxed ${isTkp ? (q.points?.[picked ?? -1] ?? 0) === 5 ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900" : picked === q.answer ? "bg-emerald-50 text-emerald-900" : "bg-red-50 text-red-900"}`}>
+              <div className={`mt-5 rounded-md p-4 text-sm leading-relaxed ${isTkp ? (q.points?.[picked ?? -1] ?? 0) === 5 ? "bg-success-soft text-success" : "bg-amber-50 text-amber-900" : picked === q.answer ? "bg-success-soft text-success" : "bg-danger-soft text-danger"}`}>
                 <p className="flex items-center gap-1.5 font-bold">
                   {isTkp ? (
                     (q.points?.[picked ?? -1] ?? 0) === 5 ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />
@@ -235,14 +235,14 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
               <button
                 onClick={() => setIndex((i) => Math.max(0, i - 1))}
                 disabled={index === 0}
-                className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-[#131316] disabled:opacity-40"
+                className="inline-flex items-center gap-1.5 rounded-md border border-ink/15 px-4 py-2 text-sm font-semibold text-ink disabled:opacity-40"
               >
                 <ArrowLeft className="h-4 w-4" /> Sebelumnya
               </button>
               {index < questions.length - 1 ? (
                 <button
                   onClick={() => setIndex((i) => Math.min(questions.length - 1, i + 1))}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-[#2D3E50] px-5 py-2 text-sm font-semibold text-white"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white"
                 >
                   Selanjutnya <ArrowRight className="h-4 w-4" />
                 </button>
@@ -250,22 +250,22 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
                 <button
                   onClick={finish}
                   disabled={answered < questions.length}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
                 >
                   Selesai & Lihat Skor
                 </button>
               )}
             </div>
             {index === questions.length - 1 && answered < questions.length ? (
-              <p className="mt-3 text-center text-xs text-neutral-400">Jawab semua {questions.length} soal dulu untuk melihat skor.</p>
+              <p className="mt-3 text-center text-xs text-muted-text">Jawab semua {questions.length} soal dulu untuk melihat skor.</p>
             ) : null}
           </div>
         </div>
 
-        {/* Number grid — Dicoding style */}
-        <aside className="rounded-3xl border border-neutral-200 bg-white p-5 lg:sticky lg:top-24 lg:self-start">
-          <h2 className="text-sm font-bold text-[#131316]">Navigasi Soal</h2>
-          <p className="mt-1 text-xs text-neutral-400">Klik nomor untuk pindah soal. Hijau = sudah dijawab.</p>
+        {/* Number grid */}
+        <aside className="rounded-lg border border-ink/10 bg-white p-5 lg:sticky lg:top-24 lg:self-start">
+          <h2 className="text-sm font-bold text-ink">Navigasi Soal</h2>
+          <p className="mt-1 text-xs text-muted-text">Klik nomor untuk pindah soal. Hijau = sudah dijawab.</p>
           <div className="mt-4 grid grid-cols-5 gap-2">
             {questions.map((qq, i) => {
               const answeredQ = chosen[i] !== undefined;
@@ -275,7 +275,7 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
                   key={qq.id}
                   onClick={() => setIndex(i)}
                   className={`flex h-10 items-center justify-center rounded-xl text-sm font-bold transition ${
-                    active ? "bg-[#2D3E50] text-white" : answeredQ ? "bg-emerald-100 text-emerald-800" : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                    active ? "bg-brand text-white" : answeredQ ? "bg-success-soft text-success" : "bg-ink/5 text-muted-text hover:bg-ink/10"
                   }`}
                 >
                   {i + 1}
@@ -283,12 +283,12 @@ export function QuizPlayer({ material, questions }: { material: Material; questi
               );
             })}
           </div>
-          <div className="mt-4 flex items-center gap-4 text-xs text-neutral-500">
-            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-emerald-100" /> Dijawab</span>
-            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-[#2D3E50]" /> Aktif</span>
-            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-neutral-100" /> Belum</span>
+          <div className="mt-4 flex items-center gap-4 text-xs text-muted-text">
+            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-success-soft" /> Dijawab</span>
+            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-brand" /> Aktif</span>
+            <span className="flex items-center gap-1.5"><span className="h-3 w-3 rounded bg-ink/5" /> Belum</span>
           </div>
-          <Link href="/kuis" className="mt-5 block text-center text-sm font-semibold text-orange-600 hover:underline">
+          <Link href="/kuis" className="mt-5 block text-center text-sm font-semibold text-teal-700 hover:underline">
             Kembali ke daftar kuis
           </Link>
         </aside>

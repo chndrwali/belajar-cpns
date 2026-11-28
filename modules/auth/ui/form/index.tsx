@@ -137,29 +137,29 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
   };
 
   return (
-    <Card className="w-full rounded-3xl border border-neutral-200 bg-white shadow-sm">
+    <Card className="w-full rounded-lg border border-ink/10 bg-white shadow-sm">
       <CardHeader className="text-center">
-        <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">
+        <p className="text-xs font-semibold tracking-[0.2em] text-teal-700 uppercase">
           {config.eyebrow}
         </p>
-        <CardTitle className="mt-2 text-3xl font-bold tracking-tight text-[#131316]">
+        <CardTitle className="mt-2 text-3xl font-bold tracking-tight text-ink">
           {isLogin ? (
             <>
               Masuk ke{" "}
-              <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="text-teal-700">
                 akunmu
               </span>
             </>
           ) : (
             <>
               Buat{" "}
-              <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="text-teal-700">
                 akun gratis
               </span>
             </>
           )}
         </CardTitle>
-        <CardDescription className="text-base text-neutral-500">
+        <CardDescription className="text-base text-muted-text">
           {config.description}
         </CardDescription>
       </CardHeader>
@@ -180,13 +180,13 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold text-[#131316]">
+                    <FormLabel className="font-semibold text-ink">
                       Nama Lengkap
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Masukkan nama lengkapmu"
-                        className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
+                        className="h-11 rounded-md border-ink/15 focus-visible:ring-brand"
                         {...field}
                         disabled={loading}
                       />
@@ -203,13 +203,13 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold text-[#131316]">
+                  <FormLabel className="font-semibold text-ink">
                     Alamat Email
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Masukkan alamat emailmu"
-                      className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
+                      className="h-11 rounded-md border-ink/15 focus-visible:ring-brand"
                       {...field}
                       disabled={loading}
                     />
@@ -225,7 +225,7 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold text-[#131316]">
+                  <FormLabel className="font-semibold text-ink">
                     Kata Sandi
                   </FormLabel>
                   <FormControl>
@@ -235,7 +235,7 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
                       placeholder="Masukkan kata sandimu"
                       required
                       disabled={loading}
-                      className="h-11 rounded-xl border-neutral-300 focus-visible:ring-orange-500"
+                      className="h-11 rounded-md border-ink/15 focus-visible:ring-brand"
                       {...(!isLogin && { showRules: true, showStrength: true })}
                     />
                   </FormControl>
@@ -257,11 +257,11 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
                           type="checkbox"
                           checked={field.value ?? false}
                           onChange={field.onChange}
-                          className="size-4 rounded border-neutral-300 accent-orange-600"
+                          className="size-4 rounded border-ink/15 accent-teal-700"
                           disabled={loading}
                         />
                       </FormControl>
-                      <FormLabel className="text-sm font-normal cursor-pointer text-neutral-600">
+                      <FormLabel className="text-sm font-normal cursor-pointer text-muted-text">
                         Ingat saya
                       </FormLabel>
                     </FormItem>
@@ -270,7 +270,7 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
 
                 <Link
                   href="/forgot-password"
-                  className="text-sm font-semibold text-orange-600 hover:underline"
+                  className="text-sm font-semibold text-teal-700 hover:underline"
                 >
                   Lupa kata sandi?
                 </Link>
@@ -280,17 +280,17 @@ export const AuthForm = ({ variant }: AuthFormProps) => {
             <Button
               type="submit"
               size="lg"
-              className="h-11 w-full rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:opacity-90"
+              className="h-11 w-full rounded-md bg-brand text-sm font-semibold text-white shadow-soft transition hover:bg-brand-deep"
               disabled={loading}
             >
               {loading ? <Spinner /> : config.submitLabel}
             </Button>
 
-            <p className="text-sm text-center text-neutral-500">
+            <p className="text-sm text-center text-muted-text">
               {config.footerText}{" "}
               <Link
                 href={config.footerLinkHref}
-                className="font-semibold text-orange-600 cursor-pointer hover:underline"
+                className="font-semibold text-teal-700 cursor-pointer hover:underline"
               >
                 {config.footerLinkText}
               </Link>

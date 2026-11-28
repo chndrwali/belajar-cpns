@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 export default function TentangPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">Tentang</p>
-      <h1 className="mt-2 text-4xl font-bold tracking-tight text-[#131316]">Tentang Belajar CPNS</h1>
+      <p className="text-xs font-semibold tracking-[0.2em] text-teal-700 uppercase">Tentang</p>
+      <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">Tentang Belajar CPNS</h1>
 
-      <section className="mt-8 space-y-4 text-base leading-relaxed text-neutral-600">
+      <section className="mt-8 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Belajar CPNS adalah platform belajar mandiri untuk Seleksi Kompetensi Dasar (SKD) CPNS —
           gratis, tanpa iklan, dan bisa dipakai tanpa login. Di dalamnya ada 17 materi ringkas TWK,
@@ -22,15 +22,15 @@ export default function TentangPage() {
         </p>
         <p>
           Situs ini dibuat oleh{" "}
-          <strong className="text-[#131316]">Candra Wali Sanjaya</strong>, fullstack web developer
+          <strong className="text-ink">Candra Wali Sanjaya</strong>, fullstack web developer
           dari Bandung, sebagai proyek terbuka untuk membantu para pejuang CPNS 2026 — dan sebagai
           ajakan bagi developer lain untuk ikut berkontribusi. Kode sumbernya publik di GitHub dan
           siapa pun boleh mem-fork, memperbaiki, atau mengirim pull request.
         </p>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Dari mana materi dan soalnya?</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Dari mana materi dan soalnya?</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Semua materi dan soal di situs ini ditulis sendiri untuk keperluan latihan. Materi disusun
           dari referensi umum yang terbuka — Pancasila, UUD 1945, dan bahan belajar SKD yang beredar
@@ -40,16 +40,16 @@ export default function TentangPage() {
           masing-masing dan bukan bagian dari situs ini.
         </p>
         <p>
-          <strong className="text-[#131316]">Penting:</strong> soal-soal di sini adalah soal
-          latihan buatan, <strong className="text-[#131316]">bukan soal resmi BKN</strong>. Passing
+          <strong className="text-ink">Penting:</strong> soal-soal di sini adalah soal
+          latihan buatan, <strong className="text-ink">bukan soal resmi BKN</strong>. Passing
           grade yang ditampilkan adalah acuan 2024 (TWK 65, TIU 80, TKP 166), bukan pengumuman
           final 2026. Jadwal, formasi, dan syarat resmi selalu mengikuti pengumuman di portal
           SSCASN dan instansi yang kamu lamar.
         </p>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Hubungi pengelola</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Hubungi pengelola</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Menemukan soal yang keliru, materi yang kurang tepat, atau ingin mengusulkan fitur? Sampaikan
           lewat Issues di repositori GitHub:
@@ -59,13 +59,13 @@ export default function TentangPage() {
             href="https://github.com/chndrwali/belajar-cpns"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-orange-600 underline"
+            className="font-semibold text-teal-700 underline"
           >
             github.com/chndrwali/belajar-cpns
           </a>
         </p>
         <p>
-          <Link href="/" className="font-semibold text-orange-600 underline">
+          <Link href="/" className="font-semibold text-teal-700 underline">
             ← Kembali ke beranda
           </Link>
         </p>

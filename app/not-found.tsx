@@ -181,8 +181,7 @@ export default function NotFound() {
         ref={scanlineRef}
         className="pointer-events-none absolute inset-x-0 top-0 z-10 h-1"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent, var(--primary), transparent)",
+          background: "var(--primary)",
           boxShadow: "0 0 20px var(--primary), 0 0 60px var(--primary)",
         }}
       />
@@ -226,11 +225,7 @@ export default function NotFound() {
                 key={i}
                 className="digit inline-block text-[10rem] font-black leading-none tracking-tighter sm:text-[14rem]"
                 style={{
-                  background:
-                    "linear-gradient(180deg, var(--foreground) 0%, var(--primary) 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  color: "var(--primary)",
                   perspective: "800px",
                 }}
               >

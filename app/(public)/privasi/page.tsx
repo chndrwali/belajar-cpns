@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default function PrivasiPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase">Kebijakan Privasi</p>
-      <h1 className="mt-2 text-4xl font-bold tracking-tight text-[#131316]">Kebijakan Privasi</h1>
-      <p className="mt-3 text-sm text-neutral-400">Terakhir diperbarui: 13 November 2026.</p>
+      <p className="text-xs font-semibold tracking-[0.2em] text-teal-700 uppercase">Kebijakan Privasi</p>
+      <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">Kebijakan Privasi</h1>
+      <p className="mt-3 text-sm text-muted-text">Terakhir diperbarui: 13 November 2026.</p>
 
-      <section className="mt-8 space-y-4 text-base leading-relaxed text-neutral-600">
+      <section className="mt-8 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Belajar CPNS adalah layanan belajar gratis. Kamu bisa memakai hampir semua fitur — membaca
           materi, mengerjakan kuis, dan mengikuti tryout — tanpa membuat akun. Kebijakan ini menjelaskan
@@ -22,29 +22,29 @@ export default function PrivasiPage() {
         </p>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Data yang kami kumpulkan</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Data yang kami kumpulkan</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-[#131316]">Saat mendaftar:</strong> nama, alamat email, dan kata
+            <strong className="text-ink">Saat mendaftar:</strong> nama, alamat email, dan kata
             sandi. Kata sandi tidak disimpan dalam bentuk yang bisa dibaca — hanya hash-nya, melalui
             layanan autentikasi Better Auth.
           </li>
           <li>
-            <strong className="text-[#131316]">Saat belajar dengan akun:</strong> progres belajar —
+            <strong className="text-ink">Saat belajar dengan akun:</strong> progres belajar —
             materi yang ditandai selesai, skor terbaik kuis, riwayat tryout, dan checklist
             administrasi. Data ini tersimpan di akunmu agar bisa dibuka dari perangkat mana pun.
           </li>
           <li>
-            <strong className="text-[#131316]">Tanpa akun:</strong> kami tidak mencatat progresmu.
+            <strong className="text-ink">Tanpa akun:</strong> kami tidak mencatat progresmu.
             Yang kamu kerjakan sebagai tamu hanya tersimpan sementara di perangkatmu selama tryout
             berjalan, lalu terhapus otomatis saat tryout selesai.
           </li>
         </ul>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Penyimpanan dan keamanan</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Penyimpanan dan keamanan</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Data akun disimpan di database Postgres (Neon) dan hanya dipakai untuk menjalankan layanan
           ini. Akses ke data dibatasi oleh autentikasi dan prosedur tRPC yang mengharuskan login.
@@ -57,17 +57,17 @@ export default function PrivasiPage() {
         </p>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Berbagi data</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Berbagi data</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
-          Kami <strong className="text-[#131316]">tidak menjual, menyewakan, atau membagikan</strong>{" "}
+          Kami <strong className="text-ink">tidak menjual, menyewakan, atau membagikan</strong>{" "}
           data pribadimu ke pihak ketiga untuk keperluan pemasaran. Data hanya dibagikan jika diwajibkan
           oleh hukum yang berlaku.
         </p>
       </section>
 
-      <h2 className="mt-10 text-2xl font-bold text-[#131316]">Hakmu atas datamu</h2>
-      <section className="mt-4 space-y-4 text-base leading-relaxed text-neutral-600">
+      <h2 className="mt-10 text-2xl font-bold text-ink">Hakmu atas datamu</h2>
+      <section className="mt-4 space-y-4 text-base leading-relaxed text-muted-text">
         <p>
           Kamu berhak meminta salinan atau penghapusan data akunmu. Sejujurnya: saat ini belum ada
           tombol hapus akun mandiri di dalam aplikasi. Untuk meminta penghapusan akun dan seluruh
@@ -76,7 +76,7 @@ export default function PrivasiPage() {
             href="https://github.com/chndrwali/belajar-cpns"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-orange-600 underline"
+            className="font-semibold text-teal-700 underline"
           >
             chndrwali/belajar-cpns
           </a>{" "}
@@ -84,7 +84,7 @@ export default function PrivasiPage() {
           diproses secara manual oleh pengelola.
         </p>
         <p>
-          <Link href="/" className="font-semibold text-orange-600 underline">
+          <Link href="/" className="font-semibold text-teal-700 underline">
             ← Kembali ke beranda
           </Link>
         </p>

@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * Bar progres gaya Modulify: track netral, isi emerald (warna yang sama
- * dengan penanda "selesai" di kartu materi/kuis).
+ * Bar progres Tangga CPNS: track netral, isi teal. Satu warna progres
+ * di seluruh situs, sama seperti anak tangga yang terisi di beranda.
  */
 export function ProgressBar({
   value,
@@ -17,13 +17,13 @@ export function ProgressBar({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3">
-        <p className="text-sm font-semibold text-[#131316]">{label}</p>
-        <p className="text-sm font-medium text-neutral-500">
+        <p className="text-sm font-semibold text-ink">{label}</p>
+        <p className="text-sm font-medium text-muted-text">
           {value}/{total} · {pct}%
         </p>
       </div>
       <div
-        className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-neutral-200"
+        className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-ink/10"
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}
@@ -31,7 +31,7 @@ export function ProgressBar({
         aria-label={label}
       >
         <div
-          className="h-full rounded-full bg-emerald-500 transition-all"
+          className="h-full rounded-full bg-brand transition-all"
           style={{ width: `${pct}%` }}
         />
       </div>

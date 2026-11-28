@@ -348,9 +348,9 @@ export const MATERIALS: Material[] = [
 ];
 
 export const SECTION_INFO: Record<string, { name: string; full: string; count: number; minutes: string; color: string }> = {
-  twk: { name: "TWK", full: "Tes Wawasan Kebangsaan", count: 30, minutes: "30 soal", color: "bg-red-600" },
-  tiu: { name: "TIU", full: "Tes Intelegensi Umum", count: 35, minutes: "35 soal", color: "bg-blue-600" },
-  tkp: { name: "TKP", full: "Tes Karakteristik Pribadi", count: 45, minutes: "45 soal", color: "bg-emerald-600" },
+  twk: { name: "TWK", full: "Tes Wawasan Kebangsaan", count: 30, minutes: "30 soal", color: "bg-teal-700" },
+  tiu: { name: "TIU", full: "Tes Intelegensi Umum", count: 35, minutes: "35 soal", color: "bg-amber-800" },
+  tkp: { name: "TKP", full: "Tes Karakteristik Pribadi", count: 45, minutes: "45 soal", color: "bg-blue-700" },
 };
 
 export function getMaterial(slug: string): Material | undefined {

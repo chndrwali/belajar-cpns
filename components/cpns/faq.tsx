@@ -12,16 +12,16 @@ export function FaqAccordion() {
       {FAQ_ITEMS.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={item.question} className="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+          <div key={item.question} className="overflow-hidden rounded-lg border border-ink/10 bg-white">
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
             >
-              <span className="text-base font-semibold text-[#131316]">{item.question}</span>
+              <span className="text-base font-semibold text-ink">{item.question}</span>
               <ChevronDown
-                className={`h-5 w-5 shrink-0 text-neutral-400 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                className={`h-5 w-5 shrink-0 text-muted-text transition-transform ${isOpen ? "rotate-180" : ""}`}
               />
             </button>
             <AnimatePresence initial={false}>
@@ -34,7 +34,7 @@ export function FaqAccordion() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <p className="border-t border-neutral-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">
+                  <p className="border-t border-ink/10 px-5 py-4 text-sm leading-relaxed text-muted-text">
                     {item.answer}
                   </p>
                 </motion.div>

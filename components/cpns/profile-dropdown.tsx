@@ -123,7 +123,7 @@ export function ProfileDropdown() {
           value:
             dashboard.tryoutHistory.length === 0
               ? "Belum ada"
-              : `${dashboard.tryoutHistory.length}x — skor terakhir ${lastTryout?.total ?? 0} (${lastTryout?.passed ? "LOLOS" : "Belum lolos"})`,
+              : `${dashboard.tryoutHistory.length}x · skor terakhir ${lastTryout?.total ?? 0} (${lastTryout?.passed ? "LOLOS" : "Belum lolos"})`,
         },
       ]
     : [];
@@ -137,10 +137,10 @@ export function ProfileDropdown() {
         aria-expanded={open}
         aria-label="Menu profil"
         title={user.name ?? user.email ?? "Profil"}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 via-amber-500 to-pink-500 text-sm font-bold text-white shadow-md shadow-orange-500/25 transition hover:opacity-90"
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow-soft transition hover:bg-brand-deep"
       >
         {initials(user.name, user.email)}
-        <ChevronDown className="absolute -right-0.5 -bottom-0.5 h-3.5 w-3.5 rounded-full bg-white text-[#131316] ring-1 ring-neutral-200" />
+        <ChevronDown className="absolute -right-0.5 -bottom-0.5 h-3.5 w-3.5 rounded-full bg-white text-ink ring-1 ring-ink/10" />
       </button>
 
       <AnimatePresence>
@@ -153,42 +153,42 @@ export function ProfileDropdown() {
             exit={{ opacity: 0, scale: 0.97, y: -6 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformOrigin: "top right" }}
-            className="absolute right-0 z-50 mt-2 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl sm:w-96"
+            className="absolute right-0 z-50 mt-2 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-lg border border-ink/10 bg-white shadow-xl sm:w-96"
           >
-          <div className="flex items-center gap-3 border-b border-neutral-100 px-4 py-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 via-amber-500 to-pink-500 text-sm font-bold text-white">
+          <div className="flex items-center gap-3 border-b border-ink/10 px-4 py-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
               {initials(user.name, user.email)}
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-sm font-bold text-[#131316]">
+              <span className="block truncate text-sm font-bold text-ink">
                 {user.name ?? user.email}
               </span>
               {user.name ? (
-                <span className="block truncate text-xs text-neutral-500">{user.email}</span>
+                <span className="block truncate text-xs text-muted-text">{user.email}</span>
               ) : null}
             </span>
           </div>
 
           <div className="max-h-[70vh] overflow-y-auto">
             <div className="px-4 pt-3 pb-1">
-              <p className="text-xs font-bold tracking-wide text-neutral-400 uppercase">
+              <p className="text-xs font-bold tracking-wide text-muted-text uppercase">
                 Progres belajarmu
               </p>
               {dashboardLoading ? (
-                <p className="mt-2 animate-pulse text-sm text-neutral-400">Memuat progres…</p>
+                <p className="mt-2 animate-pulse text-sm text-muted-text">Memuat progres…</p>
               ) : dashboardError || !dashboard ? (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-danger">
                   Progres gagal dimuat. Coba muat ulang halaman.
                 </p>
               ) : (
-                <ul className="mt-2 divide-y divide-neutral-100">
+                <ul className="mt-2 divide-y divide-ink/10">
                   {stats.map((s) => (
                     <li key={s.label} className="flex items-start gap-2.5 py-2">
-                      <s.icon className="mt-0.5 h-4 w-4 shrink-0 text-orange-600" />
-                      <span className="min-w-0 flex-1 text-sm leading-snug text-neutral-600">
+                      <s.icon className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+                      <span className="min-w-0 flex-1 text-sm leading-snug text-muted-text">
                         {s.label}
                       </span>
-                      <span className="shrink-0 text-sm font-semibold text-[#131316]">
+                      <span className="shrink-0 text-sm font-semibold text-ink">
                         {s.value}
                       </span>
                     </li>
@@ -197,51 +197,51 @@ export function ProfileDropdown() {
               )}
             </div>
 
-            <div className="border-t border-neutral-100 px-4 pt-3 pb-1">
-              <p className="flex items-center gap-1.5 text-xs font-bold tracking-wide text-neutral-400 uppercase">
-                <History className="h-3.5 w-3.5" /> Riwayat — buat muhasabah
+            <div className="border-t border-ink/10 px-4 pt-3 pb-1">
+              <p className="flex items-center gap-1.5 text-xs font-bold tracking-wide text-muted-text uppercase">
+                <History className="h-3.5 w-3.5" /> Riwayat · buat muhasabah
               </p>
               {dashboardLoading ? (
-                <p className="mt-2 animate-pulse pb-3 text-sm text-neutral-400">Memuat riwayat…</p>
+                <p className="mt-2 animate-pulse pb-3 text-sm text-muted-text">Memuat riwayat…</p>
               ) : dashboardError || !dashboard ? (
-                <p className="mt-2 pb-3 text-sm text-red-600">Riwayat gagal dimuat.</p>
+                <p className="mt-2 pb-3 text-sm text-danger">Riwayat gagal dimuat.</p>
               ) : tryoutNewestFirst.length === 0 && quizHistory.length === 0 ? (
-                <p className="mt-2 pb-3 text-sm leading-relaxed text-neutral-500">
-                  Belum ada riwayat — coba kuis atau tryout dulu.
+                <p className="mt-2 pb-3 text-sm leading-relaxed text-muted-text">
+                  Belum ada riwayat. Coba kuis atau tryout dulu.
                 </p>
               ) : (
                 <>
                   {tryoutGroups.length > 0 ? (
                     <div className="mt-2">
-                      <p className="text-xs font-semibold text-neutral-500">
-                        Tryout SKD — klik untuk lihat jawaban &amp; pembahasan
+                      <p className="text-xs font-semibold text-muted-text">
+                        Tryout SKD · klik untuk lihat jawaban &amp; pembahasan
                       </p>
                       {tryoutGroups.map((g) => (
                         <div key={g.id} className="mt-2">
-                          <p className="text-xs font-bold text-[#131316]">{g.title}</p>
-                          <ul className="mt-1 divide-y divide-neutral-100">
+                          <p className="text-xs font-bold text-ink">{g.title}</p>
+                          <ul className="mt-1 divide-y divide-ink/10">
                             {g.items.map((a) => (
                               <li key={a.id} className="py-2">
                                 <Link
                                   href={`/tryout/riwayat/${a.id}`}
                                   onClick={() => setOpen(false)}
-                                  className="block rounded-lg transition hover:bg-orange-50"
+                                  className="block rounded-lg transition hover:bg-teal-50"
                                 >
                                   <span className="flex items-center justify-between gap-2">
-                                    <span className="text-sm font-semibold text-[#131316]">
+                                    <span className="text-sm font-semibold text-ink">
                                       {formatDate(a.date)} · {a.total} poin
                                     </span>
                                     <span
                                       className={`rounded-full px-2 py-0.5 text-xs font-bold ${
                                         a.passed
-                                          ? "bg-emerald-100 text-emerald-700"
-                                          : "bg-neutral-100 text-neutral-600"
+                                          ? "bg-success-soft text-success"
+                                          : "bg-ink/5 text-muted-text"
                                       }`}
                                     >
                                       {a.passed ? "LOLOS" : "Belum lolos"}
                                     </span>
                                   </span>
-                                  <span className="mt-0.5 block text-xs text-neutral-500">
+                                  <span className="mt-0.5 block text-xs text-muted-text">
                                     TWK {a.twk} · TIU {a.tiu} · TKP {a.tkp}
                                   </span>
                                 </Link>
@@ -254,20 +254,20 @@ export function ProfileDropdown() {
                   ) : null}
                   {quizHistory.length > 0 ? (
                     <div className="mt-2 pb-2">
-                      <p className="text-xs font-semibold text-neutral-500">
-                        Kuis per bab — skor terbaik
+                      <p className="text-xs font-semibold text-muted-text">
+                        Kuis per bab · skor terbaik
                       </p>
-                      <ul className="mt-1 divide-y divide-neutral-100">
+                      <ul className="mt-1 divide-y divide-ink/10">
                         {quizHistory.map((q) => (
                           <li key={q.slug} className="flex items-center justify-between gap-2 py-1.5">
                             <Link
                               href={`/kuis/${q.slug}`}
                               onClick={() => setOpen(false)}
-                              className="min-w-0 truncate text-sm text-neutral-600 hover:text-orange-700 hover:underline"
+                              className="min-w-0 truncate text-sm text-muted-text hover:text-teal-800 hover:underline"
                             >
                               {q.title}
                             </Link>
-                            <span className="shrink-0 text-sm font-semibold text-emerald-700">
+                            <span className="shrink-0 text-sm font-semibold text-success">
                               {q.best}/10
                             </span>
                           </li>
@@ -283,7 +283,7 @@ export function ProfileDropdown() {
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex w-full items-center gap-2 border-t border-neutral-100 px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+            className="flex w-full items-center gap-2 border-t border-ink/10 px-4 py-3 text-sm font-semibold text-danger transition hover:bg-danger-soft"
           >
             <LogOut className="h-4 w-4" /> Keluar
           </button>

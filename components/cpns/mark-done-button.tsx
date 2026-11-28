@@ -32,7 +32,7 @@ export function MarkDoneButton({ slug, label }: { slug: string; label?: string }
     return (
       <Link
         href="/login"
-        className="inline-flex items-center gap-2 rounded-full bg-[#131316] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+        className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
         title="Login dulu supaya progresmu tersimpan di akunmu"
       >
         <LogIn className="h-4 w-4" />
@@ -52,14 +52,14 @@ export function MarkDoneButton({ slug, label }: { slug: string; label?: string }
       <button
         onClick={toggle}
         disabled={toggleMutation.isPending}
-        className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition disabled:opacity-60 ${
-          done ? "bg-emerald-600 text-white" : "bg-[#131316] text-white hover:opacity-90"
+        className={`inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition disabled:opacity-60 ${
+          done ? "bg-success text-white" : "bg-ink text-white hover:opacity-90"
         }`}
       >
         {done ? <CheckCircle2 className="h-4 w-4" /> : <Check className="h-4 w-4" />}
-        {done ? "Sudah dibaca — batalkan" : (label ?? "Tandai sudah dibaca")}
+        {done ? "Sudah dibaca · batalkan" : (label ?? "Tandai sudah dibaca")}
       </button>
-      {error ? <span className="text-xs font-medium text-red-600">{error}</span> : null}
+      {error ? <span className="text-xs font-medium text-danger">{error}</span> : null}
     </span>
   );
 }

@@ -7,7 +7,7 @@ import { PASSING_GRADE } from "@/lib/cpns/types";
 import { DashboardProgress } from "@/components/cpns/dashboard-progress";
 import { FaqAccordion } from "@/components/cpns/faq";
 import { FAQ_ITEMS } from "@/lib/cpns/faq";
-import { GradientButton, SectionHeading, EbookCard, YoutubeCard } from "@/components/cpns/shared";
+import { PrimaryButton, SectionHeading, EbookCard, YoutubeCard } from "@/components/cpns/shared";
 import { CountUp, GsapHero, Reveal, Stagger, StaggerItem } from "@/components/cpns/animate";
 
 const SECTION_CARDS = [
@@ -18,7 +18,7 @@ const SECTION_CARDS = [
   },
   {
     key: "tiu",
-    desc: "Verbal, numerik, dan figural — logika, hitungan cepat, dan pola gambar.",
+    desc: "Verbal, numerik, dan figural, logika, hitungan cepat, dan pola gambar.",
     icon: Target,
   },
   {
@@ -41,59 +41,57 @@ export default function HomePage() {
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      {/* Hero — Modulify style: white, oversized centered headline, warm gradient accent */}
-      <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24">
+      {/* Hero */}
+      <section className="mx-auto max-w-6xl px-4 pt-12 pb-10 text-center sm:px-6 sm:pt-20">
         <GsapHero>
           <a
             href="https://sscasn.bkn.go.id"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700 transition hover:bg-orange-100"
+            className="inline-flex items-center gap-2 rounded-full border border-teal-700/20 bg-brand-soft px-3 py-1 text-xs font-semibold text-teal-800 transition hover:bg-teal-700/10"
           >
             <Clock className="h-3.5 w-3.5" />
-            CPNS 2026 — Pendaftaran direncanakan November 2026
-            <span className="inline-flex items-center gap-1 text-orange-600">
+            CPNS 2026 · Pendaftaran direncanakan November 2026
+            <span className="inline-flex items-center gap-1 text-teal-700">
               Info resmi <ExternalLink className="h-3 w-3" />
             </span>
           </a>
-          <h1 className="mx-auto mt-6 max-w-3xl text-5xl leading-[1.05] font-bold tracking-tight text-[#131316] sm:text-7xl">
+          <h1 className="font-display mx-auto mt-6 max-w-3xl text-5xl leading-[1.05] font-extrabold tracking-tight text-ink sm:text-7xl">
             Lulus SKD CPNS,{" "}
-            <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-pink-500 bg-clip-text text-transparent">
-              mulai dari sini.
-            </span>
+            <span className="text-teal-700">mulai dari sini.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-neutral-500 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-text sm:text-lg">
             Materi TWK, TIU, dan TKP yang ringkas, kuis per bab, 2 tryout SKD lengkap 110 soal dengan
-            timer, plus checklist administrasi — semuanya gratis dan bisa dipakai tanpa login.
+            timer, plus checklist administrasi. Semuanya gratis dan bisa dipakai tanpa login.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <GradientButton href="/tryout">Mulai Tryout SKD</GradientButton>
+            <PrimaryButton href="/tryout">Mulai Tryout SKD</PrimaryButton>
             <Link
               href="/materi"
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-[#131316] transition hover:border-[#131316]"
+              className="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink"
             >
               Pelajari Materi
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 divide-x divide-neutral-200 rounded-2xl border border-neutral-200 bg-white py-4">
+          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 divide-x divide-ink/10 rounded-lg border border-ink/10 bg-white py-4">
             <div>
-              <p className="text-2xl font-bold text-[#131316] sm:text-3xl">
+              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
                 <CountUp to={17} />
               </p>
-              <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Materi ringkas</p>
+              <p className="mt-1 text-xs text-muted-text sm:text-sm">Materi ringkas</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#131316] sm:text-3xl">
+              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
                 <CountUp to={170} />
               </p>
-              <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal kuis per bab</p>
+              <p className="mt-1 text-xs text-muted-text sm:text-sm">Soal kuis per bab</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#131316] sm:text-3xl">
+              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
                 <CountUp to={220} />
               </p>
-              <p className="mt-1 text-xs text-neutral-500 sm:text-sm">Soal tryout SKD (2 set)</p>
+              <p className="mt-1 text-xs text-muted-text sm:text-sm">Soal tryout SKD (2 set)</p>
             </div>
           </div>
         </GsapHero>
@@ -102,9 +100,9 @@ export default function HomePage() {
       {/* Progress */}
       <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
         <Reveal>
-          <h2 className="mb-4 text-lg font-bold text-[#131316]">Progres belajarmu</h2>
+          <h2 className="font-display mb-4 text-lg font-extrabold text-ink">Progres belajarmu</h2>
           <DashboardProgress />
-          <p className="mt-3 text-xs text-neutral-400">
+          <p className="mt-3 text-xs text-muted-text">
             Progresmu tersimpan di akunmu dan bisa dibuka dari perangkat mana pun setelah login.
           </p>
         </Reveal>
@@ -125,22 +123,22 @@ export default function HomePage() {
             const count = MATERIALS.filter((m) => m.section === card.key).length;
             return (
               <StaggerItem key={card.key} className="h-full">
-                <div className="h-full rounded-3xl border border-neutral-200 bg-white p-6 transition hover:shadow-lg">
-                  <span className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white ${info.color}`}>
+                <div className="h-full rounded-lg border border-ink/10 bg-white p-6 transition hover:shadow-soft">
+                  <span className={`inline-flex h-11 w-11 items-center justify-center rounded-md text-white ${info.color}`}>
                     <card.icon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 text-xl font-bold text-[#131316]">
-                    {info.name} <span className="text-sm font-medium text-neutral-400">· {info.minutes}</span>
+                  <h3 className="font-display mt-4 text-xl font-extrabold text-ink">
+                    {info.name} <span className="font-sans text-sm font-medium text-muted-text">· {info.minutes}</span>
                   </h3>
-                  <p className="text-sm font-medium text-neutral-500">{info.full}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-500">{card.desc}</p>
+                  <p className="text-sm font-medium text-muted-text">{info.full}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-text">{card.desc}</p>
                   <p className="mt-3 text-sm">
                     Passing grade acuan 2024:{" "}
-                    <span className="font-bold text-[#131316]">
+                    <span className="font-mono font-bold text-ink">
                       {card.key === "twk" ? PASSING_GRADE.twk : card.key === "tiu" ? PASSING_GRADE.tiu : PASSING_GRADE.tkp}
                     </span>
                   </p>
-                  <Link href="/materi" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange-600 hover:underline">
+                  <Link href="/materi" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 hover:underline">
                     {count} materi · Pelajari <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -154,31 +152,31 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <Reveal>
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl bg-[#131316] p-8 text-white">
-              <Timer className="h-8 w-8 text-orange-400" />
-              <h3 className="mt-4 text-2xl font-bold">Tryout SKD Lengkap</h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-300">
-                Dua set soal persis format SKD — 30 TWK, 35 TIU, 45 TKP — dengan timer 100 menit,
+            <div className="rounded-lg bg-ink p-8 text-white">
+              <Timer className="h-8 w-8 text-amber-accent" />
+              <h3 className="font-display mt-4 text-2xl font-extrabold">Tryout SKD Lengkap</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                Dua set soal persis format SKD (30 TWK, 35 TIU, 45 TKP) dengan timer 100 menit,
                 navigasi nomor soal, tandai ragu-ragu, dan pembahasan per soal setelah selesai.
                 Tryout 2 (HOTS) lebih susah dari Tryout 1.
               </p>
               <Link
                 href="/tryout"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#131316] transition hover:bg-neutral-100"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-paper"
               >
                 Mulai Tryout <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="rounded-3xl border border-neutral-200 bg-white p-8">
-              <ListChecks className="h-8 w-8 text-orange-600" />
-              <h3 className="mt-4 text-2xl font-bold text-[#131316]">Checklist Administrasi</h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+            <div className="rounded-lg border border-ink/10 bg-white p-8">
+              <ListChecks className="h-8 w-8 text-teal-700" />
+              <h3 className="font-display mt-4 text-2xl font-extrabold text-ink">Checklist Administrasi</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-text">
                 KTP, KK, ijazah, transkrip, pas foto, swafoto, e-meterai, surat lamaran, dan surat
-                pernyataan — centang satu per satu sampai 100% siap daftar di SSCASN.
+                pernyataan. Centang satu per satu sampai 100% siap daftar di SSCASN.
               </p>
               <Link
                 href="/checklist"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#131316] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
               >
                 Buka Checklist <ArrowRight className="h-4 w-4" />
               </Link>
@@ -198,44 +196,44 @@ export default function HomePage() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mx-auto mt-10 max-w-3xl">
-            <div className="rounded-3xl bg-emerald-600 p-8 text-center text-white">
+            <div className="rounded-lg bg-success p-8 text-center text-white">
               <CheckCircle2 className="mx-auto h-12 w-12" />
-              <h3 className="mt-3 text-3xl font-bold">LOLOS Passing Grade</h3>
+              <h3 className="font-display mt-3 text-3xl font-extrabold">LOLOS Passing Grade</h3>
               <p className="mt-2 text-white/80">
-                Total skor 410 · Waktu yang dipakai 82 menit 14 detik
+                Total skor <span className="font-mono font-bold">410</span> · Waktu yang dipakai 82 menit 14 detik
               </p>
               <p className="mt-1 text-sm text-white/60">
-                Passing grade acuan 2024 — TWK {PASSING_GRADE.twk}, TIU {PASSING_GRADE.tiu}, TKP{" "}
+                Passing grade acuan 2024 · TWK {PASSING_GRADE.twk}, TIU {PASSING_GRADE.tiu}, TKP{" "}
                 {PASSING_GRADE.tkp}.
               </p>
               <p className="mx-auto mt-4 inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white">
-                Contoh hasil — bukan skor pengguna sungguhan
+                Contoh hasil · bukan skor pengguna sungguhan
               </p>
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
               {(
                 [
-                  { label: "TWK", score: 95, max: 150, pg: PASSING_GRADE.twk, color: "text-red-600" },
-                  { label: "TIU", score: 125, max: 175, pg: PASSING_GRADE.tiu, color: "text-blue-600" },
-                  { label: "TKP", score: 190, max: 225, pg: PASSING_GRADE.tkp, color: "text-emerald-600" },
+                  { label: "TWK", score: 95, max: 150, pg: PASSING_GRADE.twk, color: "text-teal-700" },
+                  { label: "TIU", score: 125, max: 175, pg: PASSING_GRADE.tiu, color: "text-amber-800" },
+                  { label: "TKP", score: 190, max: 225, pg: PASSING_GRADE.tkp, color: "text-blue-700" },
                 ] as const
               ).map((s) => (
-                <div key={s.label} className="rounded-3xl border border-neutral-200 bg-white p-5 text-center">
+                <div key={s.label} className="rounded-lg border border-ink/10 bg-white p-5 text-center">
                   <p className={`text-sm font-bold ${s.color}`}>{s.label}</p>
-                  <p className="mt-1 text-3xl font-bold text-[#131316]">{s.score}</p>
-                  <p className="text-xs text-neutral-400">
+                  <p className="font-mono mt-1 text-3xl font-bold text-ink">{s.score}</p>
+                  <p className="text-xs text-muted-text">
                     dari {s.max} · PG {s.pg}
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-emerald-600">Lolos</p>
+                  <p className="mt-2 text-sm font-semibold text-success">Lolos</p>
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-center text-xs text-neutral-400">
-              Angka di atas hanya contoh tampilan — skor aslimu dihitung dari jawabanmu sendiri setelah
+            <p className="mt-4 text-center text-xs text-muted-text">
+              Angka di atas hanya contoh tampilan. Skor aslimu dihitung dari jawabanmu sendiri setelah
               tryout selesai.
             </p>
             <div className="mt-6 flex justify-center">
-              <GradientButton href="/tryout">Coba tryout sekarang</GradientButton>
+              <PrimaryButton href="/tryout">Coba tryout sekarang</PrimaryButton>
             </div>
           </div>
         </Reveal>
